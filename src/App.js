@@ -12,8 +12,10 @@ function App() {
     <div className="App">
       <nav><h1>wordle</h1></nav>
       <AppContex.Provider value={{board, setBoard}}>
+      <div className="game">
       <Board/>
       <KeyBoard/>
+      </div>
       </AppContex.Provider>
     </div>
   );
