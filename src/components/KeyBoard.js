@@ -1,8 +1,8 @@
 import React from 'react'
 
-function KeyBoard() {
+function KeyBoard(props) {
   return (
-    <div>KeyBoard</div>
+    <h1>{props.title}</h1>
   )
 }
 

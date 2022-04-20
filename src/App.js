@@ -5,6 +5,7 @@ import './App.css';
 import { createContext ,useState } from 'react'
 
 export const AppContex = createContext()
+const KeyBoardArray = 'access'
 
 function App() {
   const [board, setBoard] = useState(boardDefault) 
@@ -13,8 +14,9 @@ function App() {
       <nav><h1>wordle</h1></nav>
       <AppContex.Provider value={{board, setBoard}}>
       <Board/>
-      <KeyBoard/>
+      <KeyBoard title ={KeyBoardArray}/>
       </AppContex.Provider>
+      
     </div>
   );
 }
