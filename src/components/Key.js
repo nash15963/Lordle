@@ -1,21 +1,32 @@
 import React,{ useContext } from 'react'
 import { AppContex } from '../App'
 
+// currAttempt is an Object currAttempt.letterPos == 橫幅
+// props.keyVal = what i typed
+
 function Key(props) {
     // console.log('props.bigKey ',props.bigKey )  undefine
-    const {board, setBoard} = useContext(AppContex)
+    const {onSelectLetter,onDelete,onEnter} = useContext(AppContex)
     const selectLetter =()=>{
-        const newBoard =[...board]
-        console.log(newBoard)
-        newBoard[0][0] = props.keyVal
-        setBoard(newBoard)
+      if(props.keyVal === 'ENTER'){
+        onEnter()
+      }else if(props.keyVal === 'DELETE'){
+        onDelete()
+      }
+      else{
+        onSelectLetter(props.keyVal)
+      }
     }
   return (
-    <div className='key' id={props.bigKey && 'big'} onClick={selectLetter}>
+    <button className='key' id={props.bigKey ? 'big' :props.disabled && 'disabled'} onClick={selectLetter}>
         {props.keyVal}
-    </div>  //改成button???
+    </button> 
   )
 }
 
 export default Key
+
+// what is [...](擴展運算符)
+// var number = [1,2,3,4,5,6]
+// console.log(...number) //1 2 3 4 5 6
 
