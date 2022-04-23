@@ -74,7 +74,13 @@ function App() {
   }
   return (
     <div className="App">
-      <nav><h1>Lordle</h1></nav>
+      <header>
+        <div className='question'></div>
+        <h1>Lordle</h1>
+        <div className='login'></div>
+        <div className='select'></div>
+      
+      </header>
       <AppContex.Provider value={
         {board, setBoard ,currAttempt , setCurrAttempt,onSelectLetter,
           onDelete,onEnter,correctWord,disabledLetters, setDisabledLetters,
