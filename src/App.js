@@ -1,7 +1,7 @@
 import Board from './components/Board'
 import Keyboard from './components/KeyBoard'
 import { boardDefault ,generateWordSet } from './Words'
-import './App.css';
+import './App2.css';
 import { createContext ,useEffect,useState } from 'react'
 import GameOver from './components/GameOver'
 
@@ -76,7 +76,7 @@ function App() {
     <div className="App">
       <header>
         <div className='question'></div>
-        <h1>Lordle</h1>
+        <div className='title'>Lordle</div>
         <div className='login'></div>
         <div className='select'></div>
       
@@ -86,8 +86,8 @@ function App() {
           onDelete,onEnter,correctWord,disabledLetters, setDisabledLetters,
           gameOver, setGameOver}
       }>
-      <div className="game">
-      <Board/>
+      <div id ="game">
+      <div id='board-container'><Board/></div>
       {gameOver.gameOver ? <GameOver /> : <Keyboard />}
       </div>
       </AppContex.Provider>
