@@ -21,7 +21,7 @@ function Letter({letterPos,attempVal}) {
     // setDisabledLetters 增加已被選取屬性
 
     return (
-    <div className='letter' id={letterState}>{letter}</div> //it got an error
+    <div className='letter' id={letterState}>{letter}</div> 
   )
 }
 

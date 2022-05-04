@@ -1,9 +1,11 @@
 import Board from './components/Board'
 import Keyboard from './components/KeyBoard'
 import { boardDefault ,generateWordSet } from './Words'
-import './App2.css';
+import './App.css';
 import { createContext ,useEffect,useState } from 'react'
 import GameOver from './components/GameOver'
+
+import 'animate.css';
 
 export const AppContex = createContext()
 
