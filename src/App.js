@@ -1,11 +1,13 @@
 import Board from './components/Board'
 import Keyboard from './components/KeyBoard'
+import Question from './components/Question'
 import { boardDefault ,generateWordSet } from './Words'
 import './App.css';
 import { createContext ,useEffect,useState } from 'react'
+import Switch from "react-switch";
 import GameOver from './components/GameOver'
-
 import 'animate.css';
+import night_mode from './img/night_mode.png'
 
 export const AppContex = createContext()
 const KeyBoardArray = 'access'
@@ -37,6 +39,7 @@ function App() {
     if(currAttempt.letterPos>4) return ;  //這段很詭異ㄟ??? // it means dont forword
     const newBoard =[...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
+
     setBoard(newBoard)
     setCurrAttempt({...currAttempt ,letterPos : currAttempt.letterPos+1})
     // console.log(currAttempt) //從App.js來
@@ -64,7 +67,9 @@ function App() {
     if (wordSet.has(currWord)) {  //如果字串不存在於12000字中則不繼續給提示
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos :0 });  //往下一行，letterPos為0
     } else {
-      alert("Word not found");
+      // alert("Word not found");
+      let row = document.querySelector(`.board .row:nth-child(${currAttempt.attempt+1})`)
+      row.classList.toggle('foo')
     }
     if(currWord === correctWord){
       setGameOver({ gameOver: true, guessedWord: true });
@@ -75,13 +80,26 @@ function App() {
       return;
     }
   }
+  const handleInformation =()=>{
+    let question = document.querySelector('.question')
+    question.style = 'display:block'
+  }
+  const [theme, setTheme] = useState('dark')
+  const toggleTheme = ()=>{
+    setTheme((curr)=>(curr ==='light'?"dark":"light"))
+  }
   return (
-    <div className="App">
+    <div className="App" id={theme}>
+      
       <header>
-        <div className='question'></div>
+        <div className='ques_botton' onClick={handleInformation}>?</div>
+        <Question></Question>
         <div className='title'>Lordle</div>
         <div className='login'></div>
-        <div className='select'></div>
+        <div className='switch'>
+          <img src= {night_mode} alt="night_mode" />
+          <Switch onChange={toggleTheme} checked={theme==='dark'}></Switch>
+        </div>
       
       </header>
       <AppContex.Provider value={

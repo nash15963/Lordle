@@ -7,10 +7,12 @@ function Letter({letterPos,attempVal}) {
 
     const correct  = correctWord.toUpperCase()[letterPos] === letter ;
     const almost = !correct && letter !== "" && correctWord.toUpperCase().includes(letter);
+
     const letterState = (currAttempt.attempt > attempVal && 
     (correct ? "correct" : almost ? "almost" : "error")).toString();
 
     useEffect(()=>{
+      
       if(letter !== "" && !correct && !almost){   //輸入字母篩選條件 不為空 不正確 且長得不像
         // console.log(letter);
         setDisabledLetters((prev) => [...prev, letter]);
@@ -21,8 +23,9 @@ function Letter({letterPos,attempVal}) {
     // setDisabledLetters 增加已被選取屬性
 
     return (
-    <div className='letter' id={letterState}>{letter}</div> 
+    <div className='letter' id={letterState} >{letter}</div> 
   )
 }
 
 export default Letter
+
