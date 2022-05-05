@@ -1,0 +1,44 @@
+// cd it-react
+// stylus -w .\src\styl\login.styl -o .\src\css\login.css
+
+.login{
+  img{
+    width :20px
+    height: 20px
+    border-radius: 50%
+  }  
+  .member_page{
+    z-index: 100
+    display: block
+    position: absolute
+    width 350px
+    height: 200px
+    background-color: rgb(236, 236, 236)
+    top: 80px
+    right: 35%
+    box-shadow: 12px 12px 7px rgba(0, 0, 0, 0.7);
+  }
+  .member_bar{
+    display: flex
+    color: black
+    justify-content: space-evenly
+    p{
+      border: #666 1px solid
+      text-align: center
+      margin: 0px
+    }
+    p:nth-child(1){
+      background-color: #666
+      
+      flex-grow: 2;
+    }
+    p:nth-child(2){
+      box-shadow: 2px 2px 2px 2px rgba(57, 56, 56, 0.7);
+      flex-grow: 2;
+    }
+    p:nth-child(3){
+      flex-grow: 0.5;
+    }
+  }
+}
+

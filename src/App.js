@@ -1,8 +1,9 @@
 import Board from './components/Board'
 import Keyboard from './components/KeyBoard'
 import Question from './components/Question'
+import Login from './components/Login'
 import { boardDefault ,generateWordSet } from './Words'
-import './App.css';
+import './css/App.css';
 import { createContext ,useEffect,useState } from 'react'
 import Switch from "react-switch";
 import GameOver from './components/GameOver'
@@ -10,7 +11,7 @@ import 'animate.css';
 import night_mode from './img/night_mode.png'
 
 export const AppContex = createContext()
-const KeyBoardArray = 'access'
+// const KeyBoardArray = 'access'
 
 function App() {
   const [board, setBoard] = useState(boardDefault) 
@@ -95,12 +96,11 @@ function App() {
         <div className='ques_botton' onClick={handleInformation}>?</div>
         <Question></Question>
         <div className='title'>Lordle</div>
-        <div className='login'></div>
         <div className='switch'>
           <img src= {night_mode} alt="night_mode" />
           <Switch onChange={toggleTheme} checked={theme==='dark'}></Switch>
         </div>
-      
+        <Login></Login>
       </header>
       <AppContex.Provider value={
         {board, setBoard ,currAttempt , setCurrAttempt,onSelectLetter,
