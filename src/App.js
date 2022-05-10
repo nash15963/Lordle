@@ -100,7 +100,7 @@ function App() {
           <img src= {night_mode} alt="night_mode" />
           <Switch onChange={toggleTheme} checked={theme==='dark'}></Switch>
         </div>
-        <Login></Login>
+        {/* <Login></Login> */}
       </header>
       <AppContex.Provider value={
         {board, setBoard ,currAttempt , setCurrAttempt,onSelectLetter,
