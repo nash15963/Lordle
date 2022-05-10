@@ -1,8 +1,13 @@
 import React from 'react'
 
-const NightMode = () => {
+const NightMode = (props) => {
   return (
-    <div>NightMode</div>
+    <label  className='switch'>
+
+        <input type="checkbox" onChange={props.toggleTheme} checked={props.theme==='light'}/>
+        <span className="slider round"></span>
+
+    </label >
   )
 }
 
