@@ -1,0 +1,37 @@
+.login img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.login .member_page {
+  z-index: 100;
+  display: none;
+  position: absolute;
+  width: 350px;
+  height: 200px;
+  background-color: #ececec;
+  top: 80px;
+  right: 35%;
+  box-shadow: 12px 12px 7px rgba(0,0,0,0.7);
+}
+.login .member_bar {
+  display: flex;
+  color: #000;
+  justify-content: space-evenly;
+}
+.login .member_bar p {
+  border: #666 1px solid;
+  text-align: center;
+  margin: 0px;
+}
+.login .member_bar p:nth-child(1) {
+  background-color: #666;
+  flex-grow: 2;
+}
+.login .member_bar p:nth-child(2) {
+  box-shadow: 2px 2px 2px 2px rgba(57,56,56,0.7);
+  flex-grow: 2;
+}
+.login .member_bar p:nth-child(3) {
+  flex-grow: 0.5;
+}
