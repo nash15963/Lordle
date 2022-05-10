@@ -102,6 +102,7 @@ function App() {
         </div>
         {/* <Login></Login> */}
       </header>
+      
       <AppContex.Provider value={
         {board, setBoard ,currAttempt , setCurrAttempt,onSelectLetter,
           onDelete,onEnter,correctWord,disabledLetters, setDisabledLetters,
