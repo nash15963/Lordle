@@ -1,15 +1,15 @@
 import Board from './components/Board'
 import Keyboard from './components/KeyBoard'
 import Question from './components/Question'
-// import Login from './components/Login'
-import { boardDefault ,generateWordSet } from './Words'
-import './css/App.css';
-import { createContext ,useEffect,useState } from 'react'
-// import Switch from "react-switch";
+import Login from './components/Login'
+import NightMode from './components/NightMode'
 import GameOver from './components/GameOver'
 import 'animate.css';
-// import night_mode from './img/night_mode.png'
-import NightMode from './components/NightMode'
+import './css/App.css';
+import { boardDefault ,generateWordSet } from './Words'
+import { createContext ,useEffect,useState } from 'react'
+
+
 
 export const AppContex = createContext()
 // const KeyBoardArray = 'access'
@@ -82,23 +82,21 @@ function App() {
       return;
     }
   }
-  const handleInformation =()=>{
-    let question = document.querySelector('.question')
-    question.style = 'display:block'
-  }
+  
   const [theme, setTheme] = useState('dark')
   const toggleTheme = ()=>{
-    console.log('change')
     setTheme((curr)=>(curr ==='light'?"dark":"light"))
   }
+
+
+
   return (
     <div className="App" id={theme}>
-      
       <header>
-        <div className='ques_botton' onClick={handleInformation}>?</div>
-        <Question></Question>
+        <Question />
         <div className='title'>Lordle</div>
-        <NightMode toggleTheme={toggleTheme}  theme={theme}></NightMode>
+        <NightMode toggleTheme={toggleTheme}  theme={theme} />
+        <Login />
       </header>
       
       <AppContex.Provider value={
