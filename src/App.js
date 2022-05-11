@@ -1,7 +1,7 @@
 import Board from './components/Board'
 import Keyboard from './components/KeyBoard'
 import Question from './components/Question'
-import Login from './components/Login'
+// import Login from './components/Login'
 import NightMode from './components/NightMode'
 import GameOver from './components/GameOver'
 import 'animate.css';
@@ -96,7 +96,7 @@ function App() {
         <Question />
         <div className='title'>Lordle</div>
         <NightMode toggleTheme={toggleTheme}  theme={theme} />
-        <Login />
+        {/* <Login /> */}
       </header>
       
       <AppContex.Provider value={
