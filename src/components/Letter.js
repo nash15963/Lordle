@@ -1,5 +1,5 @@
 import React,{ useContext, useEffect } from 'react'
-import { AppContex } from '../App'
+import { AppContex } from './Game'
 
 function Letter({letterPos,attempVal}) {
     const { board ,correctWord ,currAttempt,disabledLetters, setDisabledLetters} = useContext(AppContex)

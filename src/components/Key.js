@@ -1,5 +1,5 @@
 import React,{ useContext } from 'react'
-import { AppContex } from '../App'
+import { AppContex } from './Game'
 
 // currAttempt is an Object currAttempt.letterPos == 橫幅
 // props.keyVal = what i typed

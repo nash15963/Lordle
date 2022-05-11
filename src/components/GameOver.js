@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppContex } from '../App'
+import { AppContex } from './Game'
 
 function GameOver() {
     const {gameOver, setGameOver ,correctWord ,currAttempt} = useContext(AppContex) 
