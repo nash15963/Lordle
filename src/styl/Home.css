@@ -4,11 +4,7 @@
   src: url("./droid.regular.ttf");
   format: ttf;
 }
-body::-webkit-scrollbar {
-  display: none;
-}
 .Home {
-  overflow-y: hidden;
   background-color: #000;
   width: 100%;
   height: auto;
@@ -50,18 +46,27 @@ body::-webkit-scrollbar {
   line-height: 0.9;
 }
 .Home .middle-title p:nth-child(1) {
-  height: 10px;
+  height: 5px;
 }
 .Home .middle-title p:nth-child(2) {
-  height: 20px;
+  height: 10px;
 }
 .Home .middle-title p:nth-child(3) {
+  height: 15px;
+}
+.Home .middle-title p:nth-child(4) {
+  height: 20px;
+}
+.Home .middle-title p:nth-child(5) {
+  height: 25px;
+}
+.Home .middle-title p:nth-child(6) {
   height: 30px;
 }
-.Home .middle-title p:nth-child(n+4) {
-  height: 50px;
+.Home .middle-title p:nth-child(n+7) {
+  height: 40px;
 }
-.Home .middle-title p:nth-child(n+8) {
+.Home .middle-title p:nth-child(n+10) {
   height: 30px;
 }
 .Home .bottom-title {

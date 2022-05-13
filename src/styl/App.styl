@@ -1,6 +1,11 @@
 // cd it-react
 // stylus -w .\src\styl\App.styl -o .\src\styl\App.css
 
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
 :root {
     --header-height: 50px;
     --color-tone-1: #ffffff;
@@ -185,9 +190,8 @@ header{
 .letter {
     width: 40px
     height: 40px
-    border: 2px solid rgb(150, 148, 148);
+    border: 2px solid #3a3a3c;
     margin: 10px 3px 5px 3px 
-    
     font-weight: bolder;
     color: white;
     font-family: 'Comic Sans MS';

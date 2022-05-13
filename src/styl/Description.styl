@@ -1,0 +1,91 @@
+// cd it-react
+// stylus -w .\src\styl\Description.styl -o .\src\styl\Description.css
+
+.description{
+    background-color: black
+    color: white
+    width: 100%
+    height: 100vh
+    }
+@keyframes topTObottom {
+    0% { top: -50%; }
+    // 25%{ left: 7.5%; }
+    // 50%{ left: 15%; }
+    // 75%{ left: 22.5%;  }
+    100% { top: 0%; }
+}
+
+.description-text{
+    margin: 0px auto 0px auto
+    width: 490px
+    height: 500px
+    // border:5px #FFAC55 solid
+    padding: 10px
+    // animation: zoomIn 1s
+     position: absolute 
+     left: 30%
+     animation: topTObottom 
+    //  animation-delay: 2s
+     animation-duration: 3s
+    h4{
+        text-align: center
+        margin: 0px
+    }
+    .bold{
+        font-weight: bold
+    }
+    hr{
+        border: 0.5px solid white
+    }
+    .description-flex{
+        display: flex
+        flex-wrap: wrap
+    }
+    .description-game{
+        width:70% 
+
+    }
+    .description-flip{
+        width: 30%
+        background-color: black
+        height: 200px
+        cursor: pointer
+    }
+    .description-flip img:nth-child(1){
+        margin: 100px 0px 0px 40px
+        width: 70%
+        // background-image: none;
+        background-color: black
+        animation:flip 3s 
+        
+    }
+    // .description-flip img:nth-child(1):hover{
+        
+
+    // }
+    .description-flip img:nth-child(2){
+        width: 30px
+        height: 30px
+        margin: 120px 0px 0px 130px
+        background-color: black
+        border-radius: 50%
+        cursor: pointer
+    }
+    .letter-example {
+        display: flex
+        flex-wrap: nowrap
+    }
+    .correct{
+        background-color: rgb(74, 208, 74)
+        animation: flipInX 1s
+    }
+    .almost{
+        animation: flipInX 1s
+        background-color: rgba(239, 239, 66, 0.861)
+    }
+    .error{
+        animation: flipInX
+        animation-duration: 1s
+        background-color: #3a393c;
+    }
+}
