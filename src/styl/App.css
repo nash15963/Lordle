@@ -233,6 +233,9 @@ header .question-open p {
 #almost {
   background-color: rgba(239,239,66,0.861);
 }
+#error {
+  background-color: #3a393c;
+}
 .foo {
   animation: shakeX;
   animation-duration: 1s;

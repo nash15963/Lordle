@@ -39,7 +39,7 @@
 }
 .description-text .description-flip img:nth-child(1) {
   margin: 100px 0px 0px 40px;
-  width: 70%;
+  width: 40%;
   background-color: #000;
   animation: flip 3s;
 }
@@ -58,19 +58,22 @@
 .description-text .correct {
   background-color: #4ad04a;
   animation: flipInX 1s;
+  animation-delay: 3s;
 }
 .description-text .almost {
   animation: flipInX 1s;
   background-color: rgba(239,239,66,0.861);
+  animation-delay: 3s;
 }
 .description-text .error {
   animation: flipInX;
   animation-duration: 1s;
+  animation-delay: 3s;
   background-color: #3a393c;
 }
 @-moz-keyframes topTObottom {
   0% {
-    top: -50%;
+    top: -100%;
   }
   100% {
     top: 0%;
@@ -78,7 +81,7 @@
 }
 @-webkit-keyframes topTObottom {
   0% {
-    top: -50%;
+    top: -100%;
   }
   100% {
     top: 0%;
@@ -86,7 +89,7 @@
 }
 @-o-keyframes topTObottom {
   0% {
-    top: -50%;
+    top: -100%;
   }
   100% {
     top: 0%;
@@ -94,7 +97,7 @@
 }
 @keyframes topTObottom {
   0% {
-    top: -50%;
+    top: -100%;
   }
   100% {
     top: 0%;

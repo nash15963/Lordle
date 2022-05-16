@@ -1,8 +1,8 @@
 import Board from './Board'
 import Keyboard from './KeyBoard'
-import Question from './Question'
+// import Question from './Question'
 // import Login from './components/Login'
-import NightMode from './NightMode'
+// import NightMode from './NightMode'
 import GameOver from './GameOver'
 import 'animate.css';
 import { boardDefault ,generateWordSet } from '../Words'
@@ -29,7 +29,6 @@ function Game() {
   useEffect(()=>{
     generateWordSet()
     .then((words)=>{
-      // console.log('words from new set()',words)
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord)
     })
@@ -37,15 +36,15 @@ function Game() {
 
   //從Key.js移動過來
   const onSelectLetter =(keyVal)=>{
-    if(currAttempt.letterPos>4) return ;  //這段很詭異ㄟ??? // it means dont forword
+    if(currAttempt.letterPos>4) return ;  
     const newBoard =[...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
 
     setBoard(newBoard)
     setCurrAttempt({...currAttempt ,letterPos : currAttempt.letterPos+1})
-    // console.log(currAttempt) //從App.js來
-    // console.log(keyVal) //鍵盤上的字
-    // console.log({attempt :currAttempt.attempt})
+    console.log(currAttempt) //從App.js來
+    console.log(keyVal) //鍵盤上的字
+    console.log({attempt :currAttempt.attempt})
   }
   const onDelete =()=>{
     if(currAttempt.letterPos===0)return ;
@@ -63,9 +62,11 @@ function Game() {
       currWord += (board[currAttempt.attempt][i]).toLowerCase();
     }
     currWord = currWord + '\r'  //換行後的字串
-    console.log(currWord)
+    // console.log(currWord)
     // console.log(wordSet)
-    if (wordSet.has(currWord)) {  //如果字串不存在於12000字中則不繼續給提示
+    if (wordSet.has(currWord)) {
+      console.log(board)
+      localStorage.setItem('userAnswer',JSON.stringify(board));  //在local存取玩家作答
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos :0 });  //往下一行，letterPos為0
     } else {
       // alert("Word not found");
@@ -92,9 +93,9 @@ function Game() {
   return (
     <div className="App" id={theme}>
       <header>
-        <Question />
+        {/* <Question /> */}
         <div className='title'>Lordle</div>
-        <NightMode toggleTheme={toggleTheme}  theme={theme} />
+        {/* <NightMode toggleTheme={toggleTheme}  theme={theme} /> */}
         {/* <Login /> */}
       </header>
       

@@ -8,10 +8,8 @@
     height: 100vh
     }
 @keyframes topTObottom {
-    0% { top: -50%; }
-    // 25%{ left: 7.5%; }
-    // 50%{ left: 15%; }
-    // 75%{ left: 22.5%;  }
+    0% { top: -100%; }
+    // 50%{ top: -100%; }
     100% { top: 0%; }
 }
 
@@ -21,12 +19,10 @@
     height: 500px
     // border:5px #FFAC55 solid
     padding: 10px
-    // animation: zoomIn 1s
-     position: absolute 
-     left: 30%
-     animation: topTObottom 
-    //  animation-delay: 2s
-     animation-duration: 3s
+    position: absolute 
+    left: 30%
+    animation: topTObottom 
+    animation-duration: 3s
     h4{
         text-align: center
         margin: 0px
@@ -53,16 +49,12 @@
     }
     .description-flip img:nth-child(1){
         margin: 100px 0px 0px 40px
-        width: 70%
+        width: 40%
         // background-image: none;
         background-color: black
         animation:flip 3s 
         
     }
-    // .description-flip img:nth-child(1):hover{
-        
-
-    // }
     .description-flip img:nth-child(2){
         width: 30px
         height: 30px
@@ -78,14 +70,17 @@
     .correct{
         background-color: rgb(74, 208, 74)
         animation: flipInX 1s
+        animation-delay: 3s
     }
     .almost{
         animation: flipInX 1s
         background-color: rgba(239, 239, 66, 0.861)
+        animation-delay: 3s
     }
     .error{
         animation: flipInX
         animation-duration: 1s
+        animation-delay: 3s
         background-color: #3a393c;
     }
 }

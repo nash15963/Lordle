@@ -5,6 +5,7 @@
   format: ttf;
 }
 .Home {
+  scroll-behavior: smooth;
   background-color: #000;
   width: 100%;
   height: auto;
@@ -91,4 +92,5 @@
 .Home .bottom-title-small {
   animation: fadeIn;
   animation-duration: 4s;
+  font-family: 'Roboto', sans-serif;
 }
