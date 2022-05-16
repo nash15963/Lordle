@@ -5,7 +5,7 @@ import Keyboard from './KeyBoard'
 // import NightMode from './NightMode'
 import GameOver from './GameOver'
 import 'animate.css';
-import { boardDefault ,generateWordSet } from '../Words'
+import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../Words'
 import { createContext ,useEffect,useState } from 'react'
 
 
@@ -14,37 +14,60 @@ export const AppContex = createContext()
 // const KeyBoardArray = 'access'
 
 function Game() {
-  const [board, setBoard] = useState(boardDefault) 
+  const [localboard, setLocalboard] = useState(()=>{
+    // const savedBoard = localStorage.getItem("userAnswer");
+    const savedBoard = JSON.parse(localStorage.getItem("userAnswer"))
+    return savedBoard || boardDefault;
+  }) ;    //rerender*
+  const [board, setBoard] = useState(localboard) 
   const [currAttempt , setCurrAttempt] = useState({attempt:0 ,letterPos :0})  //物件的移動數字
+  
   const [wordSet, setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
-  const [correctWord, setCorrectWord] = useState("");
+  const [todayAnswer, setTodayAnswer] = useState(()=>{
+    const savedAnswer = localStorage.getItem("localAnswer");
+    return savedAnswer || "";
+  }) ;    //rerender*
+  
+  const [correctWord, setCorrectWord] = useState(todayAnswer);
   const [gameOver, setGameOver] = useState({
     gameOver: false,
     guessedWord: false,
   });
 
-  // const correctWord = 'RIGHT' ;
 
   useEffect(()=>{
-    generateWordSet()
-    .then((words)=>{
-      setWordSet(words.wordSet);
-      setCorrectWord(words.todaysWord)
-    })
+    if(todayAnswer !== ""){
+      console.log(todayAnswer)
+      generateSavedAnswer()
+      .then((words)=>{
+        setWordSet(words.wordSet);
+      })
+    }
+    else{
+      generateWordSet()
+      .then((words)=>{
+        setWordSet(words.wordSet);
+        setCorrectWord(words.todaysWord)
+      })
+    }
   },[])
+
+
 
   //從Key.js移動過來
   const onSelectLetter =(keyVal)=>{
     if(currAttempt.letterPos>4) return ;  
     const newBoard =[...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
+    console.log(currAttempt)
+    console.log(keyVal)
 
     setBoard(newBoard)
     setCurrAttempt({...currAttempt ,letterPos : currAttempt.letterPos+1})
-    console.log(currAttempt) //從App.js來
-    console.log(keyVal) //鍵盤上的字
-    console.log({attempt :currAttempt.attempt})
+    // console.log(currAttempt) //從App.js來
+    // console.log(keyVal) //alphabet
+    // console.log({attempt :currAttempt.attempt})
   }
   const onDelete =()=>{
     if(currAttempt.letterPos===0)return ;
@@ -75,10 +98,12 @@ function Game() {
     }
     if(currWord === correctWord){
       setGameOver({ gameOver: true, guessedWord: true });
+      localStorage.clear()
       return ;
     }
     if (currAttempt.attempt === 5) {
       setGameOver({ gameOver: true, guessedWord: false });
+      localStorage.clear()
       return;
     }
   }
