@@ -20,8 +20,13 @@ function Game() {
     return savedBoard || boardDefault;
   }) ;    //rerender*
   const [board, setBoard] = useState(localboard) 
-  const [currAttempt , setCurrAttempt] = useState({attempt:0 ,letterPos :0})  //物件的移動數字
-  
+  // const [currAttempt , setCurrAttempt] = useState({attempt:0 ,letterPos :0})  //物件的移動數字
+  const [currAttempt , setCurrAttempt] = useState(()=>{
+    const saveAttempt = JSON.parse(localStorage.getItem("localAttempt"))
+    return saveAttempt || {attempt:0 ,letterPos :0} ;
+  }) ;
+
+  //get存取狀態 
   const [wordSet, setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
   const [todayAnswer, setTodayAnswer] = useState(()=>{
@@ -60,11 +65,12 @@ function Game() {
     if(currAttempt.letterPos>4) return ;  
     const newBoard =[...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
-    console.log(currAttempt)
-    console.log(keyVal)
+    // console.log(currAttempt)
+    // console.log(keyVal)
 
     setBoard(newBoard)
     setCurrAttempt({...currAttempt ,letterPos : currAttempt.letterPos+1})
+    // localStorage.setItem('localAttempt',JSON.stringify(currAttempt));
     // console.log(currAttempt) //從App.js來
     // console.log(keyVal) //alphabet
     // console.log({attempt :currAttempt.attempt})
@@ -89,8 +95,11 @@ function Game() {
     // console.log(wordSet)
     if (wordSet.has(currWord)) {
       console.log(board)
+      setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos :0 });  //往下一行，letterPos為0   set增加attempt
+      console.log('hihi')
       localStorage.setItem('userAnswer',JSON.stringify(board));  //在local存取玩家作答
-      setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos :0 });  //往下一行，letterPos為0
+      localStorage.setItem('localAttempt',JSON.stringify({ attempt: currAttempt.attempt + 1, letterPos :0 }));
+
     } else {
       // alert("Word not found");
       let row = document.querySelector(`.board .row:nth-child(${currAttempt.attempt+1})`)
