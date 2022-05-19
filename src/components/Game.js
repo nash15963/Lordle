@@ -1,5 +1,6 @@
 import Board from './Board'
 import Keyboard from './KeyBoard'
+import Toast from './Toast'
 // import Question from './Question'
 // import Login from './components/Login'
 // import NightMode from './NightMode'
@@ -100,10 +101,12 @@ function Game() {
       localStorage.setItem('userAnswer',JSON.stringify(board));  //在local存取玩家作答
       localStorage.setItem('localAttempt',JSON.stringify({ attempt: currAttempt.attempt + 1, letterPos :0 }));
 
-    } else {
+    } else { // failed the word , not in Dic
       // alert("Word not found");
       let row = document.querySelector(`.board .row:nth-child(${currAttempt.attempt+1})`)
       row.classList.toggle('foo')
+      // add Toast Component 3 secs
+      
     }
     if(currWord === correctWord){
       setGameOver({ gameOver: true, guessedWord: true });
@@ -128,7 +131,7 @@ function Game() {
     <div className="App" id={theme}>
       <header>
         {/* <Question /> */}
-        <div className='title'>Lordle</div>
+        <p className='title'>Lordle</p>
         {/* <NightMode toggleTheme={toggleTheme}  theme={theme} /> */}
         {/* <Login /> */}
       </header>
@@ -138,7 +141,7 @@ function Game() {
           onDelete,onEnter,correctWord,disabledLetters, setDisabledLetters,
           gameOver, setGameOver}
       }>
-      <div id ="game">
+      <div id ="game"><Toast/>
       <div id='board-container'><Board/></div>
       {gameOver.gameOver ? <GameOver /> : <Keyboard />}
       </div>
@@ -149,3 +152,4 @@ function Game() {
 }
 
 export default Game;
+

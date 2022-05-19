@@ -110,12 +110,10 @@ header .title {
   font-family: var(--font-Family);
   font-weight: 700;
   font-size: 37px;
-  line-height: 100%;
   letter-spacing: 0.01em;
   text-align: center;
-  left: 0;
-  right: 0;
   pointer-events: none;
+  margin: 0px;
 }
 header .question-closed {
   display: none;
@@ -146,37 +144,36 @@ header .question-open p {
   max-width: var(--game-max-width);
   margin: 0 auto;
   height: calc(100vh - var(--header-height));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 450px 1fr;
+  grid-template-rows: 7fr 3fr 10px;
+  position: relative;
 }
 #board-container {
-  width: 100%;
-  height: auto;
-  min-height: 60%;
-  margin: 0px 0px 0px 0px;
+  grid-column: 2/3;
+  grid-row: 1/2;
 }
 .board {
-  width: 40%;
-  height: 90%;
-  margin: 10px auto 0px auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  margin: 10px auto 5px auto;
+  width: 75%;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  box-sizing: border-box;
 }
 .row {
   width: 100%;
-  height: 17%;
+  height: 20%;
   display: flex;
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
+  margin-top: 5px;
 }
 .letter {
-  width: 40px;
-  height: 40px;
+  width: 13%;
+  height: 45px;
   border: 2px solid #3a3a3c;
-  margin: 10px 3px 5px 3px;
+  margin: 0px 2.5px 0px 2.5px;
   font-weight: bolder;
   color: #fff;
   font-family: 'Comic Sans MS';
@@ -185,9 +182,8 @@ header .question-open p {
   place-items: center;
 }
 .keyboard {
-  width: 70%;
-  height: 240px;
-  margin: 10px auto 5px auto;
+  grid-column: 1/4;
+  grid-row: 2/3;
 }
 .line1 {
   display: flex;
@@ -204,10 +200,10 @@ header .question-open p {
   margin: 3px;
 }
 .key {
-  width: 40px;
+  width: 45px;
   height: 55px;
   margin: 0px 5px 0px 0px;
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   background-color: #808080;
   font-family: var(--font-Family);
@@ -239,6 +235,17 @@ header .question-open p {
 .foo {
   animation: shakeX;
   animation-duration: 1s;
+}
+.toast {
+  position: absolute;
+  top: 30px;
+  left: 400px;
+  width: 70px;
+  height: 30px;
+  background-color: #808080;
+  display: block;
+  z-index: 50;
+  opacity: 0.8;
 }
 .login img {
   width: 20px;
