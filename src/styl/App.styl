@@ -289,7 +289,7 @@ header{
 // cd it-react
 // stylus -w .\src\styl\login.styl -o .\src\css\login.css
 .toast{
-
+  display: none
   position: absolute
   top: 30px
   left: 400px
@@ -299,7 +299,11 @@ header{
   display: block
   z-index: 50 //bigger than board
   opacity 0.8
+  
   }
+.toast_none{
+  display: none
+}
 .login{
   img{
     width :20px

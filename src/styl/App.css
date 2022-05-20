@@ -237,6 +237,7 @@ header .question-open p {
   animation-duration: 1s;
 }
 .toast {
+  display: none;
   position: absolute;
   top: 30px;
   left: 400px;
@@ -246,6 +247,9 @@ header .question-open p {
   display: block;
   z-index: 50;
   opacity: 0.8;
+}
+.toast_none {
+  display: none;
 }
 .login img {
   width: 20px;

@@ -1,6 +1,5 @@
 import Board from './Board'
 import Keyboard from './KeyBoard'
-import Toast from './Toast'
 // import Question from './Question'
 // import Login from './components/Login'
 // import NightMode from './NightMode'
@@ -8,7 +7,7 @@ import GameOver from './GameOver'
 import 'animate.css';
 import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../Words'
 import { createContext ,useEffect,useState } from 'react'
-
+import { ToastProvider, useToasts } from "../components/hooks/toast-manager";
 
 
 export const AppContex = createContext()
@@ -41,6 +40,7 @@ function Game() {
     guessedWord: false,
   });
 
+  const [outList, setOutList] = useState(false)
 
   useEffect(()=>{
     if(todayAnswer !== ""){
@@ -57,9 +57,14 @@ function Game() {
         setCorrectWord(words.todaysWord)
       })
     }
-  },[])
+  },[todayAnswer])
 
-
+  function Demo() {
+    const { add } = useToasts();
+    add("words not in the list  X")
+    setOutList(false)
+    // return <button onClick={() => add("Click to dismiss!")}>Add toast</button>;
+  }
 
   //從Key.js移動過來
   const onSelectLetter =(keyVal)=>{
@@ -97,7 +102,7 @@ function Game() {
     if (wordSet.has(currWord)) {
       console.log(board)
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos :0 });  //往下一行，letterPos為0   set增加attempt
-      console.log('hihi')
+      // console.log('hihi')
       localStorage.setItem('userAnswer',JSON.stringify(board));  //在local存取玩家作答
       localStorage.setItem('localAttempt',JSON.stringify({ attempt: currAttempt.attempt + 1, letterPos :0 }));
 
@@ -106,7 +111,7 @@ function Game() {
       let row = document.querySelector(`.board .row:nth-child(${currAttempt.attempt+1})`)
       row.classList.toggle('foo')
       // add Toast Component 3 secs
-      
+      setOutList(true)
     }
     if(currWord === correctWord){
       setGameOver({ gameOver: true, guessedWord: true });
@@ -141,7 +146,12 @@ function Game() {
           onDelete,onEnter,correctWord,disabledLetters, setDisabledLetters,
           gameOver, setGameOver}
       }>
-      <div id ="game"><Toast/>
+
+
+      <div id ="game">
+      <ToastProvider>
+        {outList ?<Demo/> :<></>}
+      </ToastProvider>
       <div id='board-container'><Board/></div>
       {gameOver.gameOver ? <GameOver /> : <Keyboard />}
       </div>
