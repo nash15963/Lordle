@@ -39,6 +39,20 @@ body {
 #light .letter {
   color: var(--color-tone-7);
 }
+.blackboard {
+  width: 13%;
+  height: 45px;
+  border: 2px solid rgba(255,255,255,0.47);
+  margin: 0px 2.5px 0px 2.5px;
+  font-weight: bolder;
+  color: #fff;
+  font-family: 'Comic Sans MS';
+  border-radius: 5%;
+  display: grid;
+  place-items: center;
+  animation: bounceIn;
+  animation-duration: 0.5s;
+}
 .switch {
   position: relative;
   display: inline-block;
@@ -219,7 +233,19 @@ header .question-open p {
   background-color: #3a393c;
 }
 .gameOver {
-  margin: 20px 0px 0px 20px;
+  width: 400px;
+  height: 400px;
+  margin: 10px 0px 0px 0px;
+  background-color: #fff;
+  position: absolute;
+  top: 50px;
+  left: 200px;
+  color: #000;
+  text-align: center;
+}
+.statistic_close {
+  margin: 5px 10px 0px 0px;
+  float: right;
 }
 #correct {
   background-color: #4ad04a;

@@ -13,7 +13,7 @@ const ToastContainer = props => (
   }} {...props} />
 );
 const Toast = ({ children, onDismiss }) => {
-  let cleartime = 0.5 ;
+  let cleartime = 1 ;
   useEffect(
     () => {
       let timer1 = setTimeout(() => onDismiss(), cleartime*1000);

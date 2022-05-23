@@ -14,18 +14,16 @@ export const AppContex = createContext()
 // const KeyBoardArray = 'access'
 
 function Game() {
-  const [localboard, setLocalboard] = useState(()=>{
+  const [board, setBoard] = useState(()=>{
     // const savedBoard = localStorage.getItem("userAnswer");
     const savedBoard = JSON.parse(localStorage.getItem("userAnswer"))
-    return savedBoard || boardDefault;
-  }) ;    //rerender*
-  const [board, setBoard] = useState(localboard) 
+    return savedBoard || boardDefault }) 
   // const [currAttempt , setCurrAttempt] = useState({attempt:0 ,letterPos :0})  //物件的移動數字
   const [currAttempt , setCurrAttempt] = useState(()=>{
     const saveAttempt = JSON.parse(localStorage.getItem("localAttempt"))
     return saveAttempt || {attempt:0 ,letterPos :0} ;
   }) ;
-
+  
   //get存取狀態 
   const [wordSet, setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
@@ -33,7 +31,6 @@ function Game() {
     const savedAnswer = localStorage.getItem("localAnswer");
     return savedAnswer || "";
   }) ;    //rerender*
-  
   const [correctWord, setCorrectWord] = useState(todayAnswer);
   const [gameOver, setGameOver] = useState({
     gameOver: false,
@@ -61,20 +58,22 @@ function Game() {
 
   function Demo() {
     const { add } = useToasts();
-    add("words not in the list  X")
+    add("Not In Word List")
     setOutList(false)
     // return <button onClick={() => add("Click to dismiss!")}>Add toast</button>;
   }
-
+  
   //從Key.js移動過來
   const onSelectLetter =(keyVal)=>{
     if(currAttempt.letterPos>4) return ;  
     const newBoard =[...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
+    console.log([currAttempt.attempt],[currAttempt.letterPos])
     // console.log(currAttempt)
-    // console.log(keyVal)
+    console.log('hihi')
 
     setBoard(newBoard)
+    
     setCurrAttempt({...currAttempt ,letterPos : currAttempt.letterPos+1})
     // localStorage.setItem('localAttempt',JSON.stringify(currAttempt));
     // console.log(currAttempt) //從App.js來
@@ -100,7 +99,7 @@ function Game() {
     // console.log(currWord)
     // console.log(wordSet)
     if (wordSet.has(currWord)) {
-      console.log(board)
+      // console.log(board)
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos :0 });  //往下一行，letterPos為0   set增加attempt
       // console.log('hihi')
       localStorage.setItem('userAnswer',JSON.stringify(board));  //在local存取玩家作答
@@ -150,10 +149,11 @@ function Game() {
 
       <div id ="game">
       <ToastProvider>
-        {outList ?<Demo/> :<></>}
+        {outList ?<Demo/> :''}
       </ToastProvider>
       <div id='board-container'><Board/></div>
-      {gameOver.gameOver ? <GameOver /> : <Keyboard />}
+      <Keyboard></Keyboard>
+      {gameOver.gameOver ? <GameOver /> : ''}
       </div>
       </AppContex.Provider>
       

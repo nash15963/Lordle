@@ -47,6 +47,20 @@ body {
     color: var(--color-tone-7)
   }  
 }
+.blackboard{
+  width: 13%
+  height: 45px
+  border: 2px solid rgba(255, 255, 255, 0.47);
+  margin: 0px 2.5px 0px 2.5px 
+  font-weight: bolder;
+  color: white;
+  font-family: 'Comic Sans MS';
+  border-radius: 5%
+  display: grid 
+  place-items: center
+  animation: bounceIn
+  animation-duration: 0.5s
+  }
 .switch {
   position: relative;
   display: inline-block;
@@ -264,11 +278,22 @@ header{
 }
 
 .gameOver{
-  margin: 20px 0px 0px 20px
+  // grid-column: 1/4
+  // grid-row: 2/3
+  width: 400px
+  height: 400px
+  margin: 10px 0px 0px 0px
+  background-color: white
+  position: absolute
+  top: 50px
+  left: 200px
+  color: black
+  text-align: center
 }
-#gameOver{
-  
-  }
+.statistic_close{
+  margin: 5px 10px 0px 0px
+  float: right
+}
 #correct{
   background-color: rgb(74, 208, 74)
   animation: flipInX
