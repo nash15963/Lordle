@@ -6,17 +6,19 @@ const Ctx = React.createContext();
 // ==============================
 
 const ToastContainer = props => (
-  <div style={{ 
+  <div 
+  style={{ 
     position: "fixed", 
-    right: "43%", 
+    right: "42%", 
     top: '30%' 
-  }} {...props} />
+  }} 
+  {...props} />
 );
 const Toast = ({ children, onDismiss }) => {
   let cleartime = 1 ;
   useEffect(
     () => {
-      let timer1 = setTimeout(() => onDismiss(), cleartime*1000);
+      let timer1 = setTimeout(() => onDismiss(), cleartime*800);
       return () => {
         cleartime++
         clearTimeout(timer1);
@@ -26,16 +28,17 @@ const Toast = ({ children, onDismiss }) => {
   );
   return(
   <div
-    style={{
-    color :"black" ,
-    background: "white",
-    cursor: "pointer",
-    fontSize: 14,
-    margin: 10,
-    padding: 10,
-    animation: "fadeIn" ,
-    animationDuration: "1s"
-    }}
+  className="toast"
+    // style={{
+    // color :"black" ,
+    // background: "white",
+    // cursor: "pointer",
+    // fontSize: 14,
+    // margin: 10,
+    // padding: 10,
+    // animation: "fadeIn" ,
+    // animationDuration: "1s"
+    // }}
     onClick={onDismiss}
   >
     {children}

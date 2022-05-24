@@ -2,7 +2,9 @@ import Board from './Board'
 import Keyboard from './KeyBoard'
 // import Question from './Question'
 // import Login from './components/Login'
-// import NightMode from './NightMode'
+import NightMode from './NightMode'
+import night_img from '../img/night_mode.png'
+import question from '../img/question.png'
 import GameOver from './GameOver'
 import 'animate.css';
 import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../Words'
@@ -38,8 +40,10 @@ function Game() {
   });
 
   const [outList, setOutList] = useState(false)
+  const [gameDown , setgameDown] = useState('')
 
   useEffect(()=>{
+    // localStorage.setItem('usernight',JSON.stringify(theme));    //record theme
     if(todayAnswer !== ""){
       console.log(todayAnswer)
       generateSavedAnswer()
@@ -55,7 +59,7 @@ function Game() {
       })
     }
   },[todayAnswer])
-
+//提示字框
   function Demo() {
     const { add } = useToasts();
     add("Not In Word List")
@@ -70,10 +74,8 @@ function Game() {
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
     console.log([currAttempt.attempt],[currAttempt.letterPos])
     // console.log(currAttempt)
-    console.log('hihi')
-
+    // console.log('hihi')
     setBoard(newBoard)
-    
     setCurrAttempt({...currAttempt ,letterPos : currAttempt.letterPos+1})
     // localStorage.setItem('localAttempt',JSON.stringify(currAttempt));
     // console.log(currAttempt) //從App.js來
@@ -114,19 +116,34 @@ function Game() {
     }
     if(currWord === correctWord){
       setGameOver({ gameOver: true, guessedWord: true });
-      localStorage.clear()
+      // localStorage.clear()
+      setgameDown(<GameOver />)
+      localStorage.removeItem('userAnswer')
+      localStorage.removeItem('localAnswer')
+      localStorage.removeItem('localAttempt')
       return ;
     }
     if (currAttempt.attempt === 5) {
       setGameOver({ gameOver: true, guessedWord: false });
-      localStorage.clear()
+      // localStorage.clear()
+      setgameDown(<GameOver />)
+      localStorage.removeItem('userAnswer')
+      localStorage.removeItem('localAnswer')
+      localStorage.removeItem('localAttempt')
       return;
     }
   }
   
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState(()=>{
+    const savednight = JSON.parse(localStorage.getItem("usernight"))
+    return savednight || 'dark'})
+
   const toggleTheme = ()=>{
-    setTheme((curr)=>(curr ==='light'?"dark":"light"))
+    const handleTheme =()=>{
+      setTheme((curr)=>(curr ==='light'?"dark":"light"))
+      localStorage.setItem('usernight',JSON.stringify(theme === 'light'?"dark":"light"));   
+    }
+    handleTheme()
   }
 
 
@@ -135,8 +152,12 @@ function Game() {
     <div className="App" id={theme}>
       <header>
         {/* <Question /> */}
+        <img className='question' src={question} alt="question" />
         <p className='title'>Lordle</p>
-        {/* <NightMode toggleTheme={toggleTheme}  theme={theme} /> */}
+        <div className='night_controller'>
+        <img src={night_img} alt="night_img" />
+        <NightMode toggleTheme={toggleTheme}  theme={theme} />
+        </div>
         {/* <Login /> */}
       </header>
       
@@ -145,15 +166,14 @@ function Game() {
           onDelete,onEnter,correctWord,disabledLetters, setDisabledLetters,
           gameOver, setGameOver}
       }>
-
-
       <div id ="game">
       <ToastProvider>
         {outList ?<Demo/> :''}
       </ToastProvider>
       <div id='board-container'><Board/></div>
       <Keyboard></Keyboard>
-      {gameOver.gameOver ? <GameOver /> : ''}
+      {gameDown}
+      {/* {gameOver.gameOver ? <GameOver /> : ''} */}
       </div>
       </AppContex.Provider>
       

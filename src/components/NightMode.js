@@ -12,3 +12,5 @@ const NightMode = (props) => {
 }
 
 export default NightMode
+
+// checked={props.theme==='light'}

@@ -35,7 +35,7 @@ body {
 #dark{
   background-color: #121212
   color: white  
-
+  
 }
 #light{
   background-color: white 
@@ -44,8 +44,74 @@ body {
     color: var(--color-tone-7)
   }
   .letter {
-    color: var(--color-tone-7)
+    border: 2px solid rgb(197, 193, 193);
   }  
+  .blackboard{
+    width: 13%
+    height: 45px
+    border: 2px solid rgba(10, 9, 9, 0.47);
+    margin: 0px 2.5px 0px 2.5px 
+    font-weight: bolder;
+    color: black;
+    font-family: 'Comic Sans MS';
+    border-radius: 5%
+    display: grid 
+    place-items: center
+    animation: bounceIn
+    animation-duration: 0.5s
+  }
+  .key {
+    width: 45px;
+    height: 55px;
+    margin: 0px 5px 0px 0px
+    font-size: 14px;
+    color: black;
+    background-color: #d3d6da;
+    font-family: var(--font-Family)
+    border-radius: 10%
+    display: grid
+    place-items: center 
+    outline: none
+    border: none
+  }
+  #big {
+    width: 90px;
+  }
+  #disabled {
+    background-color: #3a393c;
+  }
+//   .toast{
+//     display: none
+//     position: absolute
+//     top: 30px
+//     left: 400px
+//     width: 70px
+//     height: 30px
+//     background-color: gray
+//     display: block
+//     z-index: 50 //bigger than board
+//     opacity 0.8
+  
+//   }
+.toast{
+  width: 180px
+  height: 40px
+  pointer:none
+  line-height: 50px
+  text-align: center
+  margin: 10px
+  color : white 
+  background: black
+  fontSize: 14
+  margin: 10
+  padding: 10
+  animation: "fadeIn" 
+  animationDuration: "1s"
+  
+  }
+// .toast_none{
+//     display: none
+// }
 }
 .blackboard{
   width: 13%
@@ -61,75 +127,14 @@ body {
   animation: bounceIn
   animation-duration: 0.5s
   }
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #666;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: rgb(78, 228, 220);
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px white;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
 
 header{
     height: var(--header-height)
     color: var(--color-tone-1)
     border-bottom: 1px solid var(--color-tone-4)
     display: flex
-    justify-content:center 
     align-items: center
+    justify-content: space-between
     gap: 50px
     @media (max-width:415px) {
         padding: 0 16px;
@@ -141,7 +146,8 @@ header{
     letter-spacing: 0.01em 
     text-align: center
     pointer-events: none 
-    margin: 0px
+    margin: 5px 0px 0px 70px
+    align-self :center
     }
     .question-closed{
       display: none
@@ -168,6 +174,85 @@ header{
       }
     }
 }
+.question{
+  width: 20px
+  height:20px
+  margin: 0px 5px 0px 20px
+  border-radius: 50%
+  }
+.night_controller{
+  display: flex
+  margin: 0px 20px 0px 5px
+  img{
+    width: 20px
+    height:20px
+    margin: 5px 5px 0px 3px
+    border-radius: 50%
+  } 
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 27px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #666;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(90, 228, 78);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px white;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 20px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
 #game{
     width: 70%;
     max-width: var(--game-max-width);
@@ -267,7 +352,8 @@ header{
     border-radius: 10%
     display: grid
     place-items: center 
-    border: 1px solid #666;
+    outline: none
+    border: none
 }
 
 #big {
@@ -289,6 +375,10 @@ header{
   left: 200px
   color: black
   text-align: center
+  // animation: fadeInUpBig
+  animation: fadeInUpBig
+  animation-duration: 2s
+
 }
 .statistic_close{
   margin: 5px 10px 0px 0px
@@ -314,65 +404,17 @@ header{
 // cd it-react
 // stylus -w .\src\styl\login.styl -o .\src\css\login.css
 .toast{
-  display: none
-  position: absolute
-  top: 30px
-  left: 400px
-  width: 70px
-  height: 30px
-  background-color: gray
-  display: block
-  z-index: 50 //bigger than board
-  opacity 0.8
-  
+  line-height: 50px
+  text-align: center
+  width: 180px
+  height: 40px
+  margin: 10px
+  color : black 
+  background: white
+  fontSize: 14
+  margin: 10
+  padding: 10
+  animation: "fadeIn" 
+  animationDuration: "1s"
+  pointer:none
   }
-.toast_none{
-  display: none
-}
-.login{
-  img{
-    width :20px
-    height: 20px
-    border-radius: 50%
-  }  
-  .member_page_close{
-    display: none
-  }
-  .member_page{
-    z-index: 100
-    display: block
-    position: absolute
-    width 350px
-    height: 300px
-    background-color: white
-    top: 70px
-    right: 35%
-    border: #666 1px solid
-  }
-  .member_bar{
-    display: flex
-    color: black
-    justify-content: space-evenly
-    p{
-      border: #666 1px 1px 0px 1px solid
-      text-align: center
-      margin: 0px
-    }
-    .member-click{
-      background-color: #666
-    }
-    .member-none-click{
-      background-color: white
-    }
-    p:nth-child(1){
-      flex-grow: 2;
-    }
-    p:nth-child(2){
-      flex-grow: 2;
-    }
-    p:nth-child(3){
-      flex-grow: 0.5;
-    }
-  }
-}
-
