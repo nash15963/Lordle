@@ -8,11 +8,12 @@ import question from '../img/question.png'
 import GameOver from './GameOver'
 import 'animate.css';
 import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../Words'
-import { createContext ,useEffect,useState } from 'react'
+import { createContext ,useEffect,useRef,useState } from 'react'
 import { ToastProvider, useToasts } from "../components/hooks/toast-manager";
 
 
 export const AppContex = createContext()
+
 // const KeyBoardArray = 'access'
 
 function Game() {
@@ -42,8 +43,18 @@ function Game() {
   const [outList, setOutList] = useState(false)
   const [gameDown , setgameDown] = useState('')
 
+  const onplayedCount =()=>{
+    const savedCount = localStorage.getItem('playedCount')
+    return savedCount ? JSON.parse(savedCount) : 0
+  }
+  let playedCount =onplayedCount()
+  const onwinCount =()=>{
+    const winCount = localStorage.getItem('winCount')
+    return winCount ? JSON.parse(winCount) : 0
+  }
+  let winCount =onwinCount()
+
   useEffect(()=>{
-    // localStorage.setItem('usernight',JSON.stringify(theme));    //record theme
     if(todayAnswer !== ""){
       console.log(todayAnswer)
       generateSavedAnswer()
@@ -118,6 +129,13 @@ function Game() {
       setGameOver({ gameOver: true, guessedWord: true });
       // localStorage.clear()
       setgameDown(<GameOver />)
+      const handleNumber =()=>{
+        // setPlayedCount((curr)=>curr+1) 
+        localStorage.setItem('playedCount' ,playedCount+1)
+        localStorage.setItem('winCount' , winCount+1)
+      }
+      handleNumber()
+      
       localStorage.removeItem('userAnswer')
       localStorage.removeItem('localAnswer')
       localStorage.removeItem('localAttempt')
@@ -127,6 +145,11 @@ function Game() {
       setGameOver({ gameOver: true, guessedWord: false });
       // localStorage.clear()
       setgameDown(<GameOver />)
+      localStorage.setItem('playedCount' ,playedCount+1)
+      // const handleNumber =()=>{
+      //   localStorage.setItem('playedCount' ,playedCount+1)
+      // }
+      // handleNumber()
       localStorage.removeItem('userAnswer')
       localStorage.removeItem('localAnswer')
       localStorage.removeItem('localAttempt')
@@ -164,7 +187,7 @@ function Game() {
       <AppContex.Provider value={
         {board, setBoard ,currAttempt , setCurrAttempt,onSelectLetter,
           onDelete,onEnter,correctWord,disabledLetters, setDisabledLetters,
-          gameOver, setGameOver}
+          gameOver, setGameOver ,playedCount,winCount}
       }>
       <div id ="game">
       <ToastProvider>
