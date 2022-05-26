@@ -3,9 +3,14 @@ import { useState, useEffect } from 'react';
 const Clock = () => {
     const [minutes, setMinutes ] = useState(0);
     const [seconds, setSeconds ] =  useState(5);
+    const refreshGame =()=>{
+        localStorage.setItem('commercial' ,false)
+        window.location.reload(false);
+    }
+
     useEffect(()=>{
         console.log('---time---start---')
-        // localStorage.setItem('commercial' ,'yes')
+        localStorage.setItem('commercial' ,true)
         let countDownInterval = setInterval(()=>{
             if (seconds > 0) {
                 setSeconds(seconds - 1);
@@ -13,6 +18,7 @@ const Clock = () => {
             if (seconds === 0) {
                 if (minutes === 0) {
                     clearInterval(countDownInterval)
+                    refreshGame()
                 } else {
                     setMinutes(minutes - 1);
                     setSeconds(59);
@@ -26,7 +32,7 @@ const Clock = () => {
   return (
     <div>
         { minutes === 0 && seconds === 0
-            ? <p>haha</p>
+            ? <p onClick={refreshGame}>Refresh</p>
             : <p> {minutes}:{seconds < 10 ?  `0${seconds}` : seconds}</p> 
         }
     </div>

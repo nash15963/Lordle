@@ -53,6 +53,11 @@ function Game() {
     return winCount ? JSON.parse(winCount) : 0
   }
   let winCount =onwinCount() //勝利次數
+  const onCommercial = ()=>{
+    const commercial = localStorage.getItem('commercial')
+    return commercial ? JSON.parse(commercial) : false
+  }
+  let commercial = onCommercial()
 
   useEffect(()=>{
     if(todayAnswer !== ""){
@@ -187,7 +192,7 @@ function Game() {
       <AppContex.Provider value={
         {board, setBoard ,currAttempt , setCurrAttempt,onSelectLetter,
           onDelete,onEnter,correctWord,disabledLetters, setDisabledLetters,
-          gameOver, setGameOver ,playedCount,winCount}
+          gameOver, setGameOver ,playedCount,winCount,commercial}
       }>
       <div id ="game">
       <ToastProvider>
@@ -196,6 +201,7 @@ function Game() {
       <div id='board-container'><Board/></div>
       <Keyboard></Keyboard>
       {gameDown}
+      {commercial ? <GameOver /> : ''}
       {/* {gameOver.gameOver ? <GameOver /> : ''} */}
       </div>
       </AppContex.Provider>

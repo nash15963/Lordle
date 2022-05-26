@@ -3,16 +3,26 @@ import { AppContex } from './Game'
 import Clock from './Clock'
 
 function GameOver() {
-    const {gameOver ,correctWord ,currAttempt ,playedCount,winCount} = useContext(AppContex) 
+    const {gameOver ,correctWord ,currAttempt ,playedCount,winCount,commercial} = useContext(AppContex) 
     const nextExam =()=>{
       window.location.reload(false);
     }
-  return (
-    <div className='gameOver'>
-      <p className='statistic_close' onClick={nextExam}>x</p>
+    let finishGame = 
+    <div>
       <h2>{gameOver.guessedWord? "You Win !": "You losed"}</h2>
       <h3>Correct Word: {correctWord}</h3>
       {gameOver.guessedWord && (<p className='guess_attemp'>You guessed in {currAttempt.attempt} attempts</p>)} 
+    </div> ;
+    let waitGame = 
+    <div>
+      <h2>you need to wait for minutes</h2>
+      <h2>or share Lordle</h2>
+    </div> ;
+
+  return (
+    <div className='gameOver'>
+      <p className='statistic_close' onClick={nextExam}>x</p>
+      {commercial ? waitGame : finishGame}
       
       <div className='gameover_statistic'>
       <div className='played_view'>
