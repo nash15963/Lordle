@@ -5,6 +5,7 @@ import Clock from './Clock'
 function GameOver() {
     const {gameOver ,correctWord ,currAttempt ,playedCount,winCount,commercial} = useContext(AppContex) 
     const nextExam =()=>{
+      localStorage.setItem('commercial' ,false)
       window.location.reload(false);
     }
     let finishGame = 
@@ -21,9 +22,9 @@ function GameOver() {
 
   return (
     <div className='gameOver'>
-      <p className='statistic_close' onClick={nextExam}>x</p>
+      {/* <p className='statistic_close' onClick={nextExam}>x</p> */}
+      <p className='statistic_close'>x</p>
       {commercial ? waitGame : finishGame}
-      
       <div className='gameover_statistic'>
       <div className='played_view'>
       <p className='played_number'>{playedCount}</p>
@@ -41,7 +42,7 @@ function GameOver() {
         <span><Clock/></span>
       </div>
       <div className='gameover_share'>
-        <p>Share</p>
+        <p onClick={nextExam}>Share</p>
       </div>
       </div>
       <p className='gameover_note'>share the link for more puzzles</p>

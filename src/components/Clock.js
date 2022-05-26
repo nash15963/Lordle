@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 
 const Clock = () => {
-    const [minutes, setMinutes ] = useState(0);
-    const [seconds, setSeconds ] =  useState(5);
+    const [minutes, setMinutes ] = useState(5);
+    const [seconds, setSeconds ] =  useState(1);
     const refreshGame =()=>{
         localStorage.setItem('commercial' ,false)
         window.location.reload(false);
     }
 
     useEffect(()=>{
-        console.log('---time---start---')
+        // console.log('---time---start---')
         localStorage.setItem('commercial' ,true)
         let countDownInterval = setInterval(()=>{
             if (seconds > 0) {
