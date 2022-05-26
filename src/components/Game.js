@@ -8,7 +8,7 @@ import question from '../img/question.png'
 import GameOver from './GameOver'
 import 'animate.css';
 import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../Words'
-import { createContext ,useEffect,useRef,useState } from 'react'
+import { createContext ,useEffect,useState } from 'react'
 import { ToastProvider, useToasts } from "../components/hooks/toast-manager";
 
 
@@ -47,12 +47,12 @@ function Game() {
     const savedCount = localStorage.getItem('playedCount')
     return savedCount ? JSON.parse(savedCount) : 0
   }
-  let playedCount =onplayedCount()
+  let playedCount =onplayedCount() //遊玩次數
   const onwinCount =()=>{
     const winCount = localStorage.getItem('winCount')
     return winCount ? JSON.parse(winCount) : 0
   }
-  let winCount =onwinCount()
+  let winCount =onwinCount() //勝利次數
 
   useEffect(()=>{
     if(todayAnswer !== ""){
@@ -83,7 +83,7 @@ function Game() {
     if(currAttempt.letterPos>4) return ;  
     const newBoard =[...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
-    console.log([currAttempt.attempt],[currAttempt.letterPos])
+    // console.log([currAttempt.attempt],[currAttempt.letterPos])
     // console.log(currAttempt)
     // console.log('hihi')
     setBoard(newBoard)

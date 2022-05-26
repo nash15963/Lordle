@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContex } from './Game'
+import Clock from './Clock'
 
 function GameOver() {
     const {gameOver ,correctWord ,currAttempt ,playedCount,winCount} = useContext(AppContex) 
@@ -27,7 +28,7 @@ function GameOver() {
       <div className="gameover_next">
       <div className='gameover_clock'>
         <p>Next Lordle</p>
-        <span>clock</span>
+        <span><Clock/></span>
       </div>
       <div className='gameover_share'>
         <p>Share</p>
