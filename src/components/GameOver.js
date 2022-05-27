@@ -3,28 +3,35 @@ import { AppContex } from './Game'
 import Clock from './Clock'
 
 function GameOver() {
-    const {gameOver ,correctWord ,currAttempt ,playedCount,winCount,commercial} = useContext(AppContex) 
+    const {gameOver ,correctWord ,currAttempt ,playedCount,winCount} = useContext(AppContex) 
+    console.log(gameOver)
     const nextExam =()=>{
       localStorage.setItem('commercial' ,false)
       window.location.reload(false);
     }
-    let finishGame = 
+    let winGame = 
     <div>
-      <h2>{gameOver.guessedWord? "You Win !": "You losed"}</h2>
+      <h1>You Win !</h1>
       <h3>Correct Word: {correctWord}</h3>
       {gameOver.guessedWord && (<p className='guess_attemp'>You guessed in {currAttempt.attempt} attempts</p>)} 
     </div> ;
+    let loseGame = 
+    <div>
+      <h1>"You losed"</h1>
+      <h3>Correct Word: {correctWord}</h3>
+    </div> ;
     let waitGame = 
     <div>
-      <h2>you need to wait for minutes</h2>
-      <h2>or share Lordle</h2>
+      <h2>Wait for minutes</h2>
+      <h2>or</h2>
+      <h2>share Lordle</h2>
     </div> ;
-
   return (
     <div className='gameOver'>
       {/* <p className='statistic_close' onClick={nextExam}>x</p> */}
-      <p className='statistic_close'>x</p>
-      {commercial ? waitGame : finishGame}
+      {/* <p className='statistic_close'>x</p> */}
+      {gameOver.gameOver && gameOver.guessedWord ? winGame:(gameOver.gameOver === true && gameOver.guessedWord === false ?loseGame :waitGame)}
+      {/* {commercial ? waitGame : (gameOver.gameOver && gameOver.guessedWord ? winGame : loseGame)} */}
       <div className='gameover_statistic'>
       <div className='played_view'>
       <p className='played_number'>{playedCount}</p>

@@ -33,7 +33,7 @@ const Clock = () => {
     <div>
         { minutes === 0 && seconds === 0
             ? <p onClick={refreshGame}>Refresh</p>
-            : <p> {minutes}:{seconds < 10 ?  `0${seconds}` : seconds}</p> 
+            : <h3> {minutes}:{seconds < 10 ?  `0${seconds}` : seconds}</h3> 
         }
     </div>
   )
