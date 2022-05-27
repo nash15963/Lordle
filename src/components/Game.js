@@ -1,10 +1,10 @@
 import Board from './Board'
 import Keyboard from './KeyBoard'
-// import Question from './Question'
+import Question from './Question'
 // import Login from './components/Login'
 import NightMode from './NightMode'
 import night_img from '../img/night_mode.png'
-import question from '../img/question.png'
+// import question from '../img/question.png'
 import GameOver from './GameOver'
 import 'animate.css';
 import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../Words'
@@ -82,6 +82,7 @@ function Game() {
     setOutList(false)
     // return <button onClick={() => add("Click to dismiss!")}>Add toast</button>;
   }
+  
   
   //從Key.js移動過來
   const onSelectLetter =(keyVal)=>{
@@ -180,7 +181,7 @@ function Game() {
     <div className="App" id={theme}>
       <header>
         {/* <Question /> */}
-        <img className='question' src={question} alt="question" />
+        <Question></Question>
         <p className='title'>Lordle</p>
         <div className='night_controller'>
         <img src={night_img} alt="night_img" />
@@ -192,7 +193,7 @@ function Game() {
       <AppContex.Provider value={
         {board, setBoard ,currAttempt , setCurrAttempt,onSelectLetter,
           onDelete,onEnter,correctWord,disabledLetters, setDisabledLetters,
-          gameOver, setGameOver ,playedCount,winCount,commercial}
+          gameOver, setGameOver ,playedCount,winCount}
       }>
       <div id ="game">
       <ToastProvider>
@@ -201,7 +202,7 @@ function Game() {
       <div id='board-container'><Board/></div>
       <Keyboard></Keyboard>
       {gameDown}
-      {commercial ? <GameOver /> : ''}
+      {commercial ? <GameOver/> : ''}
       {/* {gameOver.gameOver ? <GameOver /> : ''} */}
       </div>
       </AppContex.Provider>

@@ -8,7 +8,6 @@ const Description = () => {
         window.location.href ='./Game'
     }
     const handleGithub =()=>{
-        // window.location.href ='https://github.com/nash15963/lordle'
         window.open('https://github.com/nash15963/lordle')
     }
   return (

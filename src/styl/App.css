@@ -29,6 +29,21 @@ body {
   background-color: #121212;
   color: #fff;
 }
+#dark .question-open {
+  display: block;
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+#dark .question-open h2 {
+  display: inline-block;
+  width: 50%;
+}
 #light {
   background-color: #fff;
   color: #121212;
@@ -88,6 +103,21 @@ body {
   animation: "fadeIn";
   animationDuration: "1s";
 }
+#light .question-open {
+  display: block;
+  background-color: #fff;
+  color: #000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+#light .question-open h2 {
+  display: inline-block;
+  width: 50%;
+}
 .blackboard {
   width: 13%;
   height: 45px;
@@ -131,8 +161,8 @@ header .question-closed {
 }
 header .question-open {
   display: block;
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -144,9 +174,6 @@ header .question-open h2 {
   display: inline-block;
   width: 50%;
 }
-header .question-open span {
-  display: inline-block;
-}
 header .question-open p {
   font-size: 16px;
 }
@@ -155,6 +182,7 @@ header .question-open p {
   height: 20px;
   margin: 0px 5px 0px 20px;
   border-radius: 50%;
+  cursor: pointer;
 }
 .night_controller {
   display: flex;
@@ -406,6 +434,104 @@ input:checked + .slider:before {
   padding: 10;
   animation: "fadeIn";
   animationDuration: "1s";
-  pointer: none;
+  pointer: pointer;
   border-radius: 5px;
+}
+.descriptioninGame {
+  width: 100%;
+  height: 100vh;
+}
+.close_description {
+  float: right;
+  cursor: pointer;
+}
+.description-text {
+  margin: 0px auto 0px auto;
+  width: 490px;
+  height: 500px;
+  padding: 10px;
+  position: absolute;
+  left: 30%;
+  animation: topTObottom;
+  animation-duration: 0.7s;
+}
+.description-text h4 {
+  text-align: center;
+  margin: 0px;
+}
+.description-text .bold {
+  font-weight: bold;
+}
+.description-text hr {
+  border: 0.5px solid #fff;
+}
+.description-text .description-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.description-text .description-notice {
+  margin: 0px auto 0px auto;
+  width: 70%;
+}
+.description-text .description-notice .description-github {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+  float: right;
+}
+.description-text .description-notice .letter-example {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.description-text .description-notice span {
+  margin: 0px 5px 0px 5px;
+}
+.description-text .description-notice .correct {
+  background-color: #4ad04a;
+  animation: flipInX 1s;
+  animation-delay: 3s;
+}
+.description-text .description-notice .almost {
+  animation: flipInX 1s;
+  background-color: rgba(239,239,66,0.861);
+  animation-delay: 3s;
+}
+.description-text .description-notice .error {
+  animation: flipInX;
+  animation-duration: 1s;
+  animation-delay: 3s;
+  background-color: #3a393c;
+}
+@-moz-keyframes topTObottom {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+@-webkit-keyframes topTObottom {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+@-o-keyframes topTObottom {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+@keyframes topTObottom {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0%;
+  }
 }

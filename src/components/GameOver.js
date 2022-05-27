@@ -4,7 +4,6 @@ import Clock from './Clock'
 
 function GameOver() {
     const {gameOver ,correctWord ,currAttempt ,playedCount,winCount} = useContext(AppContex) 
-    console.log(gameOver)
     let url = window.location.href ;
     console.log(url)
     const nextExam =()=>{

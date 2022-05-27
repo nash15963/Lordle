@@ -9,7 +9,7 @@ const ToastContainer = props => (
   <div 
   style={{ 
     position: "fixed", 
-    right: "41%", 
+    right: "40%", 
     top: '30%' 
   }} 
   {...props} />
@@ -29,17 +29,7 @@ const Toast = ({ children, onDismiss }) => {
   return(
   <div
   className="toast"
-    // style={{
-    // color :"black" ,
-    // background: "white",
-    // cursor: "pointer",
-    // fontSize: 14,
-    // margin: 10,
-    // padding: 10,
-    // animation: "fadeIn" ,
-    // animationDuration: "1s"
-    // }}
-    onClick={onDismiss}
+  onClick={onDismiss}
   >
     {children}
   </div>
