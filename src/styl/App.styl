@@ -31,6 +31,11 @@ body {
   height: 100% 
   position: relative
 }
+@keyframes topTObottom {
+    0% { top: -100%; }
+    // 50%{ top: -100%; }
+    100% { top: 0%; }
+}
 #dark{
   background-color: #121212
   color: white  
@@ -44,6 +49,8 @@ body {
       top: 0
       left: 0
       z-index: 100
+      animation: topTObottom 
+      animation-duration: 1s
       h2{
         display: inline-block
         width: 50%
@@ -72,7 +79,7 @@ body {
     display: grid 
     place-items: center
     animation: bounceIn
-    animation-duration: 0.5s
+    animation-duration: 1s
   }
   .key {
     width: 45px;
@@ -120,6 +127,8 @@ body {
       top: 0
       left: 0
       z-index: 100
+      animation: topTObottom 
+      animation-duration: 1s
       h2{
         display: inline-block
         width: 50%
@@ -483,21 +492,19 @@ input:checked + .slider:before {
 //   background-color: dark
 //   color: white
 // }
+
 .descriptioninGame{
     width: 100%
     height: 100vh
+    
     }
 .close_description{
   float: right
   cursor: pointer
   }
-@keyframes topTObottom {
-    0% { top: -100%; }
-    // 50%{ top: -100%; }
-    100% { top: 0%; }
-}
 
-.description-text{
+
+.description-textinGame{
     margin: 0px auto 0px auto
     width: 490px
     height: 500px
@@ -505,8 +512,7 @@ input:checked + .slider:before {
     padding: 10px
     position: absolute 
     left: 30%
-    animation: topTObottom 
-    animation-duration: 0.7s
+    
     h4{
         text-align: center
         margin: 0px

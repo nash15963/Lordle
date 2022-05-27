@@ -39,6 +39,8 @@ body {
   top: 0;
   left: 0;
   z-index: 100;
+  animation: topTObottom;
+  animation-duration: 1s;
 }
 #dark .question-open h2 {
   display: inline-block;
@@ -66,7 +68,7 @@ body {
   display: grid;
   place-items: center;
   animation: bounceIn;
-  animation-duration: 0.5s;
+  animation-duration: 1s;
 }
 #light .key {
   width: 45px;
@@ -113,6 +115,8 @@ body {
   top: 0;
   left: 0;
   z-index: 100;
+  animation: topTObottom;
+  animation-duration: 1s;
 }
 #light .question-open h2 {
   display: inline-block;
@@ -445,59 +449,57 @@ input:checked + .slider:before {
   float: right;
   cursor: pointer;
 }
-.description-text {
+.description-textinGame {
   margin: 0px auto 0px auto;
   width: 490px;
   height: 500px;
   padding: 10px;
   position: absolute;
   left: 30%;
-  animation: topTObottom;
-  animation-duration: 0.7s;
 }
-.description-text h4 {
+.description-textinGame h4 {
   text-align: center;
   margin: 0px;
 }
-.description-text .bold {
+.description-textinGame .bold {
   font-weight: bold;
 }
-.description-text hr {
+.description-textinGame hr {
   border: 0.5px solid #fff;
 }
-.description-text .description-flex {
+.description-textinGame .description-flex {
   display: flex;
   flex-wrap: wrap;
 }
-.description-text .description-notice {
+.description-textinGame .description-notice {
   margin: 0px auto 0px auto;
   width: 70%;
 }
-.description-text .description-notice .description-github {
+.description-textinGame .description-notice .description-github {
   width: 30px;
   height: 30px;
   cursor: pointer;
   border-radius: 50%;
   float: right;
 }
-.description-text .description-notice .letter-example {
+.description-textinGame .description-notice .letter-example {
   display: flex;
   flex-wrap: nowrap;
 }
-.description-text .description-notice span {
+.description-textinGame .description-notice span {
   margin: 0px 5px 0px 5px;
 }
-.description-text .description-notice .correct {
+.description-textinGame .description-notice .correct {
   background-color: #4ad04a;
   animation: flipInX 1s;
   animation-delay: 3s;
 }
-.description-text .description-notice .almost {
+.description-textinGame .description-notice .almost {
   animation: flipInX 1s;
   background-color: rgba(239,239,66,0.861);
   animation-delay: 3s;
 }
-.description-text .description-notice .error {
+.description-textinGame .description-notice .error {
   animation: flipInX;
   animation-duration: 1s;
   animation-delay: 3s;

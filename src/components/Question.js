@@ -20,7 +20,7 @@ const Question = () => {
     {/* <div className='ques_botton' onClick={openInformation}>?</div> */}
     <div className={introduce}>
     <div className='descriptioninGame'>
-        <div className='description-text'>
+        <div className='description-textinGame'>
             <h4>HOW TO PLAY 
               <span className='close_description' onClick={closeInformation}>X</span> 
             </h4>  
