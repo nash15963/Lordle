@@ -9,7 +9,7 @@ const ToastContainer = props => (
   <div 
   style={{ 
     position: "fixed", 
-    right: "42%", 
+    right: "41%", 
     top: '30%' 
   }} 
   {...props} />

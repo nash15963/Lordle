@@ -5,8 +5,11 @@ import Clock from './Clock'
 function GameOver() {
     const {gameOver ,correctWord ,currAttempt ,playedCount,winCount} = useContext(AppContex) 
     console.log(gameOver)
+    let url = window.location.href ;
+    console.log(url)
     const nextExam =()=>{
       localStorage.setItem('commercial' ,false)
+      navigator.clipboard.writeText(url);
       window.location.reload(false);
     }
     let winGame = 
@@ -17,7 +20,7 @@ function GameOver() {
     </div> ;
     let loseGame = 
     <div>
-      <h1>"You losed"</h1>
+      <h1>You losed</h1>
       <h3>Correct Word: {correctWord}</h3>
     </div> ;
     let waitGame = 
@@ -28,18 +31,15 @@ function GameOver() {
     </div> ;
   return (
     <div className='gameOver'>
-      {/* <p className='statistic_close' onClick={nextExam}>x</p> */}
-      {/* <p className='statistic_close'>x</p> */}
       {gameOver.gameOver && gameOver.guessedWord ? winGame:(gameOver.gameOver === true && gameOver.guessedWord === false ?loseGame :waitGame)}
-      {/* {commercial ? waitGame : (gameOver.gameOver && gameOver.guessedWord ? winGame : loseGame)} */}
       <div className='gameover_statistic'>
       <div className='played_view'>
-      <p className='played_number'>{playedCount}</p>
+      <h2 className='played_number'>{playedCount}</h2>
       <p className='played_mark'>played</p>
       </div>
      
       <div className="win_view">
-      <p className='win_number'>{winCount}</p>
+      <h2 className='win_number'>{winCount}</h2>
       <p className='win_mark'>win</p>
       </div>
       </div>
@@ -49,7 +49,7 @@ function GameOver() {
         <span><Clock/></span>
       </div>
       <div className='gameover_share'>
-        <p onClick={nextExam}>Share</p>
+        <button onClick={nextExam}>Share</button>
       </div>
       </div>
       <p className='gameover_note'>share the link for more puzzles</p>
