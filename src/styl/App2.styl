@@ -1,9 +1,5 @@
 // cd it-react
-// stylus -w .\src\styl\App.styl -o .\src\styl\App.css
-
-body::-webkit-scrollbar {
-    display: none;
-}
+// stylus -w .\src\styl\App2.styl -o .\src\styl\App2.css
 
 :root {
     --header-height: 50px;
@@ -25,6 +21,9 @@ body {
   padding: 0% 
   margin: 0
 }
+body::-webkit-scrollbar {
+    display: none;
+}
 .App {
   width: 100% 
   height: 100% 
@@ -36,123 +35,127 @@ body {
     // 50%{ top: -100%; }
     100% { top: 0%; }
 }
-#dark{
-  background-color: #121212
-  color: white  
-  .question-open{
-      display: block
-      background-color: black
-      color: white
-      width 100%
-      height: 100%
-      position: absolute
-      top: 0
-      left: 0
-      z-index: 100
-      animation: topTObottom 
-      animation-duration: 1s
-      h2{
-        display: inline-block
-        width: 50%
-      }
-  }
-  
-}
-#light{
-  background-color: white 
-  color: #121212
-  header{
-    color: var(--color-tone-7)
-  }
-  .letter {
-    border: 2px solid rgb(197, 193, 193);
-  }  
-  .blackboard{
+.letter {
     width: 13%
     height: 45px
-    border: 2px solid rgba(10, 9, 9, 0.47);
     margin: 0px 2.5px 0px 2.5px 
     font-weight: bolder;
-    color: black;
+    color: white;
     font-family: 'Comic Sans MS';
     border-radius: 5%
     display: grid 
     place-items: center
-    animation: bounceIn
+} 
+
+
+//   dark mode special
+#dark{
+  background-color: #121212
+  color: white 
+    .letter{
+        border: 2px solid var(--color-tone-4);
+        
+        }
+    .key{
+        background-color: var(--color-tone-2)
+        color: var(--color-tone-1)
+    }
+    .question-open{
+        background-color: var(--color-tone-7)
+        color: var(--color-tone-1)
+    }
+}
+#light{
+  background-color: white 
+  color: black
+    .letter{
+        border: 2px solid rgb(190, 189, 189)
+        }
+    .key{
+        background-color: rgb(142, 141, 141)
+        color: var(--color-tone-1)
+    }
+    .question-open{
+        background-color: var(--color-tone-1)
+        color: var(--color-tone-7)
+    }
+}
+
+
+.question-open{
+    display: block
+    width 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 100
+    animation: topTObottom 
     animation-duration: 1s
-  }
-  .key {
+    p{
+        font-size: 16px
+    }
+}
+.question-closed{
+    display: none
+}
+
+.key {
     width: 45px;
     height: 55px;
     margin: 0px 5px 0px 0px
     font-size: 14px;
-    color: black;
-    background-color: #d3d6da;
     font-family: var(--font-Family)
     border-radius: 10%
     display: grid
     place-items: center 
     outline: none
     border: none
-  }
-  #big {
+}
+#big {
     width: 90px;
-  }
-  #disabled {
+}
+#disabled {
     background-color: #3a393c;
-  }
+}
 
 .toast{
-  width: 180px
-  height: 40px
-  pointer:none
-  line-height: 50px
-  text-align: center
-  margin: 10px
-  color : white 
-  background: black
-  fontSize: 14
-  margin: 10
-  padding: 10
-  animation: "fadeIn" 
-  animationDuration: "1s"
-  }
-  .question-open{
-      display: block
-      background-color: white
-      color: black
-      width 100%
-      height: 100%
-      position: absolute
-      top: 0
-      left: 0
-      z-index: 100
-      animation: topTObottom 
-      animation-duration: 1s
-      h2{
-        display: inline-block
-        width: 50%
-      }
-  }
+    width: 180px
+    height: 40px
+    background-color: var(--color-tone-1)
+    pointer:none
+    line-height: 50px
+    text-align: center
+    margin: 10px
+    fontSize: 14
+    margin: 10
+    padding: 10
+    animation: "fadeIn" 
+    animationDuration: "1s"
+    cursor:pointer
+}
+.ToastContainer{
+    position: fixed
+    right: 42%
+    top: 30% 
+    color: black
+    font-size: 20px
 }
 .blackboard{
-  width: 13%
-  height: 45px
-  border: 2px solid rgba(255, 255, 255, 0.47);
-  margin: 0px 2.5px 0px 2.5px 
-  font-weight: bolder;
-  color: white;
-  font-family: 'Comic Sans MS';
-  border-radius: 5%
-  display: grid 
-  place-items: center
-  animation: bounceIn
-  animation-duration: 0.5s
-  }
-
+    width: 13%
+    height: 45px
+    border: 2px solid rgb(94, 94, 94)
+    margin: 0px 2.5px 0px 2.5px 
+    font-weight: bolder;
+    font-family: 'Comic Sans MS';
+    border-radius: 5%
+    display: grid 
+    place-items: center
+    animation: bounceIn
+    animation-duration: 1s
+}
 header{
     height: var(--header-height)
-    color: var(--color-tone-1)
     border-bottom: 1px solid var(--color-tone-4)
     display: flex
     align-items: center
@@ -171,32 +174,16 @@ header{
     margin: 5px 0px 0px 70px
     align-self :center
     }
-    .question-closed{
-      display: none
-    }
-    .question-open{
-      display: block
-      background-color: white
-      color: black
-      width 100%
-      height: 100%
-      position: absolute
-      top: 0
-      left: 0
-      z-index: 100
-      h2{
-        display: inline-block
-        width: 50%
-      }
-      // span{
-      //   display: inline-block
-      // }
-      p{
-        font-size: 16px
-      }
-    }
+}
+.question{
+  width: 20px
+  height:20px
+  margin: 0px 5px 0px 20px
+  border-radius: 50%
+  cursor: pointer
 }
 
+// night_controller set
 .night_controller{
   display: flex
   margin: 0px 20px 0px 5px
@@ -213,15 +200,11 @@ header{
   width: 50px;
   height: 27px;
 }
-
-/* Hide default HTML checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-
-/* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -259,16 +242,14 @@ input:checked + .slider:before {
   -ms-transform: translateX(20px);
   transform: translateX(20px);
 }
-
 /* Rounded sliders */
 .slider.round {
   border-radius: 20px;
 }
-
 .slider.round:before {
   border-radius: 50%;
 }
-
+// night_controller end
 
 #game{
     width: 70%;
@@ -286,14 +267,9 @@ input:checked + .slider:before {
 }
 .board{
   margin: 10px auto 5px auto
-  // background-color: blue
     width: 75%
-    // height: 60%
     display: grid;
     grid-template-rows: repeat(6, 1fr);
-    // grid-template-columns: repeat(5, 1fr);
-    // grid-gap: 2.5px;
-    // padding: 10px;
     box-sizing: border-box;
 }
 .row {
@@ -305,20 +281,6 @@ input:checked + .slider:before {
     justify-content:center
     margin-top: 5px
 }
-.letter {
-    width: 13%
-    height: 45px
-    border: 2px solid #3a3a3c;
-    margin: 0px 2.5px 0px 2.5px 
-    font-weight: bolder;
-    color: white;
-    font-family: 'Comic Sans MS';
-    border-radius: 5%
-    display: grid 
-    place-items: center
-}
-
-
 .keyboard {
   grid-column: 1/4
   grid-row: 2/3
@@ -338,32 +300,7 @@ input:checked + .slider:before {
   justify-content: center;
   margin: 3px;
 }
-
-.key {
-    width: 45px;
-    height: 55px;
-    margin: 0px 5px 0px 0px
-    font-size: 14px;
-    color: white;
-    background-color: grey;
-    font-family: var(--font-Family)
-    border-radius: 10%
-    display: grid
-    place-items: center 
-    outline: none
-    border: none
-}
-
-#big {
-  width: 90px;
-}
-#disabled {
-  background-color: #3a393c;
-}
-
 .gameOver{
-  // grid-column: 1/4
-  // grid-row: 2/3
   border: 2px black solid
   width: 400px
   height: auto
@@ -372,77 +309,73 @@ input:checked + .slider:before {
   top: 16px
   left: 200px
   color: black
-  box-shadow: 3px 3px #666
+  box-shadow: 3px 3px rgb(164, 162, 162)
   animation: fadeInUpBig
   animation-duration: 2s
 
-  .statistic_close{
-    width: 100%
-    height: 30px
-    text-align: right 
-  }
-  h1{
-    text-align: center
-    margin: 10px 0px 5px 0px
-  }
-  h2{
-    text-align: center
-    margin: 10px 0px 5px 0px
-  }
-  h3{
-    text-align: center
-    margin: 0px
-  }
-  .guess_attemp{
-    text-align: center
-  }
-  .gameover_statistic{
-    display: flex
-    text-align: center
-  }
-  .played_view{
-    width: 50%
-  }
-  .win_view{
-    width: 50%
-  }
-  .gameover_next{
-    margin-top: 20px
-    display: flex
-    text-align: center
-  }
-  .gameover_clock{
-    width: 50%
-  }
-  .gameover_share{
-    width: 50%
-    border-left: 1px black solid
-  }
-  .gameover_note{
-    text-align: center
-    border-top: 1px #666 solid
-    margin-top : 20px
-    padding: 10px 0px 0px 0px
-  }
-  button{
-    width: 100px
-    height: 50px
-    margin: 20px 0px 0px 5px
-    background-color: rgb(161, 160, 160)
-    border: 3px solid rgba(52, 57, 52, 0.388)
-    border-radius: 10px
-    cursor : pointer
-    color: white
-    font-size: 20px
-    &:hover{
-      background-color:#b5b6b8c6;
-      transition: 0.3s;
+    .statistic_close{
+        width: 100%
+        height: 30px
+        text-align: right 
     }
-  }
-}
-.statistic_close{
-  margin: 5px 10px 0px 0px
-  float: right
+    h1{
+        text-align: center
+        margin: 10px 0px 5px 0px
+    }
+     h2{
+        text-align: center
+        margin: 10px 0px 5px 0px
+    }
+    h3{
+        text-align: center
+        margin: 0px
+    }
+    .guess_attemp{
+        text-align: center
+    }
+    .gameover_statistic{
+        display: flex
+        text-align: center
+    }
+    .played_view{
+        width: 50%
+    }
+    .win_view{
+        width: 50%
+    }
+    .gameover_next{
+        margin-top: 20px
+        display: flex
+        text-align: center
+    }
+    .gameover_clock{
+        width: 50%
+    }
+    .gameover_share{
+        width: 50%
+        border-left: 1px black solid
+    }
+    .gameover_note{
+        text-align: center
+        border-top: 1px #666 solid
+        margin-top : 20px
+        padding: 10px 0px 0px 0px
+    }
+    button{
+        width: 100px
+        height: 50px
+        margin: 20px 0px 0px 5px
+        background-color: rgb(161, 160, 160)
+        border: 3px solid rgba(52, 57, 52, 0.388)
+        border-radius: 10px
+        cursor : pointer
+        color: white
+        font-size: 20px
+        &:hover{
+            background-color:#b5b6b8c6;
+            transition: 0.3s;
+        }
+    }
 }
 #correct{
   background-color: rgb(74, 208, 74)
@@ -460,30 +393,6 @@ input:checked + .slider:before {
   animation: shakeX 
   animation-duration: 1s
 }
-
-.toast{
-  line-height: 35px
-  text-align: center
-  width: 160px
-  height: 30px
-  margin: 20px
-  color : black 
-  background: white
-  fontSize: 14
-  padding: 10
-  animation: "fadeIn" 
-  animationDuration: "1s"
-  pointer : pointer
-  border-radius: 5px
-  }
-  
-
-// dark
-// .question{
-//   background-color: dark
-//   color: white
-// }
-
 .descriptioninGame{
     width: 100%
     height: 100vh
@@ -496,7 +405,6 @@ input:checked + .slider:before {
     margin: 0px auto 0px auto
     width: 490px
     height: 500px
-    // border:5px #FFAC55 solid
     padding: 10px
     position: absolute 
     left: 30%
@@ -523,7 +431,6 @@ input:checked + .slider:before {
         .description-github{
             width: 30px
             height: 30px
-            // background-color: black
             cursor: pointer
             border-radius: 50%
             float: right

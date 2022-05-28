@@ -51,7 +51,7 @@ function GameOver() {
         <button onClick={nextExam}>Share</button>
       </div>
       </div>
-      <p className='gameover_note'>click the button and share the address to your friends for getting more puzzles</p>
+      <p className='gameover_note'>click "Share" and get more puzzles</p>
       {/* guessedWord => 1.判斷有沒有猜出字，2.猜出字後告訴玩家猜了幾次 */}
     </div>
   )

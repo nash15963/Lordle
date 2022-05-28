@@ -1,6 +1,6 @@
 import Home from './components/Home'
 import Game from './components/Game'
-import './styl/App.css'
+import './styl/App2.css'
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Discription from './components/Description'
 

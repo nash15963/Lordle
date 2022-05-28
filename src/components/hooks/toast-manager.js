@@ -6,13 +6,7 @@ const Ctx = React.createContext();
 // ==============================
 
 const ToastContainer = props => (
-  <div 
-  style={{ 
-    position: "fixed", 
-    right: "40%", 
-    top: '30%' 
-  }} 
-  {...props} />
+  <div className="ToastContainer" {...props} />
 );
 const Toast = ({ children, onDismiss }) => {
   let cleartime = 1 ;
