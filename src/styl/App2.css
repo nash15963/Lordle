@@ -36,9 +36,16 @@ body::-webkit-scrollbar {
   display: grid;
   place-items: center;
 }
+@media (max-width: 900px) {
+  .letter {
+    width: 65px;
+    height: 65px;
+    margin: 0px 1.5px 0px 2px;
+  }
+}
 @media (max-width: 600px) {
   .letter {
-    width: 16%;
+    width: 55px;
     height: 55px;
     margin: 0px 1.5px 0px 2px;
   }
@@ -81,18 +88,20 @@ body::-webkit-scrollbar {
 }
 .toast {
   width: 180px;
-  height: 40px;
+  height: 30px;
+  border-radius: 5%;
   background-color: var(--color-tone-1);
   pointer: none;
-  line-height: 50px;
+  line-height: 40px;
   text-align: center;
-  margin: 10px;
+  margin: 30px;
   fontSize: 14;
-  margin: 10;
-  padding: 10;
+  margin: 30px;
+  padding: 10px;
   animation: "fadeIn";
   animationDuration: "1s";
   cursor: pointer;
+  z-index: 999;
 }
 .ToastContainer {
   position: fixed;
@@ -100,6 +109,19 @@ body::-webkit-scrollbar {
   top: 30%;
   color: #000;
   font-size: 20px;
+  font-family: 'Comic Sans MS';
+}
+@media (max-width: 900px) {
+  .ToastContainer {
+    top: 25%;
+    right: 32%;
+  }
+}
+@media (max-width: 600px) {
+  .ToastContainer {
+    top: 20%;
+    right: 13%;
+  }
 }
 .blackboard {
   width: 13%;
@@ -113,9 +135,16 @@ body::-webkit-scrollbar {
   animation: bounceIn;
   animation-duration: 1s;
 }
+@media (max-width: 900px) {
+  .blackboard {
+    width: 65px;
+    height: 65px;
+    margin: 0px 1.5px 0px 2px;
+  }
+}
 @media (max-width: 600px) {
   .blackboard {
-    width: 16%;
+    width: 55px;
     height: 55px;
     margin: 0px 1.5px 0px 2px;
   }
@@ -252,10 +281,15 @@ input:checked + .slider:before {
   grid-template-rows: repeat(6, 1fr);
   box-sizing: border-box;
 }
+@media (max-width: 900px) {
+  .board {
+    width: 90%;
+  }
+}
 @media (max-width: 600px) {
   .board {
     margin: 10px auto 0px auto;
-    width: 90%;
+    width: 100%;
   }
 }
 .row {
@@ -266,6 +300,11 @@ input:checked + .slider:before {
   display: flex;
   justify-content: center;
   margin-top: 5px;
+}
+@media (max-width: 900px) {
+  .row {
+    margin: 5px auto 0px auto;
+  }
 }
 @media (max-width: 600px) {
   .row {
@@ -291,6 +330,11 @@ input:checked + .slider:before {
   justify-content: center;
   margin: 3px;
 }
+@media (max-width: 900px) {
+  .line2 {
+    margin: 15px auto 15px auto;
+  }
+}
 @media (max-width: 600px) {
   .line2 {
     margin: 10px auto 15px auto;
@@ -313,10 +357,20 @@ input:checked + .slider:before {
   outline: none;
   border: none;
 }
+@media (max-width: 900px) {
+  .key {
+    width: 40px;
+    height: 53px;
+    display: grid;
+    place-items: center;
+  }
+}
 @media (max-width: 600px) {
   .key {
     width: 32px;
     height: 50px;
+    display: grid;
+    place-items: center;
   }
 }
 #big {
