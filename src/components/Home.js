@@ -15,7 +15,7 @@ const Home = () => {
     } = document.documentElement;
   if (scrollTop + clientHeight === scrollHeight){
     setTimeout(() => {
-      window.location.href ='./Description'
+      window.location.href ='./Game'
     }, "500")
 
     

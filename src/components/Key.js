@@ -18,7 +18,7 @@ function Key(props) {
       }
     }
   return (
-    <button className='key' id={props.bigKey ? 'big' :props.disabled && 'disabled'} onClick={selectLetter}>
+    <button className='key' id={(props.bigKey ? 'big' :props.disabled && 'disabled').toString()} onClick={selectLetter}>
         {props.keyVal}
     </button> 
   )

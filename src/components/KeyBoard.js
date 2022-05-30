@@ -55,7 +55,7 @@ function KeyBoard() {
       <div className="line3">
       <Key keyVal={"ENTER"} bigKey/>
         {keys3.map((key)=> {return <Key key={uuidv4()} keyVal={key} disabled ={disabledLetters.includes(key)}/> })}
-      <Key keyVal={"DELETE"} bigKey/>
+      <Key keyVal={"DEL"} bigKey/>
       </div>
     </div>
   )

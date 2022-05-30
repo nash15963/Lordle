@@ -26,7 +26,7 @@ function GameOver() {
     <div>
       <h2>Wait for minutes</h2>
       <h2>or</h2>
-      <h2>share Lordle</h2>
+      <h2>share with your friends</h2>
     </div> ;
   return (
     <div className='gameOver'>

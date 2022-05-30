@@ -36,6 +36,13 @@ body::-webkit-scrollbar {
   display: grid;
   place-items: center;
 }
+@media (max-width: 600px) {
+  .letter {
+    width: 16%;
+    height: 55px;
+    margin: 0px 1.5px 0px 2px;
+  }
+}
 #dark {
   background-color: #121212;
   color: #fff;
@@ -50,6 +57,9 @@ body::-webkit-scrollbar {
 #dark .question-open {
   background-color: var(--color-tone-7);
   color: var(--color-tone-1);
+}
+#dark .blackboard {
+  border: 2px solid var(--color-tone-3);
 }
 #light {
   background-color: #fff;
@@ -66,40 +76,8 @@ body::-webkit-scrollbar {
   background-color: var(--color-tone-1);
   color: var(--color-tone-7);
 }
-.question-open {
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  animation: topTObottom;
-  animation-duration: 1s;
-}
-.question-open p {
-  font-size: 16px;
-}
-.question-closed {
-  display: none;
-}
-.key {
-  width: 45px;
-  height: 55px;
-  margin: 0px 5px 0px 0px;
-  font-size: 14px;
-  font-family: var(--font-Family);
-  border-radius: 10%;
-  display: grid;
-  place-items: center;
-  outline: none;
-  border: none;
-}
-#big {
-  width: 90px;
-}
-#disabled {
-  background-color: #3a393c;
+#light .blackboard {
+  border: 2px solid var(--color-tone-3);
 }
 .toast {
   width: 180px;
@@ -126,7 +104,6 @@ body::-webkit-scrollbar {
 .blackboard {
   width: 13%;
   height: 45px;
-  border: 2px solid #5e5e5e;
   margin: 0px 2.5px 0px 2.5px;
   font-weight: bolder;
   font-family: 'Comic Sans MS';
@@ -136,6 +113,13 @@ body::-webkit-scrollbar {
   animation: bounceIn;
   animation-duration: 1s;
 }
+@media (max-width: 600px) {
+  .blackboard {
+    width: 16%;
+    height: 55px;
+    margin: 0px 1.5px 0px 2px;
+  }
+}
 header {
   height: var(--header-height);
   border-bottom: 1px solid var(--color-tone-4);
@@ -144,9 +128,9 @@ header {
   justify-content: space-between;
   gap: 50px;
 }
-@media (max-width: 415px) {
+@media (max-width: 600px) {
   header {
-    padding: 0 16px;
+    gap: 20px;
   }
 }
 header .title {
@@ -158,6 +142,12 @@ header .title {
   pointer-events: none;
   margin: 5px 0px 0px 70px;
   align-self: center;
+}
+@media (max-width: 600px) {
+  header .title {
+    font-weight: 600;
+    margin: 5px 0px 0px 50px;
+  }
 }
 .question {
   width: 20px;
@@ -237,16 +227,36 @@ input:checked + .slider:before {
   grid-template-rows: 7fr 3fr 10px;
   position: relative;
 }
+@media (max-width: 600px) {
+  #game {
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 6fr 4fr 10px;
+  }
+}
 #board-container {
   grid-column: 2/3;
   grid-row: 1/2;
+  display: grid;
+  place-items: center;
+}
+@media (max-width: 600px) {
+  #board-container {
+    grid-column: 1/1;
+  }
 }
 .board {
-  margin: 10px auto 5px auto;
+  margin: auto;
   width: 75%;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
   box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  .board {
+    margin: 10px auto 0px auto;
+    width: 90%;
+  }
 }
 .row {
   width: 100%;
@@ -257,9 +267,20 @@ input:checked + .slider:before {
   justify-content: center;
   margin-top: 5px;
 }
+@media (max-width: 600px) {
+  .row {
+    margin: 5px auto 0px auto;
+  }
+}
 .keyboard {
   grid-column: 1/4;
   grid-row: 2/3;
+}
+@media (max-width: 600px) {
+  .keyboard {
+    grid-column: 1/1;
+    margin: 20px auto 0px auto;
+  }
 }
 .line1 {
   display: flex;
@@ -270,10 +291,45 @@ input:checked + .slider:before {
   justify-content: center;
   margin: 3px;
 }
+@media (max-width: 600px) {
+  .line2 {
+    margin: 10px auto 15px auto;
+  }
+}
 .line3 {
   display: flex;
   justify-content: center;
   margin: 3px;
+}
+.key {
+  width: 45px;
+  height: 55px;
+  margin: 0px 5px 0px 0px;
+  font-size: 14px;
+  font-family: var(--font-Family);
+  border-radius: 10%;
+  display: grid;
+  place-items: center;
+  outline: none;
+  border: none;
+}
+@media (max-width: 600px) {
+  .key {
+    width: 32px;
+    height: 50px;
+  }
+}
+#big {
+  width: 90px;
+}
+@media (max-width: 600px) {
+  #big {
+    width: 52px;
+    font-size: 10px;
+  }
+}
+#disabled {
+  background-color: #3a393c;
 }
 .gameOver {
   border: 2px #000 solid;
@@ -282,11 +338,24 @@ input:checked + .slider:before {
   background-color: #fff;
   position: absolute;
   top: 16px;
-  left: 200px;
+  left: 25%;
   color: #000;
   box-shadow: 3px 3px #a4a2a2;
   animation: fadeInUpBig;
-  animation-duration: 2s;
+  animation-duration: 3s;
+}
+@media (max-width: 900px) {
+  .gameOver {
+    width: 520px;
+    top: 18%;
+    left: 2%;
+  }
+}
+@media (max-width: 600px) {
+  .gameOver {
+    top: 3%;
+    width: 95%;
+  }
 }
 .gameOver .statistic_close {
   width: 100%;
@@ -366,13 +435,28 @@ input:checked + .slider:before {
   animation: shakeX;
   animation-duration: 1s;
 }
+.question-open {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  animation: topTObottom;
+  animation-duration: 1s;
+}
+.question-open p {
+  font-size: 16px;
+}
+.question-closed {
+  display: none;
+}
 .descriptioninGame {
   width: 100%;
-  height: 100vh;
-}
-.close_description {
-  float: right;
-  cursor: pointer;
+  height: 530px;
+  display: grid;
+  place-items: center;
 }
 .description-textinGame {
   margin: 0px auto 0px auto;
@@ -381,6 +465,20 @@ input:checked + .slider:before {
   padding: 10px;
   position: absolute;
   left: 30%;
+}
+@media (max-width: 900px) {
+  .description-textinGame {
+    position: static;
+  }
+}
+@media (max-width: 600px) {
+  .description-textinGame {
+    width: 90%;
+  }
+}
+.description-textinGame .close_description {
+  float: right;
+  cursor: pointer;
 }
 .description-textinGame h4 {
   text-align: center;
@@ -400,6 +498,12 @@ input:checked + .slider:before {
   margin: 0px auto 0px auto;
   width: 70%;
 }
+@media (max-width: 600px) {
+  .description-textinGame .description-notice {
+    margin: 0px;
+    width: 100%;
+  }
+}
 .description-textinGame .description-notice .description-github {
   width: 30px;
   height: 30px;
@@ -410,6 +514,9 @@ input:checked + .slider:before {
 .description-textinGame .description-notice .letter-example {
   display: flex;
   flex-wrap: nowrap;
+}
+.description-textinGame .description-notice .letter-example .letter {
+  margin: 0px 3px 0px 0px;
 }
 .description-textinGame .description-notice span {
   margin: 0px 5px 0px 5px;
