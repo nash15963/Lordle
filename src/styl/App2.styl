@@ -40,7 +40,6 @@ body::-webkit-scrollbar {
     height: 45px
     margin: 0px 2.5px 0px 2.5px 
     font-weight: bolder;
-    color: white;
     font-family: 'Comic Sans MS';
     border-radius: 5%
     display: grid 
@@ -77,6 +76,19 @@ body::-webkit-scrollbar {
     .blackboard{
       border: 2px solid var(--color-tone-3)
     }
+    .ToastContainer{
+      color: var(--color-tone-7)
+      
+    }
+    .toast{
+      background-color: var(--color-tone-1)
+    }
+    #error{
+      background-color: #3c3c3d;
+    }
+    #disabled {
+      background-color: #3c3c3d;
+    }
 }
 #light{
   background-color: white 
@@ -85,8 +97,8 @@ body::-webkit-scrollbar {
         border: 2px solid rgb(190, 189, 189)
         }
     .key{
-        background-color: rgb(142, 141, 141)
-        color: var(--color-tone-1)
+        background-color: rgb(175, 173, 173)
+        color: var(--color-tone-7)
     }
     .question-open{
         background-color: var(--color-tone-1)
@@ -95,17 +107,25 @@ body::-webkit-scrollbar {
     .blackboard{
       border: 2px solid var(--color-tone-3)
     }
+    .ToastContainer{
+      color: var(--color-tone-1)
+    }
+    .toast{
+      background-color: var(--color-tone-7)
+    }
+    #error{
+      background-color: #7b7a7c;
+    }
+    #disabled {
+      background-color: #434243;
+    }
 }
-
-
-
-
 
 
 .toast{
     width: 180px
     height: 30px
-    border-radius: 5%
+    border-radius: 3%
     background-color: var(--color-tone-1)
     pointer:none
     line-height: 40px
@@ -120,21 +140,20 @@ body::-webkit-scrollbar {
     z-index: 999
 }
 .ToastContainer{
-    position: fixed
-    right: 42%
-    top: 30% 
-    color: black
+    position: absolute
+    right: 33%
+    top: 20% 
     font-size: 20px
     font-family: 'Comic Sans MS'
-    
+    z-index: 999
     @media(max-width:900px){
-      top: 25% 
-      right: 32%
+      top: 22% 
+      right: 25%
     }
 
     @media(max-width:600px){
       top: 20%    
-      right: 13%
+      right: 16%
     }
 }
 .blackboard{
@@ -332,10 +351,10 @@ input:checked + .slider:before {
   justify-content: center;
   margin: 3px;
   @media(max-width:900px){
-    margin: 15px auto 15px auto 
+    margin: 15px auto 20px auto 
   }
   @media(max-width:600px){
-    margin: 10px auto 15px auto   	  
+    margin: 12px auto 18px auto   	  
 }
 }
 .line3 {
@@ -355,17 +374,26 @@ input:checked + .slider:before {
     outline: none
     border: none
     @media(max-width:900px){
-    	width: 40px; 
+      margin: 0px 6px 0px 0px
+    	width: 42px; 
       height: 53px;
       display: grid
       place-items: center 
     }
     @media(max-width:600px){
+      margin: 0px 5px 0px 0px
     	width: 32px; 
-      height: 50px;
+      height: 52px;
       display: grid
       place-items: center 
     }
+}
+#correct_letter{
+  background-color: rgb(74, 208, 74) !important
+}
+
+#almost_letter{
+  background-color: rgba(239, 239, 66, 0.861) !important
 }
 #big {
     width: 90px;
@@ -374,9 +402,7 @@ input:checked + .slider:before {
         font-size: 10px
     }
 }
-#disabled {
-    background-color: #3a393c;
-}
+
 .gameOver{
   border: 2px black solid
   width: 400px
@@ -465,17 +491,15 @@ input:checked + .slider:before {
     }
 }
 #correct{
-  background-color: rgb(74, 208, 74)
+  background-color: rgb(74, 208, 74) !important
   animation: flipInX
   animation-duration: 1s
 }
 
 #almost{
-  background-color: rgba(239, 239, 66, 0.861)
+  background-color: rgba(239, 239, 66, 0.861) !important
 }
-#error{
-  background-color: #3a393c;
-}
+
 .foo{
   animation: shakeX 
   animation-duration: 1s
@@ -490,10 +514,6 @@ input:checked + .slider:before {
     z-index: 100
     animation: topTObottom 
     animation-duration: 1s
-    @media(max-width:800px){
-      // display: grid
-      // align-items: center
-    }
     p{
         font-size: 16px
     }
@@ -559,6 +579,7 @@ input:checked + .slider:before {
         .letter-example {
             display: flex
             flex-wrap: nowrap
+            
             .letter{
               margin: 0px 3px 0px 0px
             }

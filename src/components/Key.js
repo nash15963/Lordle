@@ -18,13 +18,14 @@ function Key(props) {
       }
     }
   return (
-    <button className='key' id={(props.bigKey ? 'big' :props.disabled && 'disabled').toString()} onClick={selectLetter}>
+    <button className='key' id={props.bigKey ? 'big' : (props.disabled ? 'disabled' : props.correct ? 'correct_letter' :props.almost ? 'almost_letter':'')} onClick={selectLetter}>
         {props.keyVal}
     </button> 
   )
 }
 
 export default Key
+
 
 // what is [...](擴展運算符)
 // var number = [1,2,3,4,5,6]

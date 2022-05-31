@@ -30,6 +30,9 @@ function Game() {
   //get存取狀態 
   const [wordSet, setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
+  const [correctLetters, setCorrectLetters] = useState([]);
+  const [almostLetters, setAlmostLetters] = useState([]);
+  
   const [todayAnswer, setTodayAnswer] = useState(()=>{
     const savedAnswer = localStorage.getItem("localAnswer");
     return savedAnswer || "";
@@ -76,7 +79,7 @@ function Game() {
     }
   },[todayAnswer])
 //提示字框
-  function Demo() {
+  function Toastopen() {
     const { add } = useToasts();
     add("Not In Word List")
     setOutList(false)
@@ -128,7 +131,7 @@ function Game() {
       // alert("Word not found");
       let row = document.querySelector(`.board .row:nth-child(${currAttempt.attempt+1})`)
       row.classList.toggle('foo')
-      // add Toast Component 3 secs
+      // add Toast Component 
       setOutList(true)
     }
     if(currWord === correctWord){
@@ -193,11 +196,12 @@ function Game() {
       <AppContex.Provider value={
         {board, setBoard ,currAttempt , setCurrAttempt,onSelectLetter,
           onDelete,onEnter,correctWord,disabledLetters, setDisabledLetters,
+          correctLetters, setCorrectLetters ,almostLetters, setAlmostLetters ,
           gameOver, setGameOver ,playedCount,winCount}
       }>
       <div id ="game">
       <ToastProvider>
-        {outList ?<Demo/> :''}
+        {outList ?<Toastopen/> :''}
       </ToastProvider>
       <div id='board-container'><Board/></div>
       <Keyboard></Keyboard>

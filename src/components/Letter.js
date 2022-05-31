@@ -4,7 +4,8 @@ import { AppContex } from './Game'
 function Letter({attempVal ,letterPos}) {
     
 
-    const { board ,correctWord ,currAttempt, setDisabledLetters} = useContext(AppContex)
+    const { board ,correctWord ,currAttempt, setDisabledLetters
+      , setCorrectLetters , setAlmostLetters} = useContext(AppContex)
     const letter = board[attempVal][letterPos]
 
     const correct  = correctWord.toUpperCase()[letterPos] === letter ;
@@ -20,9 +21,14 @@ function Letter({attempVal ,letterPos}) {
     useEffect(()=>{
       const handleLetterState =()=>{
         if(letter !== "" && !correct && !almost){   //輸入字母篩選條件 不為空 不正確 且長得不像
-          // console.log(letter);
           setDisabledLetters((prev) => [...prev, letter]);
-          // console.log(disabledLetters)   //null   //it should fix it !
+          // console.log(disabledLetters)   //null   
+        }
+        if(letter !== "" && !almost && correct){
+          setCorrectLetters((prev)=>[...prev ,letter]) ;
+        }
+        if(letter !== "" && almost && !correct){
+          setAlmostLetters((prev)=>[...prev ,letter]) ;
         }
       }
       handleLetterState()
