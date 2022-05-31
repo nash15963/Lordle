@@ -10,7 +10,7 @@ function Key(props) {
     const selectLetter =()=>{
       if(props.keyVal === 'ENTER'){
         onEnter()
-      }else if(props.keyVal === 'DELETE'){
+      }else if(props.keyVal === 'DEL'){
         onDelete()
       }
       else{
