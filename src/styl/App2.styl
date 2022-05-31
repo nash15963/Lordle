@@ -171,11 +171,13 @@ body::-webkit-scrollbar {
       width: 65px
       height: 65px
     	margin: 0px 1.5px 0px 2px
+      font-size: 38px
     }
     @media(max-width:600px){
     	width: 55px
       height: 55px
     	margin: 0px 1.5px 0px 2px
+      font-size: 38px
     }
 }
 header{
@@ -345,12 +347,20 @@ input:checked + .slider:before {
 .line1 {
     display: flex;
     justify-content: center
+    @media (max-width :900px) {
+      margin: 3px auto 2px auto;
+      width: 95%
+    }
+    @media(max-width:600px){
+      width: 95%  	  
+  }
 }
 .line2 {
   display: flex;
   justify-content: center;
   margin: 3px;
   @media(max-width:900px){
+    width: 80%
     margin: 15px auto 20px auto 
   }
   @media(max-width:600px){
@@ -361,14 +371,21 @@ input:checked + .slider:before {
   display: flex;
   justify-content: center;
   margin: 3px;
+  @media (max-width :900px) {
+      margin: 0px auto 2px auto;
+      width: 95%
+    }
+   @media(max-width:600px){
+      width: 95%  	  
+  }
 }
 .key {
     width: 45px;
     height: 55px;
     margin: 0px 5px 0px 0px
-    font-size: 14px;
+    font-size: 18px;
     font-family: var(--font-Family)
-    border-radius: 10%
+    border-radius: 4px
     display: grid
     place-items: center 
     outline: none
@@ -377,17 +394,37 @@ input:checked + .slider:before {
       margin: 0px 6px 0px 0px
     	width: 42px; 
       height: 53px;
-      display: grid
-      place-items: center 
+      font-size: 18px
+      display: flex
+      flex: 1
+      justify-content: center
+      align-items: center 
     }
     @media(max-width:600px){
       margin: 0px 5px 0px 0px
     	width: 32px; 
-      height: 52px;
-      display: grid
-      place-items: center 
+      height: 53px;
+      font-size: 18px
     }
 }
+
+// Safari only !!
+@media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) {
+    .key { 
+        color:#0000FF
+        background-color:#CCCCCC
+        @media(max-width:600px){
+          margin: 0px 5px 0px 0px
+          width: 32px; 
+          height: 53px;
+          font-size: 18px
+          padding-left: 2px
+    }
+    }
+}}
+
+
 #correct_letter{
   background-color: rgb(74, 208, 74) !important
 }
