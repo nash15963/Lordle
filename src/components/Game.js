@@ -150,7 +150,7 @@ function Game() {
       localStorage.removeItem('localAttempt')
       return ;
     }
-    if (currAttempt.attempt === 5) {
+    if (currAttempt.attempt === 5 ) {
       setGameOver({ gameOver: true, guessedWord: false });
       // localStorage.clear()
       setgameDown(<GameOver />)
