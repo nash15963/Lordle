@@ -20,6 +20,8 @@
 body {
   padding: 0% 
   margin: 0
+  overflow-y: hidden /* Hide vertical scrollbar */
+  overflow-x: hidden /* Hide horizontal scrollbar */
 }
 body::-webkit-scrollbar {
     display: none;
@@ -93,6 +95,7 @@ body::-webkit-scrollbar {
 #light{
   background-color: white 
   color: black
+
     .letter{
         border: 2px solid rgb(190, 189, 189)
         }
@@ -212,6 +215,13 @@ header{
   border-radius: 50%
   cursor: pointer
 }
+.setting{
+  width: 20px
+  height:20px
+  margin: 0px 5px 0px 20px
+  border-radius: 50%
+  cursor: pointer
+}
 
 // night_controller set
 .night_controller{
@@ -292,9 +302,10 @@ input:checked + .slider:before {
     position: relative
 
     @media(max-width:600px){
-      width: 100%
-      grid-template-columns: 5px 1fr 5px 
-      grid-template-rows:  6fr 4fr 10px 
+      width: 95%
+      // grid-template-columns: 5px 1fr 5px 
+      // grid-template-rows:  6fr 4fr 10px 
+      display: block
     }
 }
 #board-container {
@@ -303,7 +314,8 @@ input:checked + .slider:before {
   display: grid 
   place-items: center
   @media(max-width:600px){
-    grid-column: 2/3    
+    // grid-column: 2/3
+    margin: 0px auto     
     }
 }
 .board{
@@ -313,7 +325,7 @@ input:checked + .slider:before {
     grid-template-rows: repeat(6, 1fr);
     box-sizing: border-box;
     @media(max-width:900px){
-      width: 95% 
+      width: 100% 
     }
     @media(max-width:600px){
       margin: 10px auto 0px auto
@@ -330,6 +342,7 @@ input:checked + .slider:before {
     margin-top: 5px
     @media(max-width:900px){
       margin: 5px auto 0px auto
+      flex-wrap: nowrap
     }
     @media(max-width:600px){
     	 margin: 5px auto 0px auto
@@ -340,7 +353,7 @@ input:checked + .slider:before {
   grid-row: 2/3
   user-select: none 
   @media(max-width:600px){
-    grid-column: 2/3
+    // grid-column: 2/3
     margin: 15px 0px 0px 0px
   }
 }
@@ -362,10 +375,10 @@ input:checked + .slider:before {
   margin: 3px;
   @media(max-width:900px){
     width: 80%
-    margin: 15px auto 20px auto 
+    margin: 20px auto 20px auto 
   }
   @media(max-width:600px){
-    margin: 12px auto 18px auto   	  
+    margin: 18px auto 18px auto   	  
 }
 }
 .line3 {
@@ -403,7 +416,7 @@ input:checked + .slider:before {
     }
     @media(max-width:600px){
       margin: 0px 5px 0px 0px
-    	width: 32px; 
+    	width: 29px; 
       height: 53px;
       font-size: 18px
     }
@@ -559,6 +572,23 @@ input:checked + .slider:before {
 .question-closed{
     display: none
 }
+.setting-open{
+    display: block
+    width 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 100
+    animation: topTObottom 
+    animation-duration: 1s
+    p{
+        font-size: 16px
+    }
+}
+.setting-closed{
+    display: none
+}
 
 .descriptioninGame{
   width: 100%
@@ -566,6 +596,10 @@ input:checked + .slider:before {
   display: grid
   place-items: center
 }
+.settinginGame{
+  width: 100%
+  height: 530px
+  }
 .description-textinGame{
     margin: 0px auto 0px auto
     width: 490px

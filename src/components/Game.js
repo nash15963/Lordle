@@ -5,6 +5,8 @@ import Question from './Question'
 import NightMode from './NightMode'
 import night_img from '../img/night_mode.png'
 // import question from '../img/question.png'
+
+import Setting from './Setting'
 import GameOver from './GameOver'
 import 'animate.css';
 import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../Words'
@@ -12,11 +14,16 @@ import { createContext ,useEffect,useState } from 'react'
 import { ToastProvider, useToasts } from "../components/hooks/toast-manager";
 
 
+
 export const AppContex = createContext()
 
 // const KeyBoardArray = 'access'
 
 function Game() {
+  const [memberTemp ,setMemberTemp] = useState(()=>{
+    const memberTemp = JSON.parse(localStorage.getItem("username"))
+    return memberTemp || ''
+  })
   const [board, setBoard] = useState(()=>{
     // const savedBoard = localStorage.getItem("userAnswer");
     const savedBoard = JSON.parse(localStorage.getItem("userAnswer"))
@@ -61,8 +68,14 @@ function Game() {
     return commercial ? JSON.parse(commercial) : false
   }
   let commercial = onCommercial()
-
+  // const memberTemp = JSON.parse(localStorage.getItem("username"))
+  // const member = useRef(memberTemp)
   useEffect(()=>{
+    
+    if(memberTemp === ''){
+      setMemberTemp('')
+      window.location.href ='./'
+    }
     if(todayAnswer !== ""){
       console.log(todayAnswer)
       generateSavedAnswer()
@@ -184,13 +197,16 @@ function Game() {
     <div className="App" id={theme}>
       <header>
         {/* <Question /> */}
-        <Question></Question>
+        
+        <span>hi  {memberTemp}</span>
         <p className='title'>Lordle</p>
+        {/* <Rank></Rank> */}
+        <Setting></Setting>
+        <Question></Question>
         <div className='night_controller'>
         <img src={night_img} alt="night_img" />
         <NightMode toggleTheme={toggleTheme}  theme={theme} />
         </div>
-        {/* <Login /> */}
       </header>
       
       <AppContex.Provider value={
@@ -207,7 +223,6 @@ function Game() {
       <Keyboard></Keyboard>
       {gameDown}
       {commercial ? <GameOver/> : ''}
-      {/* {gameOver.gameOver ? <GameOver /> : ''} */}
       </div>
       </AppContex.Provider>
       
