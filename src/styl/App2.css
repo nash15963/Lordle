@@ -681,6 +681,37 @@ input:checked + .slider:before {
   animation-delay: 3s;
   background-color: #3a393c;
 }
+.rank_img {
+  width: 20px;
+  height: 20px;
+  margin: 5px 5px 0px 3px;
+  border-radius: 50%;
+}
+.rank-open {
+  display: block;
+  border: 2px #000 solid;
+  width: 400px;
+  height: auto;
+  background-color: #fff;
+  position: absolute;
+  top: 16px;
+  left: 25%;
+  color: #000;
+  z-index: 100;
+}
+.rank-open p {
+  font-size: 16px;
+}
+.rank-closed {
+  display: none;
+}
+.logout_img {
+  width: 20px;
+  height: 20px;
+  margin: 5px 5px 0px 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
 @-moz-keyframes topTObottom {
   0% {
     top: -100%;

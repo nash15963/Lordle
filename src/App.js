@@ -1,6 +1,7 @@
 import React , { useState } from 'react'
 // import Home from './components/Home'
 import Game from './components/Game'
+import Gamein6 from './components/Gamein6'
 import Login from './components/Login'
 import './styl/App2.css'
 import { BrowserRouter,Routes,Route } from "react-router-dom";
@@ -17,6 +18,7 @@ function App() {
       {/* <Route path='/Description' element={<Discription/>}/> */}
       <Route path="/" element={<Login setMember={setMember}/>} />
       <Route path="/Game" element={<Game member={member}/>} />
+      <Route path="/HardGame" element={<Gamein6 member={member}/>} />
     </Routes>
     </BrowserRouter>
     </div>

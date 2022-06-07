@@ -8,7 +8,7 @@ import {
   deleteDoc,
   doc,
   getDoc,
-  query, where
+  query, where,setDoc
 } from "firebase/firestore";
 
 
@@ -21,10 +21,6 @@ const Login = ({setMember}) => {
     // const signup = ()=>{
 
     // }
-    const memberStatus = JSON.parse(localStorage.getItem("username"))
-    if (memberStatus !== ''){
-        window.location.href ='./Game'
-    }
     const [usernameReg , setUsernameReg] = useState('')
     const [passwordReg , setPasswordReg] = useState('')
     const [username , setUsername] = useState('')
@@ -33,43 +29,40 @@ const Login = ({setMember}) => {
 
     const handleSignup =async (e)=>{
         e.preventDefault()
-        let usersCollectionRef = collection(db,usernameReg); 
-        let usernameResult = await getDocs(usersCollectionRef)
-        console.log(usernameResult)
-        if (usernameResult.empty === false){
-            console.log('有了')
+        let docRef = doc(db, "users",usernameReg);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data());
             setUsernameMessage('這個名稱已有人使用')
-        }
-        else{
-            await addDoc(usersCollectionRef, { password: passwordReg });
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+            let usersCollectionRef = collection(db,'users');
+            await setDoc(doc(usersCollectionRef,usernameReg), {
+                password:passwordReg,points:Number(0)});
             setUsernameMessage('註冊成功')
-            setMember(usernameReg)
             localStorage.setItem('username' ,usernameReg)
             window.location.href ='./Game'
-        }
-        
+          }
     }
     const handleLogin =async(e)=>{
         e.preventDefault() ;
-        let usersCollectionRef = collection(db,username); 
-        let usernameResult = await getDocs(usersCollectionRef)
-        if(usernameResult.empty === true){
-            console.log('您還未註冊')
-        }
-        else{
-            usernameResult.forEach(doc => {
-            console.log(doc.data().password);
-            if(password === doc.data().password){
-                console.log('登入成功')
+        let docRef = doc(db, "users",username);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data());
+            if(docSnap.data().password === password){
+                setUsernameMessage('登入成功')
                 localStorage.setItem('username' ,username)
-                setMember(username)
                 window.location.href ='./Game'
             }
             else{
-                console.log('密碼錯誤')
+                setUsernameMessage('密碼錯誤')
             }
-            });
-        }
+          } else {
+            // doc.data() will be undefined in this case
+            setUsernameMessage('未註冊或帳號錯誤')
+          }
     }
 
   return (
