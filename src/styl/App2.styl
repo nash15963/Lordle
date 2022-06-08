@@ -186,32 +186,46 @@ body::-webkit-scrollbar {
 header{
     height: var(--header-height)
     border-bottom: 1px solid var(--color-tone-4)
-    display: flex
-    align-items: center
-    justify-content: space-between
+    
     gap: 50px
     @media (max-width:600px) {
         gap: 20px
     }
     .title{
+      display: inline-block
       font-family: var(--font-Family)
       font-weight: 700 
       font-size: 37px;
       letter-spacing: 0.01em 
-      text-align: center
       pointer-events: none 
-      margin: 5px 0px 0px 70px
-      align-self :center
+      margin-left: 45%
       @media(max-width:600px){
         font-weight: 600 
         margin: 5px 0px 0px 50px
+      }
     }
+    .func_bar{
+      margin: 10px 10px auto 0px
+      float: right
+      display: flex
+      align-items:center
+      justify-content: flex-end
+      width: 45%
     }
+}
+.hard_mode{
+  margin-right: 40px
+  font-size: 20px
+  font-weight: bold
+  cursor : pointer
+  &:hover{
+    color: rgb(158, 157, 157)
+  }
 }
 .question{
   width: 20px
   height:20px
-  margin: 0px 5px 0px 20px
+  margin-right: 40px
   border-radius: 50%
   cursor: pointer
 }
@@ -226,7 +240,7 @@ header{
 // night_controller set
 .night_controller{
   display: flex
-  margin: 0px 20px 0px 5px
+  margin-right: 40px
   img{
     width: 20px
     height:20px
@@ -682,21 +696,21 @@ input:checked + .slider:before {
   height:20px
   margin: 5px 5px 0px 3px
   border-radius: 50%
+  cursor:pointer
 }
 .rank-open{
+    border-radius: 5px
     display: block
     border: 2px black solid
     width: 400px
     height: auto
     background-color: white
     position: absolute
-    top: 16px
-    left: 25%
+    top: 10%
+    left: 35%
     color: black
     // box-shadow: 3px 3px rgb(164, 162, 162)
     z-index: 100
-    // animation: fadeInUpBig
-    // animation-duration: 3s
     // animation: topTObottom 
     // animation-duration: 1s
     p{
@@ -706,14 +720,199 @@ input:checked + .slider:before {
 .rank-closed{
   display: none
 }
+.rank{
+  margin-right: 40px
+  .rank_title{
+    text-align: center
+  }
+  h1{
+    display:inline-block
+  }
+  h1:nth-child(1){
+    margin-left: 40px
+  }
+  h1:nth-child(2){
+    float: right
+    margin-right: 20px
+    cursor: pointer
+  }
+  .rank_board{
+    text-align: center
+  }
+  h4:nth-child(1){
+    margin-top: 0px
+  }
+  li{
+    margin: 5px auto 5px auto
+    width: 260px
+    position: relative
+    .rank_name{
+      position: absolute
+      left: 10px
+    }
+    .rank_username{
+      position: absolute
+      left: 60px
+    }
+    .rank_userpoints{
+      position: absolute
+      left: 160px
+    }
+    .rank_points{
+      position: absolute
+      left: 190px
+    }
+  }
+}
 .logout_img{
   width: 20px
   height:20px
-  margin: 5px 5px 0px 3px
+  margin-right: 40px
   border-radius: 50%
   cursor: pointer
 }
+.login{
+  position: fixed;
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  z-index: -999
+  background-color: black
 
+  .loginDiv{
+    width: 500px
+    height: 300px
+    text-align: center
+    margin: 260px auto 10px auto
+    color: white
+    .second_slogan{
+      margin: 20px auto 20px auto
+      font-size: 20px
+    }
+    .outBlock{
+      color: white
+      // margin: 140px 0px 0px 0px
+      font-size: 80px
+      position: relative
+      font-weight: bold
+
+    }
+    .textBlock{
+      position: absolute
+      top: -120px
+      left: 1%
+      font-size: 120px
+      font-weight: bold
+    }
+    .textBlock::before {
+      content: attr(data-content);
+      position: absolute;
+      top: -30px;
+      height: 50px;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.804)
+    }
+
+  .textBlock::after {
+      content: attr(data-content);
+      position: absolute;
+      top: -60px;
+      left: 0px;
+      height: 50px;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.571)
+    }
+    h3{
+      color: white
+    }
+    .formDiv{
+      margin: 0px auto
+      width: 450px
+      border: 2px solid white
+      border-radius: 5px
+      h3{
+        margin: 10px auto 5px auto
+      }
+    }
+    input{
+      width: 300px
+      height 20px
+      border-radius: 5px
+    }
+    button{
+      background-color: white
+      border: none
+      color: black
+      padding: 8px 20px
+      text-align: center
+      text-decoration: none
+      display: inline-block
+      font-size: 16px
+      margin: 4px 2px
+      cursor: pointer
+      border-radius: 5px
+    }
+    button:hover{
+      background-color: rgb(225, 219, 219)
+    }
+    .login_note{
+      margin: 10px auto
+      font-size: 15px
+    }
+    // button :hover{
+    //   background-color: gray
+    // }
+    span{
+      color: red
+      cursor: pointer
+    }
+  }
+}
+  .notification{
+    display: block
+    background-color: white
+    width: 400px
+    height: 80px
+    position: absolute
+    top: 20%
+    left: 35%
+    z-index: 500
+    text-align: center
+    border-radius: 5px
+    p{
+      color: black
+    }
+    .button_controll{
+      display: flex
+      justify-content: space-around
+    }
+  }
+  .notification_close{
+    display: none
+  }
+  .logout_sign{
+    display: block
+    background-color: white
+    width: 400px
+    height: 80px
+    position: absolute
+    top: 20%
+    left: 35%
+    z-index: 500
+    text-align: center
+    border-radius: 5px
+    p{
+      color: black
+    }
+    .button_controll{
+      display: flex
+      justify-content: space-around
+    }
+  }
+  .logout_close{
+    display: none
+  }
     // @media(max-width:900px){
       
     // }

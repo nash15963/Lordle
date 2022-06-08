@@ -1,14 +1,14 @@
-import Board from './Board'
-import Keyboard from './KeyBoard'
-import Header from './Header'
+import Boardsin6 from './Boardsin6'
+import Keyboardin6 from './KeyBoardin6'
+import GameOverin6 from './GameOverin6'
 
-import GameOver from './GameOver'
+import Header from '../Header'
 import 'animate.css';
-import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../Words'
+import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../../Wordsin6'
 import { createContext ,useEffect,useState } from 'react'
-import { ToastProvider, useToasts } from "../components/hooks/toast-manager";
+import { ToastProvider, useToasts } from "../hooks/toast-manager";
 
-import { db } from "../config";
+import { db } from "../../config";
 import {
   collection,
   getDocs,
@@ -24,15 +24,15 @@ export const AppContex = createContext()
 
 // const KeyBoardArray = 'access'
 
-function Game({member}) {
+function Gamein6({member}) {
   const [memberTemp ,setMemberTemp] = useState(()=>{
     const memberTemp = localStorage.getItem("username")
     return memberTemp || ''
   })
   const [board, setBoard] = useState(()=>{
-
   const savedBoard = JSON.parse(localStorage.getItem("userAnswer"))
-    return savedBoard || boardDefault }) 
+    return savedBoard || boardDefault 
+  }) 
   const [currAttempt , setCurrAttempt] = useState(()=>{
     const saveAttempt = JSON.parse(localStorage.getItem("localAttempt"))
     return saveAttempt || {attempt:0 ,letterPos :0} ;
@@ -90,6 +90,7 @@ function Game({member}) {
     else{
       generateWordSet()
       .then((words)=>{
+        console.log('generateWordSet')
         setWordSet(words.wordSet);
         setCorrectWord(words.todaysWord)
       })
@@ -106,7 +107,7 @@ function Game({member}) {
   
   //從Key.js移動過來
   const onSelectLetter =(keyVal)=>{
-    if(currAttempt.letterPos>4) return ;  
+    if(currAttempt.letterPos>5) return ;  
     const newBoard =[...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
     // console.log([currAttempt.attempt],[currAttempt.letterPos])
@@ -128,17 +129,18 @@ function Game({member}) {
     // console.log(newBoard) //words.js做的matrix 
   }
   const onEnter =()=>{
-    // console.log('ok') //form Key.js
-    if(currAttempt.letterPos!==5) return ;
+    if(currAttempt.letterPos!== 6) return ;
     let currWord = "";
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       currWord += (board[currAttempt.attempt][i]).toLowerCase();
     }
     currWord = currWord + '\r'  //換行後的字串
-    // console.log(currWord)
-    // console.log(wordSet)
+    console.log(currWord)
+    console.log(wordSet)
+    console.log(currWord)
+    console.log(correctWord)
     if (wordSet.has(currWord)) {
-      // console.log(board)
+      console.log(board)
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos :0 });  //往下一行，letterPos為0   set增加attempt
       // console.log('hihi')
       localStorage.setItem('userAnswer',JSON.stringify(board));  //在local存取玩家作答
@@ -158,19 +160,19 @@ function Game({member}) {
         console.log(String(memberTemp))
         let docRef = doc(db, "users",String(memberTemp));
         const docSnap = await getDoc(docRef);
-        if (docSnap.data().points) {
-          console.log(docSnap.data().points);
-          const newFields = { points: docSnap.data().points + 1 };
+        if (docSnap.data().hard_points) {
+          console.log(docSnap.data().hard_points);
+          const newFields = { points: docSnap.data().hard_points + 1 };
           await updateDoc(docRef, newFields);
         } else {
           // doc.data() will be undefined in this case
           console.log('oops');
-          const newFields = { points: 1 };
+          const newFields = { hard_points: 1 };
           await updateDoc(docRef, newFields);
         }
       };
       updatePoints()
-      setgameDown(<GameOver />)
+      setgameDown(<GameOverin6 />)
       const handleNumber =()=>{
         // setPlayedCount((curr)=>curr+1) 
         localStorage.setItem('playedCount' ,playedCount+1)
@@ -186,7 +188,7 @@ function Game({member}) {
     if (currAttempt.attempt === 5 ) {
       setGameOver({ gameOver: true, guessedWord: false });
       // localStorage.clear()
-      setgameDown(<GameOver />)
+      setgameDown(<GameOverin6 />)
       localStorage.setItem('playedCount' ,playedCount+1)
       // const handleNumber =()=>{
       //   localStorage.setItem('playedCount' ,playedCount+1)
@@ -208,6 +210,7 @@ function Game({member}) {
 
 
   return (
+    // <div className="Gamein6" id={theme}>
     <div className="App" id={theme}>
       <Header theme={theme} setTheme={setTheme} member={member}></Header>
       
@@ -221,10 +224,10 @@ function Game({member}) {
       <ToastProvider>
         {outList ?<Toastopen/> :''}
       </ToastProvider>
-      <div id='board-container'><Board/></div>
-      <Keyboard></Keyboard>
+      <div id='board-container'><Boardsin6/></div>
+      <Keyboardin6/>
       {gameDown}
-      {commercial ? <GameOver/> : ''}
+      {commercial ? <GameOverin6/> : ''}
       </div>
       </AppContex.Provider>
       
@@ -232,5 +235,5 @@ function Game({member}) {
   );
 }
 
-export default Game;
+export default Gamein6;
 

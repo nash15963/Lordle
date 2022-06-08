@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContex } from './Game'
-import Clock from './Clock'
+import Clock from '../Clock'
 
 function GameOver() {
     const {gameOver ,correctWord ,currAttempt ,playedCount,winCount} = useContext(AppContex) 

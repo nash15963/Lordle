@@ -1,7 +1,7 @@
 import React , { useState } from 'react'
 // import Home from './components/Home'
-import Game from './components/Game'
-import Gamein6 from './components/Gamein6'
+import Game from './components/5letters/Game'
+import Gamein6 from './components/6letters/Gamein6'
 import Login from './components/Login'
 import './styl/App2.css'
 import { BrowserRouter,Routes,Route } from "react-router-dom";

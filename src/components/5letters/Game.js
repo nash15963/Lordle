@@ -1,14 +1,14 @@
 import Board from './Board'
 import Keyboard from './KeyBoard'
-import Header from './Header'
+import Header from '../Header'
 
 import GameOver from './GameOver'
 import 'animate.css';
-import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../Words'
+import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../../Words'
 import { createContext ,useEffect,useState } from 'react'
-import { ToastProvider, useToasts } from "../components/hooks/toast-manager";
+import { ToastProvider, useToasts } from "../hooks/toast-manager";
 
-import { db } from "../config";
+import { db } from "../../config";
 import {
   collection,
   getDocs,
@@ -67,6 +67,7 @@ function Game({member}) {
     return winCount ? JSON.parse(winCount) : 0
   }
   let winCount =onwinCount() //勝利次數
+  
   const onCommercial = ()=>{
     const commercial = localStorage.getItem('commercial')
     return commercial ? JSON.parse(commercial) : false
