@@ -24,8 +24,11 @@ const Login = ({setMember}) => {
     const [usernameMessage , setUsernameMessage] = useState('')
     const [flip , setFlip] = useState(true)
 
+    const [btnMes , setBtnMes] = useState(true)
+
     const handleSignup =async (e)=>{
         e.preventDefault()
+        setBtnMes(false)
         let docRef = doc(db, "users",usernameReg);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
@@ -44,6 +47,7 @@ const Login = ({setMember}) => {
     }
     const handleLogin =async(e)=>{
         e.preventDefault() ;
+        setBtnMes(false)
         let docRef = doc(db, "users",username);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
@@ -66,6 +70,7 @@ const Login = ({setMember}) => {
 
   return (
     <div className='login'>
+
         <div className='loginDiv'>
         <div class="outBlock">
             <div class="textBlock" data-content="LORDLE">
@@ -76,11 +81,13 @@ const Login = ({setMember}) => {
         {flip ?
         <LoginEle 
         setUsername={setUsername} setPassword={setPassword} handleLogin={handleLogin} 
-        setFlip={setFlip} usernameMessage={usernameMessage} setUsernameMessage={setUsernameMessage} /> 
+        setFlip={setFlip} usernameMessage={usernameMessage} setUsernameMessage={setUsernameMessage} btnMes={btnMes}/> 
         :
         <SignupEle setUsernameReg={setUsernameReg} setPasswordReg={setPasswordReg} handleSignup={handleSignup} 
-        setFlip={setFlip} usernameMessage={usernameMessage} setUsernameMessage={setUsernameMessage}/>}
+        setFlip={setFlip} usernameMessage={usernameMessage} setUsernameMessage={setUsernameMessage} btnMes={btnMes}/>
+        }
         </div>
+
     </div>
   )
 }
