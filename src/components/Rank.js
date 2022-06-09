@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 
-const Rank = ({member}) => {
+const Rank = ({member ,setMask}) => {
   const [rankClick, setRankClick] = useState('rank-closed')
   const [rankDict , setRankDict] = useState([])
   const [hardRankDict , setHardRankDict] = useState([])
@@ -14,10 +14,12 @@ const Rank = ({member}) => {
   const [personHardPoint , setPersonHardPoint] = useState(0)
   const toggleRank =()=>{
     setRankClick('rank-open')
+    setMask('mask')
     }
 
   const closedRank =()=>{
     setRankClick('rank-closed')
+    setMask('mask-closed')
   }
   useEffect(()=>{
     // 全體簡單排行
@@ -51,7 +53,7 @@ const Rank = ({member}) => {
       const memberTemp = localStorage.getItem("username")
       let docRef = doc(db, "users",memberTemp);
       const docSnap = await getDoc(docRef);
-      console.log(docSnap.data())
+      // console.log(docSnap.data())
       setPersonPoint(docSnap.data().points)
     } 
     personRank()
@@ -60,7 +62,7 @@ const Rank = ({member}) => {
       const memberTemp = localStorage.getItem("username")
       let docRef = doc(db, "users",memberTemp);
       const docSnap = await getDoc(docRef);
-      console.log(docSnap.data())
+      // console.log(docSnap.data())
       setPersonHardPoint(docSnap.data().hard_points)
     }
     personalHardRank()

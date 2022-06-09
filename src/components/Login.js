@@ -28,7 +28,6 @@ const Login = ({setMember}) => {
   // 模擬會員登入掛上session 
     const preventLoginJump =()=>{
       let handleSession = localStorage.getItem('username')
-      console.log(handleSession)
       return handleSession || ''
     }
     let memberStatus =  preventLoginJump()
@@ -46,6 +45,7 @@ const Login = ({setMember}) => {
         const docSnap = await getDoc(docRef);
         try{
         if (docSnap.exists()) {
+            setBtnMes(true)
             console.log("Document data:", docSnap.data());
             setUsernameMessage('這個名稱已有人使用')
           } else {
@@ -59,13 +59,16 @@ const Login = ({setMember}) => {
                 total:Number(0),
                 hard_total:Number(0),
                 fail:Number(0),
-                hard_fail:Number(0)});
+                hard_fail:Number(0)
+              });
+            setBtnMes(true)  
             setUsernameMessage('註冊成功')
             localStorage.setItem('username' ,usernameReg)
             window.location.href ='./Game'
           }
         }
         catch(error){
+          setBtnMes(true)
           console.log('error')
           setUsernameMessage('停滯時間過長，請重新整理網頁')
         }
@@ -80,21 +83,25 @@ const Login = ({setMember}) => {
         {
         if (docSnap.exists()) {
             console.log("Document data:", docSnap.data());
+            setBtnMes(true)
             if(docSnap.data().password === password){
                 setUsernameMessage('登入成功')
                 localStorage.setItem('username' ,username)
                 window.location.href ='./Game'
             }
             else{
-                setUsernameMessage('密碼錯誤')
+              setBtnMes(true)
+              setUsernameMessage('密碼錯誤')
             }
           } else {
             // doc.data() will be undefined in this case
+            setBtnMes(true)
             setUsernameMessage('未註冊或帳號錯誤')
           }
         }
         catch(error){
           console.log('error')
+          setBtnMes(true)
           setUsernameMessage('請登出會員或重新整理頁面')
         }
     }
@@ -103,7 +110,6 @@ const Login = ({setMember}) => {
 
   return (
     <div className='login'>
-
         <div className='loginDiv'>
         <div class="outBlock">
             <div class="textBlock" data-content="LORDLE">

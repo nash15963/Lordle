@@ -8,6 +8,7 @@ import profile_png from '../img/profile.jpg'
 import Profile from './Profile'
 
 const Header = ({theme , setTheme,member}) => {
+  const [mask , setMask] = useState('mask-closed')
   const [hard, setHard] = useState(()=>{
     const gamemode = localStorage.getItem("gamemode")
     return gamemode || 'Hard'
@@ -47,18 +48,27 @@ const Header = ({theme , setTheme,member}) => {
   return (
     <header>
 
-        <div className='mask'></div>
+        <div className={mask}></div>
         <div className='title'>Lordle</div>
       <div className='func_bar'>
-        <img src={profile_png} alt="profile_png" className='profile_img' onClick={()=>{setProfile(true)}}/>
-        {profile ? <Profile profile={profile} setProfile={setProfile}></Profile> : ''}
-        <Rank member={member}></Rank>
-        <span className='hard_mode' onClick={()=>{setHardSign('notification')}}>{hard}</span>
+        <img src={profile_png} alt="profile_png" className='profile_img' onClick={()=>{
+          setProfile(true)
+          setMask('mask')
+        }}/>
+        {profile ? <Profile profile={profile} setProfile={setProfile} setMask={setMask}/> : ''}
+        <Rank member={member} setMask={setMask}></Rank>
+        <span className='hard_mode' onClick={()=>{
+          setHardSign('notification')
+          setMask('mask')
+        }}>{hard}</span>
         <div className={hardSign}>
           <p>If you leave now, you will lose record ?</p>
           <div className='button_controll'>
             <button onClick={changeInHard}>yes</button>
-            <button onClick={()=>{setHardSign('notification_close')}}>no</button>
+            <button onClick={()=>{
+              setHardSign('notification_close')
+              setMask('mask-closed')
+            }}>no</button>
           </div>
         </div>
         <Question></Question>
@@ -66,7 +76,7 @@ const Header = ({theme , setTheme,member}) => {
         <img src={night_img} alt="night_img" />
         <NightMode toggleTheme={toggleTheme}  theme={theme} />
         </div>
-        <Logout/>
+        <Logout setMask={setMask}/>
       </div>
     </header>
   )
