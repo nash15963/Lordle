@@ -29,7 +29,7 @@ const LoginEle = ({setUsername , setPassword ,handleLogin,
                         type="password" 
                         required 
                         onChange={(e)=>{setPassword(e.target.value)}}
-                        placeholder = 'type your Name // test password: ttt'
+                        placeholder = 'type your Password // test password: ttt'
                     />
                     </p>
                     {/* <button onClick={handleLogin}>send</button> */}

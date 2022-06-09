@@ -162,19 +162,22 @@ function Gamein6({member}) {
         const docSnap = await getDoc(docRef);
         if (docSnap.data().hard_points) {
           console.log(docSnap.data().hard_points);
-          const newFields = { points: docSnap.data().hard_points + 1 };
+          const newFields = { 
+            hard_points: docSnap.data().hard_points + 1 ,
+            hard_total : docSnap.data().hard_total+1
+          };
           await updateDoc(docRef, newFields);
         } else {
           // doc.data() will be undefined in this case
           console.log('oops');
-          const newFields = { hard_points: 1 };
+          const newFields = { hard_points: 1 ,hard_total:1 };
           await updateDoc(docRef, newFields);
         }
       };
       updatePoints()
       setgameDown(<GameOverin6 />)
       const handleNumber =()=>{
-        // setPlayedCount((curr)=>curr+1) 
+        
         localStorage.setItem('playedCount' ,playedCount+1)
         localStorage.setItem('winCount' , winCount+1)
       }
@@ -187,7 +190,25 @@ function Gamein6({member}) {
     }
     if (currAttempt.attempt === 5 ) {
       setGameOver({ gameOver: true, guessedWord: false });
-      // localStorage.clear()
+      const updatePoints = async () => {
+        console.log(String(memberTemp))
+        let docRef = doc(db, "users",String(memberTemp));
+        const docSnap = await getDoc(docRef);
+        if (docSnap.data().hard_points) {
+          console.log(docSnap.data().hard_points);
+          const newFields = { 
+            hard_fail: docSnap.data().hard_fail + 1 ,
+            hard_total : docSnap.data().hard_total+1
+          };
+          await updateDoc(docRef, newFields);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log('oops');
+          const newFields = { hard_fail: 1 ,hard_total:1 };
+          await updateDoc(docRef, newFields);
+        }
+      };
+      updatePoints()
       setgameDown(<GameOverin6 />)
       localStorage.setItem('playedCount' ,playedCount+1)
       // const handleNumber =()=>{

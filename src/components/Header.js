@@ -4,6 +4,8 @@ import Question from './Question'
 import NightMode from './NightMode'
 import Rank from './Rank'
 import Logout from './Logout'
+import profile_png from '../img/profile.jpg'
+import Profile from './Profile'
 
 const Header = ({theme , setTheme,member}) => {
   const [hard, setHard] = useState(()=>{
@@ -11,6 +13,7 @@ const Header = ({theme , setTheme,member}) => {
     return gamemode || 'Hard'
   })
   const [hardSign , setHardSign] = useState('notification_close')
+  const [profile , setProfile] = useState(false)
   const toggleTheme = ()=>{
       const handleTheme =()=>{
         setTheme((curr)=>(curr ==='light'?"dark":"light"))
@@ -47,6 +50,8 @@ const Header = ({theme , setTheme,member}) => {
         <div className='mask'></div>
         <div className='title'>Lordle</div>
       <div className='func_bar'>
+        <img src={profile_png} alt="profile_png" className='profile_img' onClick={()=>{setProfile(true)}}/>
+        {profile ? <Profile profile={profile} setProfile={setProfile}></Profile> : ''}
         <Rank member={member}></Rank>
         <span className='hard_mode' onClick={()=>{setHardSign('notification')}}>{hard}</span>
         <div className={hardSign}>

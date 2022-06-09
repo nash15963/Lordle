@@ -161,12 +161,12 @@ function Game({member}) {
         const docSnap = await getDoc(docRef);
         if (docSnap.data().points) {
           console.log(docSnap.data().points);
-          const newFields = { points: docSnap.data().points + 1 };
+          const newFields = { points: docSnap.data().points + 1 ,total : docSnap.data().total+1};
           await updateDoc(docRef, newFields);
         } else {
           // doc.data() will be undefined in this case
           console.log('oops');
-          const newFields = { points: 1 };
+          const newFields = { points: 1 ,total:1 };
           await updateDoc(docRef, newFields);
         }
       };
@@ -186,7 +186,22 @@ function Game({member}) {
     }
     if (currAttempt.attempt === 5 ) {
       setGameOver({ gameOver: true, guessedWord: false });
-      // localStorage.clear()
+      const updatePoints = async () => {
+        console.log(String(memberTemp))
+        let docRef = doc(db, "users",String(memberTemp));
+        const docSnap = await getDoc(docRef);
+        if (docSnap.data().points) {
+          console.log(docSnap.data().points);
+          const newFields = { fail: docSnap.data().fail + 1 ,total : docSnap.data().total+1};
+          await updateDoc(docRef, newFields);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log('oops');
+          const newFields = { total: 1 ,fail:1};
+          await updateDoc(docRef, newFields);
+        }
+      };
+      updatePoints()
       setgameDown(<GameOver />)
       localStorage.setItem('playedCount' ,playedCount+1)
       // const handleNumber =()=>{

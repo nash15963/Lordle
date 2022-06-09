@@ -758,9 +758,31 @@ input:checked + .slider:before {
   position: absolute;
   left: 190px;
 }
-.logout_img {
+.profile_img {
   width: 20px;
   height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.profile {
+  border-radius: 5px;
+  display: block;
+  border: 2px #000 solid;
+  width: 400px;
+  height: auto;
+  background-color: #fff;
+  position: absolute;
+  top: 10%;
+  left: 35%;
+  color: #000;
+  z-index: 100;
+}
+.profile p {
+  font-size: 16px;
+}
+.logout_img {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   cursor: pointer;
 }

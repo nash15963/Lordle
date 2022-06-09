@@ -1,4 +1,4 @@
-import React , { useState } from 'react'
+import React , { useEffect, useState } from 'react'
 import { db } from "../config";
 import {
   collection,
@@ -25,12 +25,26 @@ const Login = ({setMember}) => {
     const [flip , setFlip] = useState(true)
 
     const [btnMes , setBtnMes] = useState(true)
+  // 模擬會員登入掛上session 
+    const preventLoginJump =()=>{
+      let handleSession = localStorage.getItem('username')
+      console.log(handleSession)
+      return handleSession || ''
+    }
+    let memberStatus =  preventLoginJump()
+
+    useEffect(()=>{
+      if(memberStatus !== ''){
+        window.location.href ='./Game'
+      }
+    },[])
 
     const handleSignup =async (e)=>{
         e.preventDefault()
         setBtnMes(false)
         let docRef = doc(db, "users",usernameReg);
         const docSnap = await getDoc(docRef);
+        try{
         if (docSnap.exists()) {
             console.log("Document data:", docSnap.data());
             setUsernameMessage('這個名稱已有人使用')
@@ -39,17 +53,31 @@ const Login = ({setMember}) => {
             console.log("No such document!");
             let usersCollectionRef = collection(db,'users');
             await setDoc(doc(usersCollectionRef,usernameReg), {
-                password:passwordReg,points:Number(0),hard_points:Number(0)});
+                password:passwordReg,
+                points:Number(0),
+                hard_points:Number(0),
+                total:Number(0),
+                hard_total:Number(0),
+                fail:Number(0),
+                hard_fail:Number(0)});
             setUsernameMessage('註冊成功')
             localStorage.setItem('username' ,usernameReg)
             window.location.href ='./Game'
           }
+        }
+        catch(error){
+          console.log('error')
+          setUsernameMessage('停滯時間過長，請重新整理網頁')
+        }
     }
+
     const handleLogin =async(e)=>{
         e.preventDefault() ;
         setBtnMes(false)
         let docRef = doc(db, "users",username);
         const docSnap = await getDoc(docRef);
+        try
+        {
         if (docSnap.exists()) {
             console.log("Document data:", docSnap.data());
             if(docSnap.data().password === password){
@@ -64,6 +92,11 @@ const Login = ({setMember}) => {
             // doc.data() will be undefined in this case
             setUsernameMessage('未註冊或帳號錯誤')
           }
+        }
+        catch(error){
+          console.log('error')
+          setUsernameMessage('請登出會員或重新整理頁面')
+        }
     }
     
     

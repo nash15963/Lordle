@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SignupEle = ({setUsernameReg,setPasswordReg,setFlip,
-    handleSignup,usernameMessage,setUsernameMessage}) => {
+    handleSignup,usernameMessage,setUsernameMessage,btnMes}) => {
     
     const flipLogin =()=>{
         setFlip(true)  
@@ -15,6 +15,7 @@ const SignupEle = ({setUsernameReg,setPasswordReg,setFlip,
                     <input 
                         type="text" 
                         required 
+                        placeholder = 'type your Name '
                         onChange={(e)=>{
                             setUsernameMessage('')
                             setUsernameReg(e.target.value)
@@ -26,10 +27,11 @@ const SignupEle = ({setUsernameReg,setPasswordReg,setFlip,
                         type="password" 
                         required 
                         onChange={(e)=>{setPasswordReg(e.target.value)}}
+                        placeholder = 'type your Password'
                     />
                     </p>
-                    <p>{usernameMessage}</p>
                     <button onClick={handleSignup}>send</button>
+                    {btnMes ? <p>{usernameMessage}</p> : <div id='loading'></div> }
                     <p className='login_note'>You have played Lordle &nbsp;
                         <span 
                             // style={{color :'red'}} 
