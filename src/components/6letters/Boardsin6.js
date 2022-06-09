@@ -4,7 +4,7 @@ import Letterin6 from './Letterin6'
 function Boardsin6() {
   
   return (
-    <div className="board">
+    <div className="boardin6">
       <div className="row"> 
         <Letterin6 letterPos={0} attempVal={0}/>
         <Letterin6 letterPos={1} attempVal={0}/>

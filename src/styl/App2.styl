@@ -198,10 +198,14 @@ header{
       font-size: 37px;
       letter-spacing: 0.01em 
       pointer-events: none 
-      margin-left: 47%
-      @media(max-width:600px){
+      margin-left: 45%
+      @media(max-width:900px){
         font-weight: 600 
-        margin: 5px 0px 0px 50px
+        margin-left: 20px
+      }
+      @media(max-width:600px){
+        font-weight: 300 
+        margin-left: 5px
       }
     }
     .func_bar{
@@ -211,7 +215,14 @@ header{
       align-items:center
       justify-content: space-around
       width: 25%
-    }
+      @media(max-width:900px){
+        width: 50%
+      }
+      @media(max-width:600px){
+         width: 65%
+         margin: 10px 5px auto 0px
+      }
+}   
 }
 .hard_mode{
   font-size: 20px
@@ -315,8 +326,6 @@ input:checked + .slider:before {
 
     @media(max-width:600px){
       width: 95%
-      // grid-template-columns: 5px 1fr 5px 
-      // grid-template-rows:  6fr 4fr 10px 
       display: block
     }
 }
@@ -342,6 +351,30 @@ input:checked + .slider:before {
     @media(max-width:600px){
       margin: 10px auto 0px auto
     	width: 100% 
+    }
+}
+.boardin6{
+    margin: auto
+    width: 75%
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    box-sizing: border-box;
+    @media(max-width:900px){
+      width: 100% 
+    }
+    @media(max-width:600px){
+      margin: 10px auto 0px auto
+    	width: 95% 
+      .blackboard{
+        width: 50px
+        height: 50px
+        margin: 0px 1.5px 0px 2px
+      }
+      .letter{
+        width: 50px
+        height: 50px
+        margin: 0px 1.5px 0px 2px
+      }
     }
 }
 .row {
@@ -700,20 +733,25 @@ input:checked + .slider:before {
     border-radius: 5px
     display: block
     border: 2px black solid
-    width: 400px
+    width: 40%
+    left: 30%
     height: auto
     background-color: white
     position: absolute
     top: 10%
-    left: 35%
     color: black
-    // box-shadow: 3px 3px rgb(164, 162, 162)
     z-index: 200
-    // animation: topTObottom 
-    // animation-duration: 1s
     p{
         font-size: 16px
     }
+    @media(max-width:900px){
+        width: 70%
+        left: 15%
+      }
+    @media(max-width:600px){
+        width: 90%
+        left:5%
+      }
 }
 .rank-closed{
   display: none
@@ -772,21 +810,27 @@ input:checked + .slider:before {
     border-radius: 5px
     display: block
     border: 2px black solid
-    width: 400px
+    width: 40%
+    left: 30%
+    top: 10%
     height: auto
     background-color: white
     position: absolute
-    top: 10%
-    left: 35%
     color: black
     text-align: center
-    // box-shadow: 3px 3px rgb(164, 162, 162)
     z-index: 200
-    // animation: topTObottom 
-    // animation-duration: 1s
+
     p{
         font-size: 16px
     }
+    @media(max-width:900px){
+        width: 70%
+        left: 15%
+      }
+    @media(max-width:600px){
+        width: 90%
+        left:5%
+      }
 }
 .logout_img{
   width: 30px
@@ -809,24 +853,39 @@ input:checked + .slider:before {
     text-align: center
     margin: 260px auto 10px auto
     color: white
+    @media(max-width:900px){
+        
+      }
+    @media(max-width:600px){
+        width: 95%
+      }
     .second_slogan{
       margin: 20px auto 20px auto
       font-size: 20px
+    
     }
     .outBlock{
-      color: white
+      // color: red
       // margin: 140px 0px 0px 0px
-      font-size: 80px
+      // font-size: 80px
       position: relative
       font-weight: bold
-
+      @media(max-width:600px){
+        
+      }
     }
     .textBlock{
+      // color: blue
       position: absolute
       top: -120px
       left: 1%
       font-size: 120px
       font-weight: bold
+
+    @media(max-width:600px){
+        font-size: 5rem
+        left: 5%
+      }
     }
     .textBlock::before {
       content: attr(data-content);
@@ -856,6 +915,12 @@ input:checked + .slider:before {
       border-radius: 5px
       h3{
         margin: 10px auto 5px auto
+      }
+    @media(max-width:900px){
+        
+      }
+    @media(max-width:600px){
+        width: 90%
       }
     }
     input{
@@ -895,15 +960,23 @@ input:checked + .slider:before {
   .notification{
     display: block
     background-color: white
-    width: 400px
+    width: 30%
+    left: 35%
     height: 80px
     position: absolute
     top: 20%
-    left: 35%
     z-index: 200
     text-align: center
     border-radius: 5px
     border: black 2px solid
+    @media(max-width:900px){
+        width: 70%
+        left: 15%
+      }
+    @media(max-width:600px){
+        width: 90%
+        left:5%
+      }
     p{
       color: black
     }
@@ -918,15 +991,23 @@ input:checked + .slider:before {
   .logout_sign{
     display: block
     background-color: white
-    width: 400px
+    width: 30%
+    left: 35%
     height: 80px
     position: absolute
     top: 20%
-    left: 35%
     z-index: 500
     text-align: center
     border-radius: 5px
     border: #000 2px solid;
+    @media(max-width:900px){
+        width: 70%
+        left: 15%
+      }
+    @media(max-width:600px){
+        width: 90%
+        left:5%
+      }
     p{
       color: black
     }
