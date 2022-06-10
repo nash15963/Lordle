@@ -7,6 +7,9 @@ import Logout from './Logout'
 import profile_png from '../img/profile.jpg'
 import Profile from './Profile'
 
+import { AiOutlineUser } from 'react-icons/ai';
+import { BsFillMoonFill } from 'react-icons/bs';
+
 const Header = ({theme , setTheme,member}) => {
   const [mask , setMask] = useState('mask-closed')
   const [hard, setHard] = useState(()=>{
@@ -51,11 +54,20 @@ const Header = ({theme , setTheme,member}) => {
         <div className={mask}></div>
         <div className='title'>Lordle</div>
       <div className='func_bar'>
-        <img src={profile_png} alt="profile_png" className='profile_img' onClick={()=>{
+        <AiOutlineUser 
+          className='profile_img' 
+          onClick={()=>{
           setProfile(true)
           setMask('mask')
         }}/>
+        {/* <img src={profile_png} alt="profile_png" 
+          className='profile_img' 
+          onClick={()=>{
+          setProfile(true)
+          setMask('mask')
+        }}/> */}
         {profile ? <Profile profile={profile} setProfile={setProfile} setMask={setMask}/> : ''}
+
         <Rank member={member} setMask={setMask}></Rank>
         <span className='hard_mode' onClick={()=>{
           setHardSign('notification')
@@ -73,7 +85,9 @@ const Header = ({theme , setTheme,member}) => {
         </div>
         <Question></Question>
         <div className='night_controller'>
-        <img src={night_img} alt="night_img" />
+        {/* <img src={night_img} alt="night_img" /> */}
+        <BsFillMoonFill className='night_img'/>
+
         <NightMode toggleTheme={toggleTheme}  theme={theme} />
         </div>
         <Logout setMask={setMask}/>

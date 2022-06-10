@@ -77,7 +77,9 @@ const Profile = ({profile,setProfile,setMask}) => {
         <h2>Your Level : {level}</h2>
     </div>
         :
+        <div className='profile'>
         <p>{personDataMes}</p>
+        </div>
       }
       </>
   )

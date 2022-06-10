@@ -2,7 +2,8 @@ import React ,{ useState , useEffect} from 'react'
 import Rank_img from '../img/rank.png'
 import { db } from "../config";
 import { query, orderBy, limit , collection, doc ,getDocs , onSnapshot, QuerySnapshot ,getDoc } from "firebase/firestore"; 
-import { v4 as uuidv4 } from 'uuid';
+
+import { BiBarChartAlt2 } from 'react-icons/bi';
 
 
 
@@ -70,7 +71,8 @@ const Rank = ({member ,setMask}) => {
 
   return (
     <div className='rank'>
-      <img src={Rank_img} alt="rank" className='rank_img' onClick={toggleRank}/>
+      <BiBarChartAlt2 className='rank_img' onClick={toggleRank}/>
+      {/* <img src={Rank_img} alt="rank" className='rank_img' onClick={toggleRank}/> */}
       <div className={rankClick}>
         <div className='rank_title'>
           <h1>Rank</h1>

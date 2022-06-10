@@ -2,6 +2,8 @@ import React ,{ useState } from 'react'
 import question from '../img/question.png'
 import gitHubImg from '../img/gitHubImg.png'
 
+import { AiOutlineQuestion } from 'react-icons/ai';
+
 const Question = () => {
 
   const [introduce, setIntroduce] = useState('question-closed')
@@ -16,7 +18,8 @@ const Question = () => {
   } 
   return (
     <>
-    <img className='question' src={question} alt="question" onClick={openInformation}/>
+    <AiOutlineQuestion className='question' onClick={openInformation}/>
+    {/* <img className='question' src={question} alt="question" onClick={openInformation}/> */}
     {/* <div className='ques_botton' onClick={openInformation}>?</div> */}
     <div className={introduce}>
     <div className='descriptioninGame'>
