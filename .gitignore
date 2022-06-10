@@ -6,13 +6,13 @@
 .pnp.js
 index.html
 config.js
-
+Todo
 # testing
 /coverage
 
 # production
 /build
-
+droid.regular.ttf
 # misc
 .DS_Store
 .env.local

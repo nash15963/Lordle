@@ -1,5 +1,5 @@
 import React,{ useContext } from 'react'
-import { AppContex } from '../App'
+import { AppContex } from './Gamein6'
 
 // currAttempt is an Object currAttempt.letterPos == 橫幅
 // props.keyVal = what i typed
@@ -10,7 +10,7 @@ function Key(props) {
     const selectLetter =()=>{
       if(props.keyVal === 'ENTER'){
         onEnter()
-      }else if(props.keyVal === 'DELETE'){
+      }else if(props.keyVal === 'DEL'){
         onDelete()
       }
       else{
@@ -18,13 +18,14 @@ function Key(props) {
       }
     }
   return (
-    <button className='key' id={props.bigKey ? 'big' :props.disabled && 'disabled'} onClick={selectLetter}>
+    <button className='key' id={props.bigKey ? 'big' : (props.disabled ? 'disabled' : props.correct ? 'correct_letter' :props.almost ? 'almost_letter':'')} onClick={selectLetter}>
         {props.keyVal}
     </button> 
   )
 }
 
 export default Key
+
 
 // what is [...](擴展運算符)
 // var number = [1,2,3,4,5,6]
