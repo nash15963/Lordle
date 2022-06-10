@@ -4,7 +4,7 @@ import NightMode from './NightMode'
 import Rank from './Rank'
 import Logout from './Logout'
 import Profile from './Profile'
-import { AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineUser ,AiFillWarning } from 'react-icons/ai';
 import { BsFillMoonFill } from 'react-icons/bs';
 
 const Header = ({theme , setTheme,member}) => {
@@ -62,7 +62,10 @@ const Header = ({theme , setTheme,member}) => {
         setMask('mask')
       }}>{hard}</span>
       <div className={hardSign}>
-        <p>If you leave now, you will lose record ?</p>
+        <div>
+        <AiFillWarning/>
+        <span>If you leave now, you will lose record ?</span>
+        </div>
         <div className='button_controll'>
           <button onClick={changeInHard}>yes</button>
           <button onClick={()=>{

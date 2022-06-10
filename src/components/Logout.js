@@ -1,5 +1,5 @@
 import React ,{ useState } from 'react'
-import { AiOutlineLogout } from 'react-icons/ai';
+import { AiOutlineLogout ,AiFillWarning } from 'react-icons/ai';
 
 const Logout = ({setMask}) => {
   const [logoutSign , setLogoutSign] = useState('logout_close')
@@ -15,14 +15,19 @@ const Logout = ({setMask}) => {
           setLogoutSign('logout_sign')
           setMask('mask')
         }}/>
+        
       <div className={logoutSign}>
-        <p>Do you want to leave the Game ?</p>
+        <div>
+        <AiFillWarning/>
+        <span>Do you want to leave the Game ?</span>
+        </div>
         <div className='button_controll'>
           <button onClick={handleLogout}>yes</button>
           <button onClick={()=>{
             setLogoutSign('notification_close')
             setMask('mask-closed')
           }}>no</button>
+        
         </div>
       </div>
     </>

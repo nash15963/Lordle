@@ -184,7 +184,7 @@ function Game({member}) {
       localStorage.removeItem('localAttempt')
       return ;
     }
-    if (currAttempt.attempt === 5 ) {
+    if (currAttempt.attempt === 5 && wordSet.has(currWord)) {
       setGameOver({ gameOver: true, guessedWord: false });
       const updatePoints = async () => {
         console.log(String(memberTemp))
