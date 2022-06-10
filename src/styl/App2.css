@@ -194,7 +194,7 @@ header .title {
   font-size: 37px;
   letter-spacing: 0.01em;
   pointer-events: none;
-  margin-left: 45%;
+  margin-left: 47%;
 }
 @media (max-width: 900px) {
   header .title {

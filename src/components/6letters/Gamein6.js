@@ -6,7 +6,6 @@ import 'animate.css';
 import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../../Wordsin6'
 import { createContext ,useEffect,useState } from 'react'
 import { ToastProvider, useToasts } from "../hooks/toast-manager";
-
 import { db } from "../../config";
 import { updateDoc,doc,getDoc } from "firebase/firestore";
 
@@ -95,15 +94,8 @@ function Gamein6({member}) {
     if(currAttempt.letterPos>5) return ;  
     const newBoard =[...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
-    // console.log([currAttempt.attempt],[currAttempt.letterPos])
-    // console.log(currAttempt)
-    // console.log('hihi')
     setBoard(newBoard)
     setCurrAttempt({...currAttempt ,letterPos : currAttempt.letterPos+1})
-    // localStorage.setItem('localAttempt',JSON.stringify(currAttempt));
-    // console.log(currAttempt) //從App.js來
-    // console.log(keyVal) //alphabet
-    // console.log({attempt :currAttempt.attempt})
   }
   const onDelete =()=>{
     if(currAttempt.letterPos===0)return ;
@@ -121,7 +113,7 @@ function Gamein6({member}) {
     }
     currWord = currWord + '\r'  //換行後的字串
     if (wordSet.has(currWord)) {
-      console.log(board)
+      // console.log(board)
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos :0 }); 
       localStorage.setItem('userAnswer',JSON.stringify(board)); 
       localStorage.setItem('localAttempt',JSON.stringify({ attempt: currAttempt.attempt + 1, letterPos :0 }));
