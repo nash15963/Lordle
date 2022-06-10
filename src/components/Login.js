@@ -1,15 +1,6 @@
 import React , { useEffect, useState } from 'react'
 import { db } from "../config";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  getDoc,
-  query, where,setDoc
-} from "firebase/firestore";
+import { collection,doc,getDoc,setDoc } from "firebase/firestore";
 import LoginEle from './LoginEle'
 import SignupEle from './SignupEle'
 
@@ -17,13 +8,10 @@ import SignupEle from './SignupEle'
 const Login = ({setMember}) => {
     const [usernameReg , setUsernameReg] = useState('')
     const [passwordReg , setPasswordReg] = useState('')
-
     const [username , setUsername] = useState('')
     const [password , setPassword] = useState('')
-
     const [usernameMessage , setUsernameMessage] = useState('')
     const [flip , setFlip] = useState(true)
-
     const [btnMes , setBtnMes] = useState(true)
   // 模擬會員登入掛上session 
     const preventLoginJump =()=>{
@@ -44,28 +32,27 @@ const Login = ({setMember}) => {
         let docRef = doc(db, "users",usernameReg);
         const docSnap = await getDoc(docRef);
         try{
-        if (docSnap.exists()) {
-            setBtnMes(true)
-            console.log("Document data:", docSnap.data());
-            setUsernameMessage('這個名稱已有人使用')
-          } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-            let usersCollectionRef = collection(db,'users');
-            await setDoc(doc(usersCollectionRef,usernameReg), {
-                password:passwordReg,
-                points:Number(0),
-                hard_points:Number(0),
-                total:Number(0),
-                hard_total:Number(0),
-                fail:Number(0),
-                hard_fail:Number(0)
-              });
-            setBtnMes(true)  
-            setUsernameMessage('註冊成功')
-            localStorage.setItem('username' ,usernameReg)
-            window.location.href ='./Game'
-          }
+          if (docSnap.exists()) {
+              setBtnMes(true)
+              // console.log("Document data:", docSnap.data());
+              setUsernameMessage('這個名稱已有人使用')} 
+          else {
+              console.log("No such document!");
+              let usersCollectionRef = collection(db,'users');
+              await setDoc(doc(usersCollectionRef,usernameReg), {
+                  password:passwordReg,
+                  points:Number(0),
+                  hard_points:Number(0),
+                  total:Number(0),
+                  hard_total:Number(0),
+                  fail:Number(0),
+                  hard_fail:Number(0)
+                });
+              setBtnMes(true)  
+              setUsernameMessage('註冊成功')
+              localStorage.setItem('username' ,usernameReg)
+              window.location.href ='./Game'
+            }
         }
         catch(error){
           setBtnMes(true)
@@ -79,11 +66,9 @@ const Login = ({setMember}) => {
         setBtnMes(false)
         let docRef = doc(db, "users",username);
         const docSnap = await getDoc(docRef);
-        try
-        {
-        if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data());
-            setBtnMes(true)
+        try{
+          if (docSnap.exists()) {
+              setBtnMes(true)
             if(docSnap.data().password === password){
                 setUsernameMessage('登入成功')
                 localStorage.setItem('username' ,username)
@@ -93,8 +78,8 @@ const Login = ({setMember}) => {
               setBtnMes(true)
               setUsernameMessage('密碼錯誤')
             }
-          } else {
-            // doc.data() will be undefined in this case
+          } 
+          else {
             setBtnMes(true)
             setUsernameMessage('未註冊或帳號錯誤')
           }

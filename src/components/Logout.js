@@ -1,5 +1,4 @@
 import React ,{ useState } from 'react'
-import logout_img from '../img/logout_img.png'
 import { AiOutlineLogout } from 'react-icons/ai';
 
 const Logout = ({setMask}) => {
@@ -8,25 +7,24 @@ const Logout = ({setMask}) => {
         localStorage.clear()
         window.location.href ='./'
     }
-
   return (
     <>
-        <AiOutlineLogout
+      <AiOutlineLogout
         className='logout_img' 
         onClick={()=>{
           setLogoutSign('logout_sign')
           setMask('mask')
         }}/>
-        <div className={logoutSign}>
-          <p>Do you want to leave the Game ?</p>
-          <div className='button_controll'>
-            <button onClick={handleLogout}>yes</button>
-            <button onClick={()=>{
-              setLogoutSign('notification_close')
-              setMask('mask-closed')
-            }}>no</button>
-          </div>
+      <div className={logoutSign}>
+        <p>Do you want to leave the Game ?</p>
+        <div className='button_controll'>
+          <button onClick={handleLogout}>yes</button>
+          <button onClick={()=>{
+            setLogoutSign('notification_close')
+            setMask('mask-closed')
+          }}>no</button>
         </div>
+      </div>
     </>
   )
 }

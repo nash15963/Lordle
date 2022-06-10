@@ -1,6 +1,7 @@
 import React ,{ useState , useEffect} from 'react'
 import { db } from "../config";
 import { doc ,getDoc } from "firebase/firestore"; 
+import { AiOutlineClose } from 'react-icons/ai';
 
 const Profile = ({profile,setProfile,setMask}) => {
     const [personData, setPersonData] = useState({})
@@ -54,7 +55,9 @@ const Profile = ({profile,setProfile,setMask}) => {
       <>
       {personBool ?
     <div className='profile'>
-        <h1>Personal Points <span 
+        <h1 style={{marginLeft : '40px'}}
+        >Profile 
+            <span 
         style={
            { float:'right',
             cursor :'pointer',
@@ -64,7 +67,10 @@ const Profile = ({profile,setProfile,setMask}) => {
         onClick={()=>{
             setProfile(false)
             setMask('mask-colsed')
-            }}>x</span> </h1>
+        }}>
+        <AiOutlineClose/>
+            </span> 
+        </h1>
         <h2>Hi ! {member}</h2>
         <h3>Easy Mode</h3>
         <p> <span>Total :</span> <span>{personData.total}</span> </p>

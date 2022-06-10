@@ -241,6 +241,9 @@ header .func_bar {
   border-radius: 50%;
   cursor: pointer;
 }
+.question:hover {
+  color: #9e9d9d;
+}
 .setting {
   width: 20px;
   height: 20px;
@@ -743,6 +746,9 @@ input:checked + .slider:before {
   border-radius: 50%;
   cursor: pointer;
 }
+.rank_img:hover {
+  color: #9e9d9d;
+}
 .rank-open {
   border-radius: 5px;
   display: block;
@@ -821,6 +827,9 @@ input:checked + .slider:before {
   border-radius: 50%;
   cursor: pointer;
 }
+.profile_img:hover {
+  color: #9e9d9d;
+}
 .profile {
   border-radius: 5px;
   display: block;
@@ -854,6 +863,9 @@ input:checked + .slider:before {
   width: 23px;
   height: 23px;
   cursor: pointer;
+}
+.logout_img:hover {
+  color: #9e9d9d;
 }
 .login {
   position: fixed;
