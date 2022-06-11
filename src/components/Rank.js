@@ -1,6 +1,6 @@
 import React ,{ useState , useEffect} from 'react'
 import { db } from "../config";
-import { query, orderBy, limit , collection, doc ,getDocs , onSnapshot, QuerySnapshot ,getDoc } from "firebase/firestore"; 
+import { query, orderBy, limit , collection, doc ,getDocs , getDoc } from "firebase/firestore"; 
 
 import { BiBarChartAlt2 } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';

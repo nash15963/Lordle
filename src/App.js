@@ -1,5 +1,6 @@
 import React , { useState } from 'react'
-import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { BrowserRouter,Routes,Route } from "react-router-dom"
+// import { Link } from 'react-router-dom'
 import Game from './components/5letters/Game'
 import Gamein6 from './components/6letters/Gamein6'
 import Login from './components/Login'
@@ -22,3 +23,6 @@ function App() {
 }
 
 export default App;
+
+// 1.網頁進行重新渲染
+// 2.err page

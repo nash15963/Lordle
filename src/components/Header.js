@@ -6,8 +6,10 @@ import Logout from './Logout'
 import Profile from './Profile'
 import { AiOutlineUser ,AiFillWarning } from 'react-icons/ai';
 import { BsFillMoonFill } from 'react-icons/bs';
+import { useNavigate } from "react-router-dom";
 
 const Header = ({theme , setTheme,member}) => {
+  let navigate = useNavigate();
   const [mask , setMask] = useState('mask-closed')
   const [hard, setHard] = useState(()=>{
     const gamemode = localStorage.getItem("gamemode")
@@ -31,7 +33,8 @@ const Header = ({theme , setTheme,member}) => {
       localStorage.removeItem('localAnswer')
       localStorage.removeItem('localAttempt')
       setHard('Easy')
-      window.location.href ='./HardGame'
+      // window.location.href ='./HardGame'
+      navigate("/HardGame");
       
     }
     else if(location === '/HardGame'){
@@ -40,7 +43,8 @@ const Header = ({theme , setTheme,member}) => {
       localStorage.removeItem('localAnswer')
       localStorage.removeItem('localAttempt')
       setHard('Hard')
-      window.location.href ='./Game'
+      // window.location.href ='./Game'
+      navigate("/Game");
     }
   }
   return (

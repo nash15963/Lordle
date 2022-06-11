@@ -10,14 +10,9 @@ import { ToastProvider, useToasts } from "../hooks/toast-manager";
 
 import { db } from "../../config";
 import {
-  collection,
-  getDocs,
-  addDoc,
   updateDoc,
-  deleteDoc,
   doc,
-  getDoc,
-  query, where,setDoc
+  getDoc
 } from "firebase/firestore";
 
 export const AppContex = createContext()

@@ -1,11 +1,14 @@
 import React ,{ useState } from 'react'
 import { AiOutlineLogout ,AiFillWarning } from 'react-icons/ai';
+import { useNavigate } from "react-router-dom";
 
 const Logout = ({setMask}) => {
   const [logoutSign , setLogoutSign] = useState('logout_close')
+  let navigate = useNavigate();
     const handleLogout =()=>{
         localStorage.clear()
-        window.location.href ='./'
+        // window.location.href ='./'
+        navigate("/");
     }
   return (
     <>
