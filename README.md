@@ -1,75 +1,61 @@
 # Lordle sideproject
 
-In this project , I tried to clone wordle in my project .
+此次專案作品是以紐約時報的Wordle為範本的一個填字遊戲
+
+## 主要功能如下:
+
+1.提供兩種遊戲難度來增加可玩性(包括easy:五字、Hard:六字)
+2.計分與會員模式
+3.個人遊戲紀錄
+
+## 使用技術:
+
+1.React Hook(useState,useEffect,useContext,useReducer,useCallback,useMemo,Router)
+2.Stylus
+3.Firebase , Firestore
+4.Git
+
+### 功能說明:
+
+##### 登入頁面
+Firestore紀錄會員帳號密碼，並使用localstorage模擬session機制，Router v6跳轉頁面。
+<!-- 會員頁面圖片 -->
+
+##### 遊戲主頁面
+主要畫面中包括字格，鍵盤與上方功能欄
+
+<!-- 主畫面圖片 -->
+
+個人遊戲紀錄 :
+第一個彈出框顯示玩家遊戲紀錄
+
+玩家排行 :
+第二個彈出框顯示玩家間的總積分，並顯示不同模式下的前三名
+
+遊戲難度 :
+第三個彈出框用來轉換遊戲難度
+
+遊戲說明 :
+第四個彈出框用來說明遊玩方法
+
+夜間/日照模式 :
+第五個選擇鈕切換背景主題
+
+登出遊戲:
+第六個彈出框登出會員
+
+### 使用者體驗優化:
+字格
+渲染使用者正在輸入的字母，並以邊框變色處理。
+
+鍵盤
+增加keydown的監聽，供使用者在不同機型上可以使用合適的輸入工具
+
+單字輸入反應
+若輸入字不存在於字庫則出現Toast並搖晃字框
 
 
-<!-- # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->

@@ -13,7 +13,7 @@ const Header = ({theme , setTheme,member}) => {
   const [mask , setMask] = useState('mask-closed')
   const [hard, setHard] = useState(()=>{
     const gamemode = localStorage.getItem("gamemode")
-    return gamemode || 'Hard'
+    return gamemode || 'Easy'
   })
   const [hardSign , setHardSign] = useState('notification_close')
   const [profile , setProfile] = useState(false)
@@ -28,21 +28,21 @@ const Header = ({theme , setTheme,member}) => {
   const changeInHard =()=>{
     let location =window.location.pathname
     if(location === '/Game'){
-      localStorage.setItem('gamemode','Easy')
-      localStorage.removeItem('userAnswer')
-      localStorage.removeItem('localAnswer')
-      localStorage.removeItem('localAttempt')
-      setHard('Easy')
-      // window.location.href ='./HardGame'
-      navigate("/HardGame");
-      
-    }
-    else if(location === '/HardGame'){
       localStorage.setItem('gamemode','Hard')
       localStorage.removeItem('userAnswer')
       localStorage.removeItem('localAnswer')
       localStorage.removeItem('localAttempt')
       setHard('Hard')
+      // window.location.href ='./HardGame'
+      navigate("/HardGame");
+      
+    }
+    else if(location === '/HardGame'){
+      localStorage.setItem('gamemode','Easy')
+      localStorage.removeItem('userAnswer')
+      localStorage.removeItem('localAnswer')
+      localStorage.removeItem('localAttempt')
+      setHard('Easy')
       // window.location.href ='./Game'
       navigate("/Game");
     }
