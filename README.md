@@ -10,9 +10,12 @@
 
 ## 使用技術:
 
-1.React Hook(useState,useEffect,useContext,useReducer,useCallback,useMemo,Router)
+1.React Hook
+
 2.Stylus
+
 3.Firebase , Firestore
+
 4.Git
 
 ### 功能說明:
