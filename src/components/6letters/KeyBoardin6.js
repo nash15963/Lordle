@@ -20,8 +20,6 @@ function KeyBoard() {
         }
       })
       keys2.forEach((key)=>{
-        // console.log(event.key)
-        //console.log(key)  //every elements in keys2
         if(event.key.toLowerCase() === key.toLowerCase()){
           onSelectLetter(key)
         }
@@ -35,14 +33,12 @@ function KeyBoard() {
   })
 
   useEffect(()=>{
-    // console.log('i type sth')
     document.addEventListener("keydown",handleKeyboard)
     return()=>{
-      // console.log('clear sth')
       document.removeEventListener("keydown",handleKeyboard)
     }
   },[handleKeyboard])
-  // id attribute form Key.js 
+
 
   return (
     <div className='keyboard' onKeyDown={handleKeyboard}>

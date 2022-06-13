@@ -4,9 +4,6 @@ const LoginEle = ({setUsername , setPassword ,handleLogin,
     setFlip,usernameMessage,setUsernameMessage ,btnMes}) => {
     const flipSignup =()=>{
     setFlip(false)
-    // setBtnMes(true)
-    // setUsernameMessage(<div id="loading"></div>)
-    // setBtnMes(<div id="loading"></div>)
     }
     return (
 
@@ -32,16 +29,12 @@ const LoginEle = ({setUsername , setPassword ,handleLogin,
                         placeholder = 'type your Password // test password: ttt'
                     />
                     </p>
-                    {/* <button onClick={handleLogin}>send</button> */}
                     <button onClick={handleLogin}>
-                        {/* <div id="loading"></div> */}
                         send
-                        {/* {btnMes ? <div className="loading"></div> : 'send'} */}
                     </button>
                     <p className='login_note'>{btnMes ? usernameMessage : <div id='loading'></div> }</p>
                     <p>You haven't played Lordle &nbsp;
                         <span 
-                        // style={{color :'red'}} 
                         onClick={flipSignup}>sing up
                         </span>
                     </p>

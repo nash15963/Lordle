@@ -76,7 +76,8 @@ body::-webkit-scrollbar {
         color: var(--color-tone-1)
     }
     .blackboard{
-      border: 2px solid var(--color-tone-3)
+      // border: 2px solid var(--color-tone-3)
+      border: 2px solid var(--color-tone-2)
     }
     .ToastContainer{
       color: var(--color-tone-7)
@@ -198,7 +199,7 @@ header{
       font-size: 37px;
       letter-spacing: 0.01em 
       pointer-events: none 
-      margin-left: 45%
+      margin-left: 47%
       @media(max-width:900px){
         font-weight: 600 
         margin-left: 20px
@@ -237,6 +238,9 @@ header{
   height:20px
   border-radius: 50%
   cursor: pointer
+  &:hover{
+    color: rgb(158, 157, 157)
+  }
 }
 .setting{
   width: 20px
@@ -382,7 +386,6 @@ input:checked + .slider:before {
     height: 20%
     display: flex
     flex-wrap: wrap
-    display: flex
     justify-content:center
     margin-top: 5px
     @media(max-width:900px){
@@ -398,7 +401,6 @@ input:checked + .slider:before {
   grid-row: 2/3
   user-select: none 
   @media(max-width:600px){
-    // grid-column: 2/3
     margin: 15px 0px 0px 0px
   }
 }
@@ -449,6 +451,7 @@ input:checked + .slider:before {
     place-items: center 
     outline: none
     border: none
+    cursor: pointer
     @media(max-width:900px){
       margin: 0px 6px 0px 0px
     	width: 42px; 
@@ -508,6 +511,7 @@ input:checked + .slider:before {
   top: 16px
   left: 25%
   color: black
+  border-radius: 5px
   box-shadow: 3px 3px rgb(164, 162, 162)
   animation: fadeInUpBig
   animation-duration: 3s
@@ -728,6 +732,9 @@ input:checked + .slider:before {
   margin: 5px 5px 0px 3px
   border-radius: 50%
   cursor:pointer
+  &:hover{
+    color: rgb(158, 157, 157)
+  }
 }
 .rank-open{
     border-radius: 5px
@@ -761,9 +768,7 @@ input:checked + .slider:before {
   .rank_title{
     text-align: center
   }
-  h1{
-    display:inline-block
-  }
+
   h1:nth-child(1){
     margin-left: 40px
   }
@@ -805,6 +810,9 @@ input:checked + .slider:before {
   height:20px
   border-radius: 50%
   cursor: pointer
+  &:hover{
+    color: rgb(158, 157, 157)
+  }
 }
 .profile{
     border-radius: 5px
@@ -836,6 +844,9 @@ input:checked + .slider:before {
   width: 23px
   height:23px
   cursor: pointer
+  &:hover{
+    color: rgb(158, 157, 157)
+  }
 }
 .login{
   position: fixed;
@@ -947,9 +958,6 @@ input:checked + .slider:before {
       margin: 10px auto
       font-size: 15px
     }
-    // button :hover{
-    //   background-color: gray
-    // }
     span{
       color: red
       cursor: pointer
@@ -968,20 +976,42 @@ input:checked + .slider:before {
     text-align: center
     border-radius: 5px
     border: black 2px solid
+    div:nth-child(1){
+      height: 60%
+      background-color: rgb(206, 200, 200)
+      display: flex
+      justify-content: space-around;
+      align-items: center;
+      svg{
+        width: 30px
+        height: 30px
+      }
+    }
     @media(max-width:900px){
-        width: 70%
-        left: 15%
+        justify-content: space-evenly
+        width: 50%
+        left: 25%
       }
     @media(max-width:600px){
         width: 90%
         left:5%
       }
-    p{
-      color: black
+    span{
+      color: rgb(139, 136, 136)
     }
-    .button_controll{
-      display: flex
-      justify-content: space-around
+    
+  }
+.button_controll{
+    margin-top: 10px
+    display: flex
+    justify-content: space-evenly
+    button{
+      border-radius: 5px
+      color: rgb(139, 136, 136)
+      outline: none
+      border: none
+      cursor: pointer
+      background-color: rgb(206, 200, 200)
     }
   }
   .notification_close{
@@ -998,21 +1028,29 @@ input:checked + .slider:before {
     z-index: 500
     text-align: center
     border-radius: 5px
-    border: #000 2px solid;
+    border: #000 2px solid
+    div:nth-child(1){
+      height: 60%
+      background-color: rgb(206, 200, 200)
+      display: flex
+      justify-content: space-around;
+      align-items: center;
+      svg{
+        width: 30px
+        height: 30px
+      }
+    }
     @media(max-width:900px){
-        width: 70%
-        left: 15%
+        justify-content: space-evenly
+        width: 50%
+        left: 25%
       }
     @media(max-width:600px){
         width: 90%
         left:5%
       }
-    p{
-      color: black
-    }
-    .button_controll{
-      display: flex
-      justify-content: space-around
+    span{
+      color: rgb(139, 136, 136)
     }
   }
   .logout_close{

@@ -1,10 +1,9 @@
 import React ,{ useState , useEffect} from 'react'
-import Rank_img from '../img/rank.png'
 import { db } from "../config";
-import { query, orderBy, limit , collection, doc ,getDocs , onSnapshot, QuerySnapshot ,getDoc } from "firebase/firestore"; 
+import { query, orderBy, limit , collection, doc ,getDocs , getDoc } from "firebase/firestore"; 
 
 import { BiBarChartAlt2 } from 'react-icons/bi';
-
+import { AiOutlineClose } from 'react-icons/ai';
 
 
 const Rank = ({member ,setMask}) => {
@@ -28,10 +27,6 @@ const Rank = ({member ,setMask}) => {
       const usersRef = collection(db, "users");
       const q = query(usersRef, orderBy("points", "desc"), limit(3));
       const querySnapshot = await getDocs(q);
-      // querySnapshot.forEach((doc) => {
-      //   // doc.data() is never undefined for query doc snapshots
-      //   console.log(doc.id, " => ", doc.data());
-      // });
       setRankDict(querySnapshot.docs.map((doc) => ({ username:doc.id ,points : doc.data().points })));
       // console.log(rankDict)
     };
@@ -75,8 +70,18 @@ const Rank = ({member ,setMask}) => {
       {/* <img src={Rank_img} alt="rank" className='rank_img' onClick={toggleRank}/> */}
       <div className={rankClick}>
         <div className='rank_title'>
-          <h1>Rank</h1>
-          <h1 onClick={closedRank}>x</h1>
+          <h1>Rank
+            <span>
+          <AiOutlineClose 
+          onClick={closedRank} 
+          style={
+           { float:'right',
+            cursor :'pointer',
+            marginRight:'10px'
+            }
+        } />
+        </span>
+        </h1>
         </div>
         <div className='rank_board'>
         <h4>Easy-mode rank</h4>

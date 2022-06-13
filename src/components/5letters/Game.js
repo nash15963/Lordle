@@ -10,14 +10,9 @@ import { ToastProvider, useToasts } from "../hooks/toast-manager";
 
 import { db } from "../../config";
 import {
-  collection,
-  getDocs,
-  addDoc,
   updateDoc,
-  deleteDoc,
   doc,
-  getDoc,
-  query, where,setDoc
+  getDoc
 } from "firebase/firestore";
 
 export const AppContex = createContext()
@@ -184,7 +179,7 @@ function Game({member}) {
       localStorage.removeItem('localAttempt')
       return ;
     }
-    if (currAttempt.attempt === 5 ) {
+    if (currAttempt.attempt === 5 && wordSet.has(currWord)) {
       setGameOver({ gameOver: true, guessedWord: false });
       const updatePoints = async () => {
         console.log(String(memberTemp))

@@ -1,11 +1,10 @@
 import React , { useState } from 'react'
-// import Home from './components/Home'
+import { BrowserRouter,Routes,Route } from "react-router-dom"
+// import { Link } from 'react-router-dom'
 import Game from './components/5letters/Game'
 import Gamein6 from './components/6letters/Gamein6'
 import Login from './components/Login'
 import './styl/App2.css'
-import { BrowserRouter,Routes,Route } from "react-router-dom";
-// import Discription from './components/Description'
 
 
 function App() {
@@ -14,8 +13,6 @@ function App() {
     <div className="App">
     <BrowserRouter>
     <Routes>
-      {/* <Route path="/" element={<Home />} /> */}
-      {/* <Route path='/Description' element={<Discription/>}/> */}
       <Route path="/" element={<Login setMember={setMember}/>} />
       <Route path="/Game" element={<Game member={member}/>} />
       <Route path="/HardGame" element={<Gamein6 member={member}/>} />
@@ -26,3 +23,6 @@ function App() {
 }
 
 export default App;
+
+// 1.網頁進行重新渲染
+// 2.err page

@@ -41,4 +41,3 @@ const Clock = () => {
 
 export default Clock
 
-// 設計重點 大 乾淨

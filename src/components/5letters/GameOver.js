@@ -1,9 +1,11 @@
+// import React, { useState , useContext } from 'react'
 import React, { useContext } from 'react'
 import { AppContex } from './Game'
 import Clock from '../Clock'
 
 function GameOver() {
     const {gameOver ,correctWord ,currAttempt ,playedCount,winCount} = useContext(AppContex) 
+    // const [clipboard , setClipboard] = useState()
     let url = window.location.href ;
     console.log(url)
     const nextExam =()=>{

@@ -1,28 +1,15 @@
 import Boardsin6 from './Boardsin6'
 import Keyboardin6 from './KeyBoardin6'
 import GameOverin6 from './GameOverin6'
-
 import Header from '../Header'
 import 'animate.css';
 import { boardDefault ,generateWordSet ,generateSavedAnswer } from '../../Wordsin6'
 import { createContext ,useEffect,useState } from 'react'
 import { ToastProvider, useToasts } from "../hooks/toast-manager";
-
 import { db } from "../../config";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  getDoc,
-  query, where,setDoc
-} from "firebase/firestore";
+import { updateDoc,doc,getDoc } from "firebase/firestore";
 
 export const AppContex = createContext()
-
-// const KeyBoardArray = 'access'
 
 function Gamein6({member}) {
   const [memberTemp ,setMemberTemp] = useState(()=>{
@@ -47,7 +34,7 @@ function Gamein6({member}) {
   const [todayAnswer, setTodayAnswer] = useState(()=>{
     const savedAnswer = localStorage.getItem("localAnswer");
     return savedAnswer || "";
-  }) ;    //rerender*
+  }) ;   
   const [correctWord, setCorrectWord] = useState(todayAnswer);
   const [gameOver, setGameOver] = useState({
     gameOver: false,
@@ -56,7 +43,6 @@ function Gamein6({member}) {
 
   const [outList, setOutList] = useState(false)
   const [gameDown , setgameDown] = useState('')
-
   const onplayedCount =()=>{
     const savedCount = localStorage.getItem('playedCount')
     return savedCount ? JSON.parse(savedCount) : 0
@@ -72,8 +58,7 @@ function Gamein6({member}) {
     return commercial ? JSON.parse(commercial) : false
   }
   let commercial = onCommercial()
-  // const memberTemp = JSON.parse(localStorage.getItem("username"))
-  // const member = useRef(memberTemp)
+
   useEffect(()=>{
     
     if(memberTemp === ''){
@@ -96,12 +81,11 @@ function Gamein6({member}) {
       })
     }
   },[todayAnswer])
-//提示字框
+
   function Toastopen() {
     const { add } = useToasts();
     add("Not In Word List")
     setOutList(false)
-    // return <button onClick={() => add("Click to dismiss!")}>Add toast</button>;
   }
   
   
@@ -110,15 +94,8 @@ function Gamein6({member}) {
     if(currAttempt.letterPos>5) return ;  
     const newBoard =[...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
-    // console.log([currAttempt.attempt],[currAttempt.letterPos])
-    // console.log(currAttempt)
-    // console.log('hihi')
     setBoard(newBoard)
     setCurrAttempt({...currAttempt ,letterPos : currAttempt.letterPos+1})
-    // localStorage.setItem('localAttempt',JSON.stringify(currAttempt));
-    // console.log(currAttempt) //從App.js來
-    // console.log(keyVal) //alphabet
-    // console.log({attempt :currAttempt.attempt})
   }
   const onDelete =()=>{
     if(currAttempt.letterPos===0)return ;
@@ -135,29 +112,20 @@ function Gamein6({member}) {
       currWord += (board[currAttempt.attempt][i]).toLowerCase();
     }
     currWord = currWord + '\r'  //換行後的字串
-    console.log(currWord)
-    console.log(wordSet)
-    console.log(currWord)
-    console.log(correctWord)
     if (wordSet.has(currWord)) {
-      console.log(board)
-      setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos :0 });  //往下一行，letterPos為0   set增加attempt
-      // console.log('hihi')
-      localStorage.setItem('userAnswer',JSON.stringify(board));  //在local存取玩家作答
+      // console.log(board)
+      setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos :0 }); 
+      localStorage.setItem('userAnswer',JSON.stringify(board)); 
       localStorage.setItem('localAttempt',JSON.stringify({ attempt: currAttempt.attempt + 1, letterPos :0 }));
 
-    } else { // failed the word , not in Dic
-      // alert("Word not found");
-      let row = document.querySelector(`.board .row:nth-child(${currAttempt.attempt+1})`)
+    } else {
+      let row = document.querySelector(`.boardin6 .row:nth-child(${currAttempt.attempt+1})`)
       row.classList.toggle('foo')
-      // add Toast Component 
       setOutList(true)
     }
     if(currWord === correctWord){
       setGameOver({ gameOver: true, guessedWord: true });
-      // localStorage.clear()
       const updatePoints = async () => {
-        console.log(String(memberTemp))
         let docRef = doc(db, "users",String(memberTemp));
         const docSnap = await getDoc(docRef);
         if (docSnap.data().hard_points) {
@@ -168,7 +136,6 @@ function Gamein6({member}) {
           };
           await updateDoc(docRef, newFields);
         } else {
-          // doc.data() will be undefined in this case
           console.log('oops');
           const newFields = { hard_points: 1 ,hard_total:1 };
           await updateDoc(docRef, newFields);
@@ -177,7 +144,6 @@ function Gamein6({member}) {
       updatePoints()
       setgameDown(<GameOverin6 />)
       const handleNumber =()=>{
-        
         localStorage.setItem('playedCount' ,playedCount+1)
         localStorage.setItem('winCount' , winCount+1)
       }
@@ -188,10 +154,9 @@ function Gamein6({member}) {
       localStorage.removeItem('localAttempt')
       return ;
     }
-    if (currAttempt.attempt === 5 ) {
+    if (currAttempt.attempt === 5 && wordSet.has(currWord)) {
       setGameOver({ gameOver: true, guessedWord: false });
       const updatePoints = async () => {
-        console.log(String(memberTemp))
         let docRef = doc(db, "users",String(memberTemp));
         const docSnap = await getDoc(docRef);
         if (docSnap.data().hard_points) {
@@ -202,7 +167,6 @@ function Gamein6({member}) {
           };
           await updateDoc(docRef, newFields);
         } else {
-          // doc.data() will be undefined in this case
           console.log('oops');
           const newFields = { hard_fail: 1 ,hard_total:1 };
           await updateDoc(docRef, newFields);
@@ -211,10 +175,6 @@ function Gamein6({member}) {
       updatePoints()
       setgameDown(<GameOverin6 />)
       localStorage.setItem('playedCount' ,playedCount+1)
-      // const handleNumber =()=>{
-      //   localStorage.setItem('playedCount' ,playedCount+1)
-      // }
-      // handleNumber()
       localStorage.removeItem('userAnswer')
       localStorage.removeItem('localAnswer')
       localStorage.removeItem('localAttempt')
@@ -226,12 +186,7 @@ function Gamein6({member}) {
     const savednight = JSON.parse(localStorage.getItem("usernight"))
     return savednight || 'dark'})
 
-  
-
-
-
   return (
-    // <div className="Gamein6" id={theme}>
     <div className="App" id={theme}>
       <Header theme={theme} setTheme={setTheme} member={member}></Header>
       
@@ -242,16 +197,13 @@ function Gamein6({member}) {
           gameOver, setGameOver ,playedCount,winCount}
       }>
       <div id ="game">
-      <ToastProvider>
-        {outList ?<Toastopen/> :''}
-      </ToastProvider>
+      <ToastProvider>{outList ?<Toastopen/> :''}</ToastProvider>
       <div id='board-container'><Boardsin6/></div>
       <Keyboardin6/>
       {gameDown}
       {commercial ? <GameOverin6/> : ''}
       </div>
       </AppContex.Provider>
-      
     </div>
   );
 }
