@@ -23,11 +23,13 @@
 ### 功能說明:
 
 - 登入頁面
+
 Firestore紀錄會員帳號密碼，並使用localstorage模擬session機制，Router v6跳轉頁面。
 ![image](https://nash15963.github.io/lordle/img/login.png)
 <!-- 會員頁面圖片 -->
 
 - 遊戲主頁面
+
 主要畫面中包括字格，鍵盤與上方功能欄
 ![image](https://nash15963.github.io/lordle/img/main.png)
 <!-- 主畫面圖片 -->
