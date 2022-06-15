@@ -11,8 +11,8 @@ const Login = ({setMember}) => {
     let navigate = useNavigate();
     const [usernameReg , setUsernameReg] = useState('')
     const [passwordReg , setPasswordReg] = useState('')
-    const [username , setUsername] = useState('')
-    const [password , setPassword] = useState('')
+    const [username , setUsername] = useState('ttt')
+    const [password , setPassword] = useState('ttt')
     const [usernameMessage , setUsernameMessage] = useState('')
     const [flip , setFlip] = useState(true)
     const [btnMes , setBtnMes] = useState(true)
@@ -122,7 +122,7 @@ const Login = ({setMember}) => {
         <h3 className='second_slogan'>play lordle everyday</h3>
         {flip ?
         <LoginEle 
-        setUsername={setUsername} setPassword={setPassword} handleLogin={handleLogin} 
+        setUsername={setUsername} setPassword={setPassword} handleLogin={handleLogin} password={password} username={username}
         setFlip={setFlip} usernameMessage={usernameMessage} setUsernameMessage={setUsernameMessage} btnMes={btnMes}/> 
         :
         <SignupEle setUsernameReg={setUsernameReg} setPasswordReg={setPasswordReg} handleSignup={handleSignup} 
