@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LoginEle = ({setUsername , setPassword ,handleLogin,
+const LoginEle = ({setUsername , setPassword ,handleLogin,password ,username ,
     setFlip,usernameMessage,setUsernameMessage ,btnMes}) => {
     const flipSignup =()=>{
     setFlip(false)
@@ -19,6 +19,8 @@ const LoginEle = ({setUsername , setPassword ,handleLogin,
                             setUsername(e.target.value)
                         }}
                         placeholder = 'type your Name // test account: ttt'
+                        value={username}
+                        // onFocus={(e)=>{e.target.value = password}}
                     />
                     </p>
                     <p>
@@ -27,6 +29,8 @@ const LoginEle = ({setUsername , setPassword ,handleLogin,
                         required 
                         onChange={(e)=>{setPassword(e.target.value)}}
                         placeholder = 'type your Password // test password: ttt'
+                        value={password}
+                        // onFocus={(e)=>{e.target.value = username}}
                     />
                     </p>
                     <button onClick={handleLogin}>
