@@ -1,6 +1,6 @@
 # Lordle sideproject
 
-[專案連結]('https://lordle-77474.web.app/')
+[專案連結](https://lordle-77474.web.app/)
 
 此次專案作品是以紐約時報的Wordle為範本的一個填字遊戲
 
