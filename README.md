@@ -10,21 +10,18 @@ A puzzle game based on Wordle from NY Times
 
 2. A Leaderboard that records member scores
 
+3. RWD design for different devices
 
 ## Tech:
 
-| Name | Quantity |
-| ----- | -------- |
-|Apple|3       |
-|Egg  |12      |
-
-1.React Hook ,NPM
-
-2.Stylus
-
-3.Firebase , Firestore
-
-4.Git
+| Technique | Description |
+| --------- | ----------- |
+| React Hook| Components for custom hook,useState, useEffect, useContext, useMemo, useCallback |
+| React Router(v6) | routing in SPA |
+| Firebase | firestore ,Hosting |
+| Stylus | Organizing CSS syntax |
+| Git | control system designed |
+| Prettier | Keep coding style |
 
 ## 功能說明:
 
