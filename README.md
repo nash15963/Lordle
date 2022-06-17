@@ -1,18 +1,22 @@
 # Lordle sideproject
 
-[專案連結](https://lordle-77474.web.app/)
+[Demo](https://lordle-77474.web.app/)
 
-此次專案作品是以紐約時報的Wordle為範本的一個填字遊戲
+A puzzle game based on Wordle from NY Times
 
-## 主要功能如下:
+## Main Function:
 
-1.提供兩種遊戲難度來增加可玩性(包括easy:五字、Hard:六字)
+1. Two game difficulties to increase playability
 
-2.計分與會員模式
+2. A Leaderboard that records member scores
 
-3.個人遊戲紀錄
 
-## 使用技術:
+## Tech:
+
+| Name | Quantity |
+| ----- | -------- |
+|Apple|3       |
+|Egg  |12      |
 
 1.React Hook ,NPM
 
