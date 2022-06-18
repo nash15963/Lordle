@@ -46,6 +46,10 @@ The leaderboard displayed the rankings and scores of different players, players 
 
 ![image](https://nash15963.github.io/lordle/img/main.png)
 
+## Structure
+
+![image](https://nash15963.github.io/lordle/img/Structure.png)
+
 ## Features
 ![image](https://nash15963.github.io/lordle/img/LordleIntrodution.gif)
 
